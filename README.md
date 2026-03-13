@@ -1,10 +1,26 @@
 # `chill-institute/contracts`
 
-Canonical protobuf API contracts and generated client artifacts for Chill.
+Canonical protobuf API contracts and generated client artifacts for `chill.institute`.
 
-This repository is the source of truth for the public RPC surface used by official Chill clients. It contains the protobuf schema plus generated artifacts for Go and TypeScript consumers.
+This repository is the source of truth for the public RPC surface used by official `chill.institute` clients. It contains the protobuf schema plus generated artifacts for Go and TypeScript consumers.
 
 This repository does not include the private backend implementation.
+
+## Repository Role
+
+This repo owns:
+
+- protobuf source files
+- code generation configuration
+- generated Go artifacts
+- generated TypeScript artifacts
+- generated OpenAPI output
+
+This repo does not own:
+
+- backend implementation
+- web or CLI application code
+- deploy/runtime configuration
 
 ## What Is In This Repo
 
@@ -18,6 +34,15 @@ This repository does not include the private backend implementation.
 - The API contract version is encoded in the protobuf package path, for example `chill.v4`.
 - Repository releases use normal semver tags such as `v0.1.0`.
 - Consumers should depend on tagged releases, not `main`.
+
+## Consumers
+
+| Consumer | Uses |
+|----------|------|
+| `chill-institute/engine` | generated Go packages |
+| `chill-institute/cli` | contract shape and procedure names |
+| `chill-institute/web` | published TypeScript package |
+| future mobile clients | published TypeScript package |
 
 ## Go Usage
 
@@ -53,6 +78,18 @@ mise run verify
 ```
 
 Generation is centralized in this repository. Downstream clients should consume the generated artifacts from tagged releases instead of regenerating from copied schema files.
+
+## Release Responsibilities
+
+A normal contract change looks like this:
+
+1. update `proto/`
+2. run `mise run generate`
+3. review generated output in `gen/go`, `gen/ts`, and `gen/openapi`
+4. run `mise run verify`
+5. tag and publish a release
+
+Downstream repos should then bump to the released version instead of copying schema files around.
 
 ## Release Flow
 
