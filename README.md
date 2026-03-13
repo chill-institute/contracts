@@ -1,4 +1,4 @@
-# Chill Contracts
+# `chill-institute/contracts`
 
 Canonical protobuf API contracts and generated client artifacts for Chill.
 
