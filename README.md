@@ -8,10 +8,6 @@ Public API contracts for [chill.institute](https://chill.institute), your favori
 
 Please read the [contributing guide](./CONTRIBUTING.md).
 
-## Docs
-
-- [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md)
-
 ## License
 
 MIT. See [LICENSE](./LICENSE).
