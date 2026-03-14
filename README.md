@@ -1,33 +1,16 @@
-# `chill-institute/contracts`
+# chill-institute/contracts
 
-![Protobuf](https://img.shields.io/badge/schema-Protobuf-black)
-![Connect](https://img.shields.io/badge/RPC-Connect-black)
-![OpenAPI](https://img.shields.io/badge/output-OpenAPI-black)
+![chill.institute contracts](https://binge.institute/banner.png)
 
-Canonical protobuf API contracts and generated client artifacts for `chill.institute`.
+Public API contracts for [chill.institute](https://chill.institute), your favorite [put.io](https://put.io) extension since 2018.
 
-This repository is the source of truth for the public RPC surface used by official `chill.institute` clients. It contains protobuf schema plus generated Go, TypeScript, and OpenAPI artifacts.
+## Contributing
 
-Start here:
+Please read the [contributing guide](./CONTRIBUTING.md).
 
-```bash
-mise install
-mise run generate
-mise run verify
-```
-
-Key docs:
+## Docs
 
 - [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md)
-
-Main paths:
-
-- `proto/`
-- `gen/go/`
-- `gen/ts/`
-- `gen/openapi/`
-
-Consumers should depend on tagged releases, not `main`.
 
 ## License
 
