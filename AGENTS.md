@@ -19,3 +19,4 @@
 - Source schemas live in `proto/`.
 - Generated outputs live in `gen/go/`, `gen/ts/`, and `gen/openapi/`.
 - This repo does not own backend, web, mobile, or CLI application logic.
+- See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) for the public-boundary model and generation flow.
