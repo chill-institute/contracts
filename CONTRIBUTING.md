@@ -73,18 +73,21 @@ Normal contract change flow:
 2. Run `mise run generate`.
 3. Review generated output in `gen/go`, `gen/ts`, and `gen/openapi`.
 4. Run `mise run verify`.
-5. Commit schema, generated output, and version bump together.
+5. Commit schema and generated output together.
 6. Push `main`.
-7. Create and push a matching version tag, for example `v0.1.3`.
-8. GitHub Actions verifies the tag matches `package.json`, publishes the package to npm, and creates the GitHub release from that tag.
+7. GitHub Actions automatically bumps the patch version in `package.json`, commits `chore(contracts): release vX.Y.Z [skip ci]`, tags `vX.Y.Z`, publishes the package to npm, and creates the GitHub release.
 
 Example:
 
 ```bash
 git push origin main
-git tag -a v0.1.3 -m "v0.1.3"
-git push origin v0.1.3
 ```
+
+Versioning notes:
+
+- Releases always auto-increment the patch version.
+- The workflow uses the highest known version from `package.json`, existing `v*` tags, and npm, then bumps one patch above it.
+- Do not manually edit `package.json` just to cut a release.
 
 ## Pull Requests
 

@@ -1,0 +1,89 @@
+name: Release On Main
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: contracts-release-main
+  cancel-in-progress: true
+
+jobs:
+  release:
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch tags
+        run: git fetch --force --tags origin
+
+      - name: Read latest published version
+        id: npm
+        run: |
+          version="$(npm view @chill-institute/contracts version 2>/dev/null || true)"
+          printf 'version=%s\n' "$version" >> "$GITHUB_OUTPUT"
+
+      - name: Compute next version
+        id: version
+        env:
+          NPM_VERSION: ${{ steps.npm.outputs.version }}
+        run: |
+          node <<'EOF'
+          const fs = require("fs");
+          const { execSync } = require("child_process");
+
+          function parse(version) {
+            return version.split(".").map((part) => Number.parseInt(part, 10));
+          }
+
+          function compare(a, b) {
+            const left = parse(a);
+            const right = parse(b);
+            for (let i = 0; i < 3; i += 1) {
+              if (left[i] !== right[i]) {
+                return left[i] - right[i];
+              }
+            }
+            return 0;
+          }
+
+          function bumpPatch(version) {
+            const [major, minor, patch] = parse(version);
+            return `${major}.${minor}.${patch + 1}`;
+          }
+
+          const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+          const latestTag = execSync("git tag --list 'v*' --sort=-version:refname | head -n 1", {
+            encoding: "utf8",
+            shell: "/bin/bash",
+          }).trim().replace(/^v/, "");
+          const npmVersion = (process.env.NPM_VERSION || "").trim();
+          const candidates = [pkg.version, latestTag, npmVersion].filter(Boolean);
+          const base = candidates.sort(compare).at(-1);
+          const next = bumpPatch(base);
+
+          pkg.version = next;
+          fs.writeFileSync("package.json", `${JSON.stringify(pkg, null, 2)}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${next}\n`);
+          EOF
+
+      - name: Commit release version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore(contracts): release v${VERSION} [skip ci]"
+          git tag -a "v${VERSION}" -m "v${VERSION}"
+
+      - name: Push release commit and tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: git push origin HEAD:main "refs/tags/v${VERSION}"
