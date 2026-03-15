@@ -75,7 +75,7 @@ Normal contract change flow:
 4. Run `mise run verify`.
 5. Commit schema and generated output together.
 6. Push `main`.
-7. GitHub Actions automatically bumps the patch version in `package.json`, commits `chore(contracts): release vX.Y.Z [skip ci]`, tags `vX.Y.Z`, publishes the package to npm, and creates the GitHub release.
+7. GitHub Actions runs `semantic-release`, bumps the version automatically, tags `vX.Y.Z`, publishes the package to npm, creates the GitHub release, and commits the updated `package.json` back to `main`.
 
 Example:
 
@@ -85,8 +85,10 @@ git push origin main
 
 Versioning notes:
 
-- Releases always auto-increment the patch version.
-- The workflow uses the highest known version from `package.json`, existing `v*` tags, and npm, then bumps one patch above it.
+- Releases are driven by conventional commits.
+- `feat:` produces a minor release.
+- `fix:`, `perf:`, `refactor:`, `docs:`, `test:`, `build:`, `ci:`, and `chore:` produce a patch release.
+- Breaking changes produce a major release.
 - Do not manually edit `package.json` just to cut a release.
 
 ## Pull Requests

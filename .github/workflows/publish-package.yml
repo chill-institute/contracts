@@ -1,15 +1,18 @@
-name: Publish Package
+name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
 
 jobs:
-  publish:
+  release:
+    if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,55 +22,11 @@ jobs:
         with:
           install: true
 
-      - name: Read package metadata
-        id: pkg
-        run: |
-          node -e 'const pkg = require("./package.json"); console.log(`name=${pkg.name}`); console.log(`version=${pkg.version}`);' >> "$GITHUB_OUTPUT"
-
-      - name: Ensure tag matches package version
-        run: |
-          if [ "${GITHUB_REF_NAME}" != "v${VERSION}" ]; then
-            echo "tag ${GITHUB_REF_NAME} does not match package.json version v${VERSION}" >&2
-            exit 1
-          fi
-        env:
-          VERSION: ${{ steps.pkg.outputs.version }}
-
-      - name: Check whether version is already published
-        id: npm
-        run: |
-          if npm view "${PACKAGE_NAME}@${VERSION}" version >/dev/null 2>&1; then
-            echo "already_published=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "already_published=false" >> "$GITHUB_OUTPUT"
-          fi
-        env:
-          PACKAGE_NAME: ${{ steps.pkg.outputs.name }}
-          VERSION: ${{ steps.pkg.outputs.version }}
-
-      - name: Configure npm auth
-        if: steps.npm.outputs.already_published != 'true'
-        run: |
-          cat > "$HOME/.npmrc" <<'EOF'
-          //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-          EOF
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish package to npm
-        if: steps.npm.outputs.already_published != 'true'
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub release
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            echo "GitHub release ${GITHUB_REF_NAME} already exists"
-          else
-            gh release create "${GITHUB_REF_NAME}" \
-              --title "${GITHUB_REF_NAME}" \
-              --generate-notes
-          fi
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          extra_plugins: |
+            @semantic-release/git
