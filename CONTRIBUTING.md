@@ -73,8 +73,18 @@ Normal contract change flow:
 2. Run `mise run generate`.
 3. Review generated output in `gen/go`, `gen/ts`, and `gen/openapi`.
 4. Run `mise run verify`.
-5. Commit schema and generated output together.
-6. Tag and publish a release.
+5. Commit schema, generated output, and version bump together.
+6. Push `main`.
+7. Create and push a matching version tag, for example `v0.1.3`.
+8. GitHub Actions verifies the tag matches `package.json`, publishes the package to npm, and creates the GitHub release from that tag.
+
+Example:
+
+```bash
+git push origin main
+git tag -a v0.1.3 -m "v0.1.3"
+git push origin v0.1.3
+```
 
 ## Pull Requests
 
