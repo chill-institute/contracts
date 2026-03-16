@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes how `chill-institute/chill-institute-contracts` is built.
+This document describes how `chill-institute-contracts` is built.
 
 ## System Context
 

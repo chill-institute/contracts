@@ -1,4 +1,4 @@
-# chill-institute/chill-institute-contracts
+# chill-institute-contracts
 
 ![chill.institute contracts](https://binge.institute/banner.png)
 

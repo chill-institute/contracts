@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to `chill-institute/chill-institute-contracts`.
+Thanks for contributing to `chill-institute-contracts`.
 
 ## Setup
 
