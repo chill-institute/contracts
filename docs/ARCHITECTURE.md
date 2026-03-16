@@ -9,7 +9,7 @@ graph LR
   Proto["protobuf schemas"] --> Generated["generated artifacts"]
   Generated --> Web["web"]
   Generated --> CLI["cli"]
-  Generated --> Engine["engine"]
+  Generated --> Backend["backend"]
   Generated --> Future["future clients"]
 ```
 
@@ -18,7 +18,7 @@ graph LR
 | Component | Responsibility | Talks to |
 |-----------|----------------|----------|
 | `proto/` | Canonical public API schemas | Buf, generators |
-| `gen/go/` | Generated Go contract types | `engine` |
+| `gen/go/` | Generated Go contract types | backend consumers |
 | `gen/ts/` | Generated TypeScript contract types | `web`, future JS clients |
 | `gen/openapi/` | Generated OpenAPI output | docs and tooling |
 | package metadata | Publish the TypeScript package and release artifacts | npm, GitHub releases |
@@ -31,7 +31,7 @@ graph TD
   Generate --> Go["gen/go"]
   Generate --> TS["gen/ts"]
   Generate --> OpenAPI["gen/openapi"]
-  Go --> Engine["engine consumers"]
+  Go --> Backend["backend consumers"]
   TS --> Web["web consumers"]
 ```
 
