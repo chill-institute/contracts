@@ -27,7 +27,7 @@ Useful reports include issues involving:
 
 ## Supported Versions
 
-Security fixes are applied on a best-effort basis to the latest released contract version and the latest code on `main`.
+Security fixes are applied on a best-effort basis to the latest released contract version and the latest code on `main`
 
 ## Disclosure
 

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to `chill-institute-contracts`.
+Thanks for contributing to `chill-institute-contracts`
 
 ## Setup
 
@@ -29,7 +29,7 @@ mise run verify
 - This repo is the public contract boundary for `chill.institute`.
 - Schema changes should be deliberate and consumer-aware.
 - Keep generated artifacts in sync with schema changes.
-- Consumers should depend on releases, not `main`.
+- Consumers should depend on releases, not `main`
 
 This repo owns:
 
@@ -69,13 +69,13 @@ import { UserService } from "@chill-institute/contracts/chill/v4/api_pb";
 
 Normal contract change flow:
 
-1. Update `proto/`.
-2. Run `mise run generate`.
-3. Review generated output in `gen/go`, `gen/ts`, and `gen/openapi`.
-4. Run `mise run verify`.
+1. Update `proto/`
+2. Run `mise run generate`
+3. Review generated output in `gen/go`, `gen/ts`, and `gen/openapi`
+4. Run `mise run verify`
 5. Commit schema and generated output together.
-6. Push `main`.
-7. GitHub Actions runs `semantic-release`, bumps the version automatically, tags `vX.Y.Z`, publishes the package to npm, creates the GitHub release, and commits the updated `package.json` back to `main`.
+6. Push `main`
+7. GitHub Actions runs `semantic-release`, bumps the version automatically, tags `vX.Y.Z`, publishes the package to npm, creates the GitHub release, and commits the updated `package.json` back to `main`
 
 Example:
 

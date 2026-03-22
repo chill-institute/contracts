@@ -45,4 +45,4 @@ graph TD
 
 - `main` is the release branch.
 - CI verifies the repo on push.
-- release automation publishes the npm package and GitHub release from `main`.
+- release automation publishes the npm package and GitHub release from `main`
