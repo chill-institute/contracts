@@ -27,7 +27,8 @@ type IndexerStatus int32
 const (
 	IndexerStatus_INDEXER_STATUS_UNSPECIFIED IndexerStatus = 0
 	IndexerStatus_INDEXER_STATUS_HEALTHY     IndexerStatus = 1
-	IndexerStatus_INDEXER_STATUS_DOWN        IndexerStatus = 2
+	IndexerStatus_INDEXER_STATUS_DEGRADED    IndexerStatus = 2
+	IndexerStatus_INDEXER_STATUS_DOWN        IndexerStatus = 3
 )
 
 // Enum value maps for IndexerStatus.
@@ -35,12 +36,14 @@ var (
 	IndexerStatus_name = map[int32]string{
 		0: "INDEXER_STATUS_UNSPECIFIED",
 		1: "INDEXER_STATUS_HEALTHY",
-		2: "INDEXER_STATUS_DOWN",
+		2: "INDEXER_STATUS_DEGRADED",
+		3: "INDEXER_STATUS_DOWN",
 	}
 	IndexerStatus_value = map[string]int32{
 		"INDEXER_STATUS_UNSPECIFIED": 0,
 		"INDEXER_STATUS_HEALTHY":     1,
-		"INDEXER_STATUS_DOWN":        2,
+		"INDEXER_STATUS_DEGRADED":    2,
+		"INDEXER_STATUS_DOWN":        3,
 	}
 )
 
@@ -2675,11 +2678,12 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x1d\n" +
 	"\n" +
 	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email*d\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email*\x81\x01\n" +
 	"\rIndexerStatus\x12\x1e\n" +
 	"\x1aINDEXER_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
-	"\x16INDEXER_STATUS_HEALTHY\x10\x01\x12\x17\n" +
-	"\x13INDEXER_STATUS_DOWN\x10\x02*\xde\x01\n" +
+	"\x16INDEXER_STATUS_HEALTHY\x10\x01\x12\x1b\n" +
+	"\x17INDEXER_STATUS_DEGRADED\x10\x02\x12\x17\n" +
+	"\x13INDEXER_STATUS_DOWN\x10\x03*\xde\x01\n" +
 	"\x0fTopMoviesSource\x12!\n" +
 	"\x1dTOP_MOVIES_SOURCE_UNSPECIFIED\x10\x00\x12%\n" +
 	"!TOP_MOVIES_SOURCE_IMDB_MOVIEMETER\x10\x01\x12\"\n" +

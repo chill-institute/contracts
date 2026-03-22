@@ -899,9 +899,14 @@ export enum IndexerStatus {
   HEALTHY = 1,
 
   /**
-   * @generated from enum value: INDEXER_STATUS_DOWN = 2;
+   * @generated from enum value: INDEXER_STATUS_DEGRADED = 2;
    */
-  DOWN = 2,
+  DEGRADED = 2,
+
+  /**
+   * @generated from enum value: INDEXER_STATUS_DOWN = 3;
+   */
+  DOWN = 3,
 }
 
 /**

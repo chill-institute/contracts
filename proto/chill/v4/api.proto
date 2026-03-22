@@ -299,7 +299,8 @@ message HealthResponse {
 enum IndexerStatus {
   INDEXER_STATUS_UNSPECIFIED = 0;
   INDEXER_STATUS_HEALTHY = 1;
-  INDEXER_STATUS_DOWN = 2;
+  INDEXER_STATUS_DEGRADED = 2;
+  INDEXER_STATUS_DOWN = 3;
 }
 
 message CoreGetIndexersRequest {}

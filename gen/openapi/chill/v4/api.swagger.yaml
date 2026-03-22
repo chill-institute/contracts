@@ -518,6 +518,7 @@ definitions:
     type: string
     enum:
       - INDEXER_STATUS_HEALTHY
+      - INDEXER_STATUS_DEGRADED
       - INDEXER_STATUS_DOWN
   v4OtherFilter:
     type: string
