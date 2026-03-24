@@ -481,7 +481,7 @@ enum TopMoviesSource {
 enum TopTVShowsSource {
   TOP_TV_SHOWS_SOURCE_UNSPECIFIED = 0;
   TOP_TV_SHOWS_SOURCE_NETFLIX = 1;
-  TOP_TV_SHOWS_SOURCE_HBO = 2;
+  TOP_TV_SHOWS_SOURCE_HBO_MAX = 2;
   TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
   TOP_TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
   TOP_TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
@@ -538,11 +538,11 @@ message UserGetTopMoviesResponse {
 message TopTVShow {
   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
     json_schema: {
-      required: ["tmdb_id", "poster_url"]
+      required: ["imdb_id", "poster_url"]
     }
   };
 
-  string tmdb_id = 1;
+  string imdb_id = 1;
   string title = 2;
   int32 year = 3;
   TopTVShowsSource source = 4;
@@ -553,7 +553,6 @@ message TopTVShow {
   int32 season_count = 9;
   TVShowStatus status = 10;
   repeated string networks = 11;
-  string imdb_id = 12;
 }
 
 message GetTopTVShowsBySourceRequest {
@@ -573,7 +572,7 @@ message UserGetTopTVShowsResponse {
 }
 
 message TVShowDetail {
-  string tmdb_id = 1;
+  string imdb_id = 1;
   string title = 2;
   int32 year = 3;
   string poster_url = 4;
@@ -584,8 +583,7 @@ message TVShowDetail {
   int32 season_count = 9;
   TVShowStatus status = 10;
   repeated string networks = 11;
-  string imdb_id = 12;
-  repeated string genres = 13;
+  repeated string genres = 12;
 }
 
 message TVShowSeason {
@@ -608,7 +606,7 @@ message TVShowEpisode {
 }
 
 message GetTVShowDetailRequest {
-  string tmdb_id = 1;
+  string imdb_id = 1;
 }
 
 message GetTVShowDetailResponse {
@@ -617,12 +615,12 @@ message GetTVShowDetailResponse {
 }
 
 message GetTVShowSeasonRequest {
-  string tmdb_id = 1;
+  string imdb_id = 1;
   int32 season_number = 2;
 }
 
 message GetTVShowSeasonResponse {
-  string tmdb_id = 1;
+  string imdb_id = 1;
   int32 season_number = 2;
   TVShowSeason season = 3;
   repeated TVShowEpisode episodes = 4;
@@ -642,7 +640,7 @@ message TVShowDownload {
 }
 
 message GetTVShowEpisodeDownloadRequest {
-  string tmdb_id = 1;
+  string imdb_id = 1;
   int32 season_number = 2;
   int32 episode_number = 3;
 }
@@ -653,7 +651,7 @@ message GetTVShowEpisodeDownloadResponse {
 }
 
 message GetTVShowSeasonDownloadsRequest {
-  string tmdb_id = 1;
+  string imdb_id = 1;
   int32 season_number = 2;
 }
 

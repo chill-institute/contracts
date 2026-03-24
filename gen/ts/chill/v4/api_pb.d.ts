@@ -436,9 +436,9 @@ export declare const UserGetTopMoviesResponseSchema: GenMessage<UserGetTopMovies
  */
 export declare type TopTVShow = Message<"chill.v4.TopTVShow"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: string title = 2;
@@ -489,11 +489,6 @@ export declare type TopTVShow = Message<"chill.v4.TopTVShow"> & {
    * @generated from field: repeated string networks = 11;
    */
   networks: string[];
-
-  /**
-   * @generated from field: string imdb_id = 12;
-   */
-  imdbId: string;
 };
 
 /**
@@ -577,9 +572,9 @@ export declare const UserGetTopTVShowsResponseSchema: GenMessage<UserGetTopTVSho
  */
 export declare type TVShowDetail = Message<"chill.v4.TVShowDetail"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: string title = 2;
@@ -632,12 +627,7 @@ export declare type TVShowDetail = Message<"chill.v4.TVShowDetail"> & {
   networks: string[];
 
   /**
-   * @generated from field: string imdb_id = 12;
-   */
-  imdbId: string;
-
-  /**
-   * @generated from field: repeated string genres = 13;
+   * @generated from field: repeated string genres = 12;
    */
   genres: string[];
 };
@@ -740,9 +730,9 @@ export declare const TVShowEpisodeSchema: GenMessage<TVShowEpisode>;
  */
 export declare type GetTVShowDetailRequest = Message<"chill.v4.GetTVShowDetailRequest"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 };
 
 /**
@@ -777,9 +767,9 @@ export declare const GetTVShowDetailResponseSchema: GenMessage<GetTVShowDetailRe
  */
 export declare type GetTVShowSeasonRequest = Message<"chill.v4.GetTVShowSeasonRequest"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: int32 season_number = 2;
@@ -798,9 +788,9 @@ export declare const GetTVShowSeasonRequestSchema: GenMessage<GetTVShowSeasonReq
  */
 export declare type GetTVShowSeasonResponse = Message<"chill.v4.GetTVShowSeasonResponse"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: int32 season_number = 2;
@@ -890,9 +880,9 @@ export declare const TVShowDownloadSchema: GenMessage<TVShowDownload>;
  */
 export declare type GetTVShowEpisodeDownloadRequest = Message<"chill.v4.GetTVShowEpisodeDownloadRequest"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: int32 season_number = 2;
@@ -937,9 +927,9 @@ export declare const GetTVShowEpisodeDownloadResponseSchema: GenMessage<GetTVSho
  */
 export declare type GetTVShowSeasonDownloadsRequest = Message<"chill.v4.GetTVShowSeasonDownloadsRequest"> & {
   /**
-   * @generated from field: string tmdb_id = 1;
+   * @generated from field: string imdb_id = 1;
    */
-  tmdbId: string;
+  imdbId: string;
 
   /**
    * @generated from field: int32 season_number = 2;
@@ -1553,9 +1543,9 @@ export enum TopTVShowsSource {
   TOP_TV_SHOWS_SOURCE_NETFLIX = 1,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_HBO = 2;
+   * @generated from enum value: TOP_TV_SHOWS_SOURCE_HBO_MAX = 2;
    */
-  TOP_TV_SHOWS_SOURCE_HBO = 2,
+  TOP_TV_SHOWS_SOURCE_HBO_MAX = 2,
 
   /**
    * @generated from enum value: TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;

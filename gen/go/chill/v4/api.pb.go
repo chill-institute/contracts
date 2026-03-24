@@ -137,7 +137,7 @@ type TopTVShowsSource int32
 const (
 	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED   TopTVShowsSource = 0
 	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_NETFLIX       TopTVShowsSource = 1
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_HBO           TopTVShowsSource = 2
+	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_HBO_MAX       TopTVShowsSource = 2
 	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS TopTVShowsSource = 3
 	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_PRIME_VIDEO   TopTVShowsSource = 4
 	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_DISNEY_PLUS   TopTVShowsSource = 5
@@ -148,7 +148,7 @@ var (
 	TopTVShowsSource_name = map[int32]string{
 		0: "TOP_TV_SHOWS_SOURCE_UNSPECIFIED",
 		1: "TOP_TV_SHOWS_SOURCE_NETFLIX",
-		2: "TOP_TV_SHOWS_SOURCE_HBO",
+		2: "TOP_TV_SHOWS_SOURCE_HBO_MAX",
 		3: "TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS",
 		4: "TOP_TV_SHOWS_SOURCE_PRIME_VIDEO",
 		5: "TOP_TV_SHOWS_SOURCE_DISNEY_PLUS",
@@ -156,7 +156,7 @@ var (
 	TopTVShowsSource_value = map[string]int32{
 		"TOP_TV_SHOWS_SOURCE_UNSPECIFIED":   0,
 		"TOP_TV_SHOWS_SOURCE_NETFLIX":       1,
-		"TOP_TV_SHOWS_SOURCE_HBO":           2,
+		"TOP_TV_SHOWS_SOURCE_HBO_MAX":       2,
 		"TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS": 3,
 		"TOP_TV_SHOWS_SOURCE_PRIME_VIDEO":   4,
 		"TOP_TV_SHOWS_SOURCE_DISNEY_PLUS":   5,
@@ -1631,7 +1631,7 @@ func (x *UserGetTopMoviesResponse) GetRssFeedUrl() string {
 
 type TopTVShow struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
 	Source        TopTVShowsSource       `protobuf:"varint,4,opt,name=source,proto3,enum=chill.v4.TopTVShowsSource" json:"source,omitempty"`
@@ -1642,7 +1642,6 @@ type TopTVShow struct {
 	SeasonCount   int32                  `protobuf:"varint,9,opt,name=season_count,json=seasonCount,proto3" json:"season_count,omitempty"`
 	Status        TVShowStatus           `protobuf:"varint,10,opt,name=status,proto3,enum=chill.v4.TVShowStatus" json:"status,omitempty"`
 	Networks      []string               `protobuf:"bytes,11,rep,name=networks,proto3" json:"networks,omitempty"`
-	ImdbId        string                 `protobuf:"bytes,12,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1677,9 +1676,9 @@ func (*TopTVShow) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *TopTVShow) GetTmdbId() string {
+func (x *TopTVShow) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -1752,13 +1751,6 @@ func (x *TopTVShow) GetNetworks() []string {
 		return x.Networks
 	}
 	return nil
-}
-
-func (x *TopTVShow) GetImdbId() string {
-	if x != nil {
-		return x.ImdbId
-	}
-	return ""
 }
 
 type GetTopTVShowsBySourceRequest struct {
@@ -1947,7 +1939,7 @@ func (x *UserGetTopTVShowsResponse) GetShows() []*TopTVShow {
 
 type TVShowDetail struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
 	PosterUrl     string                 `protobuf:"bytes,4,opt,name=poster_url,json=posterUrl,proto3" json:"poster_url,omitempty"`
@@ -1958,8 +1950,7 @@ type TVShowDetail struct {
 	SeasonCount   int32                  `protobuf:"varint,9,opt,name=season_count,json=seasonCount,proto3" json:"season_count,omitempty"`
 	Status        TVShowStatus           `protobuf:"varint,10,opt,name=status,proto3,enum=chill.v4.TVShowStatus" json:"status,omitempty"`
 	Networks      []string               `protobuf:"bytes,11,rep,name=networks,proto3" json:"networks,omitempty"`
-	ImdbId        string                 `protobuf:"bytes,12,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
-	Genres        []string               `protobuf:"bytes,13,rep,name=genres,proto3" json:"genres,omitempty"`
+	Genres        []string               `protobuf:"bytes,12,rep,name=genres,proto3" json:"genres,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1994,9 +1985,9 @@ func (*TVShowDetail) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *TVShowDetail) GetTmdbId() string {
+func (x *TVShowDetail) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -2069,13 +2060,6 @@ func (x *TVShowDetail) GetNetworks() []string {
 		return x.Networks
 	}
 	return nil
-}
-
-func (x *TVShowDetail) GetImdbId() string {
-	if x != nil {
-		return x.ImdbId
-	}
-	return ""
 }
 
 func (x *TVShowDetail) GetGenres() []string {
@@ -2263,7 +2247,7 @@ func (x *TVShowEpisode) GetRating() float64 {
 
 type GetTVShowDetailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2298,9 +2282,9 @@ func (*GetTVShowDetailRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *GetTVShowDetailRequest) GetTmdbId() string {
+func (x *GetTVShowDetailRequest) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -2359,7 +2343,7 @@ func (x *GetTVShowDetailResponse) GetSeasons() []*TVShowSeason {
 
 type GetTVShowSeasonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2395,9 +2379,9 @@ func (*GetTVShowSeasonRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{27}
 }
 
-func (x *GetTVShowSeasonRequest) GetTmdbId() string {
+func (x *GetTVShowSeasonRequest) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -2411,7 +2395,7 @@ func (x *GetTVShowSeasonRequest) GetSeasonNumber() int32 {
 
 type GetTVShowSeasonResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
 	Season        *TVShowSeason          `protobuf:"bytes,3,opt,name=season,proto3" json:"season,omitempty"`
 	Episodes      []*TVShowEpisode       `protobuf:"bytes,4,rep,name=episodes,proto3" json:"episodes,omitempty"`
@@ -2449,9 +2433,9 @@ func (*GetTVShowSeasonResponse) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *GetTVShowSeasonResponse) GetTmdbId() string {
+func (x *GetTVShowSeasonResponse) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -2595,7 +2579,7 @@ func (x *TVShowDownload) GetEpisodeNumber() int32 {
 
 type GetTVShowEpisodeDownloadRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
 	EpisodeNumber int32                  `protobuf:"varint,3,opt,name=episode_number,json=episodeNumber,proto3" json:"episode_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2632,9 +2616,9 @@ func (*GetTVShowEpisodeDownloadRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *GetTVShowEpisodeDownloadRequest) GetTmdbId() string {
+func (x *GetTVShowEpisodeDownloadRequest) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -2707,7 +2691,7 @@ func (x *GetTVShowEpisodeDownloadResponse) GetSearchQuery() string {
 
 type GetTVShowSeasonDownloadsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2743,9 +2727,9 @@ func (*GetTVShowSeasonDownloadsRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *GetTVShowSeasonDownloadsRequest) GetTmdbId() string {
+func (x *GetTVShowSeasonDownloadsRequest) GetImdbId() string {
 	if x != nil {
-		return x.TmdbId
+		return x.ImdbId
 	}
 	return ""
 }
@@ -3970,9 +3954,9 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x06source\x18\x01 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x06source\x12*\n" +
 	"\x06movies\x18\x02 \x03(\v2\x12.chill.v4.TopMovieR\x06movies\x12 \n" +
 	"\frss_feed_url\x18\x03 \x01(\tR\n" +
-	"rssFeedUrl\"\x9e\x03\n" +
+	"rssFeedUrl\"\x85\x03\n" +
 	"\tTopTVShow\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12\x14\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
 	"\x04year\x18\x03 \x01(\x05R\x04year\x122\n" +
 	"\x06source\x18\x04 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\x12\x1d\n" +
@@ -3984,9 +3968,8 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\fseason_count\x18\t \x01(\x05R\vseasonCount\x12.\n" +
 	"\x06status\x18\n" +
 	" \x01(\x0e2\x16.chill.v4.TVShowStatusR\x06status\x12\x1a\n" +
-	"\bnetworks\x18\v \x03(\tR\bnetworks\x12\x17\n" +
-	"\aimdb_id\x18\f \x01(\tR\x06imdbId:\x1c\x92A\x19\n" +
-	"\x17\xd2\x01\atmdb_id\xd2\x01\n" +
+	"\bnetworks\x18\v \x03(\tR\bnetworks:\x1c\x92A\x19\n" +
+	"\x17\xd2\x01\aimdb_id\xd2\x01\n" +
 	"poster_url\"R\n" +
 	"\x1cGetTopTVShowsBySourceRequest\x122\n" +
 	"\x06source\x18\x01 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\"~\n" +
@@ -3996,9 +3979,9 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x18UserGetTopTVShowsRequest\"z\n" +
 	"\x19UserGetTopTVShowsResponse\x122\n" +
 	"\x06source\x18\x01 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\x12)\n" +
-	"\x05shows\x18\x02 \x03(\v2\x13.chill.v4.TopTVShowR\x05shows\"\x8a\x03\n" +
+	"\x05shows\x18\x02 \x03(\v2\x13.chill.v4.TopTVShowR\x05shows\"\xf1\x02\n" +
 	"\fTVShowDetail\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12\x14\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
 	"\x04year\x18\x03 \x01(\x05R\x04year\x12\x1d\n" +
 	"\n" +
@@ -4010,9 +3993,8 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\fseason_count\x18\t \x01(\x05R\vseasonCount\x12.\n" +
 	"\x06status\x18\n" +
 	" \x01(\x0e2\x16.chill.v4.TVShowStatusR\x06status\x12\x1a\n" +
-	"\bnetworks\x18\v \x03(\tR\bnetworks\x12\x17\n" +
-	"\aimdb_id\x18\f \x01(\tR\x06imdbId\x12\x16\n" +
-	"\x06genres\x18\r \x03(\tR\x06genres\"\xa6\x01\n" +
+	"\bnetworks\x18\v \x03(\tR\bnetworks\x12\x16\n" +
+	"\x06genres\x18\f \x03(\tR\x06genres\"\xa6\x01\n" +
 	"\fTVShowSeason\x12#\n" +
 	"\rseason_number\x18\x01 \x01(\x05R\fseasonNumber\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
@@ -4030,15 +4012,15 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\tstill_url\x18\a \x01(\tR\bstillUrl\x12\x16\n" +
 	"\x06rating\x18\b \x01(\x01R\x06rating\"1\n" +
 	"\x16GetTVShowDetailRequest\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\"w\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\"w\n" +
 	"\x17GetTVShowDetailResponse\x12*\n" +
 	"\x04show\x18\x01 \x01(\v2\x16.chill.v4.TVShowDetailR\x04show\x120\n" +
 	"\aseasons\x18\x02 \x03(\v2\x16.chill.v4.TVShowSeasonR\aseasons\"V\n" +
 	"\x16GetTVShowSeasonRequest\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12#\n" +
 	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\"\xbc\x01\n" +
 	"\x17GetTVShowSeasonResponse\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12#\n" +
 	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\x12.\n" +
 	"\x06season\x18\x03 \x01(\v2\x16.chill.v4.TVShowSeasonR\x06season\x123\n" +
 	"\bepisodes\x18\x04 \x03(\v2\x17.chill.v4.TVShowEpisodeR\bepisodes\"\xb6\x02\n" +
@@ -4058,7 +4040,7 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	" \x01(\x05H\x00R\repisodeNumber\x88\x01\x01B\x11\n" +
 	"\x0f_episode_number\"\x86\x01\n" +
 	"\x1fGetTVShowEpisodeDownloadRequest\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12#\n" +
 	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\x12%\n" +
 	"\x0eepisode_number\x18\x03 \x01(\x05R\repisodeNumber\"\x8d\x01\n" +
 	" GetTVShowEpisodeDownloadResponse\x129\n" +
@@ -4066,7 +4048,7 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\fsearch_query\x18\x02 \x01(\tR\vsearchQueryB\v\n" +
 	"\t_download\"_\n" +
 	"\x1fGetTVShowSeasonDownloadsRequest\x12\x17\n" +
-	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12#\n" +
 	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\"\xe5\x01\n" +
 	" GetTVShowSeasonDownloadsResponse\x12>\n" +
 	"\vseason_pack\x18\x01 \x01(\v2\x18.chill.v4.TVShowDownloadH\x00R\n" +
@@ -4180,11 +4162,11 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x1eTOP_MOVIES_SOURCE_IMDB_TOP_250\x10\x02\x12\x19\n" +
 	"\x15TOP_MOVIES_SOURCE_YTS\x10\x03\x12%\n" +
 	"!TOP_MOVIES_SOURCE_ROTTEN_TOMATOES\x10\x04\x12\x1b\n" +
-	"\x17TOP_MOVIES_SOURCE_TRAKT\x10\x05*\xe6\x01\n" +
+	"\x17TOP_MOVIES_SOURCE_TRAKT\x10\x05*\xea\x01\n" +
 	"\x10TopTVShowsSource\x12#\n" +
 	"\x1fTOP_TV_SHOWS_SOURCE_UNSPECIFIED\x10\x00\x12\x1f\n" +
-	"\x1bTOP_TV_SHOWS_SOURCE_NETFLIX\x10\x01\x12\x1b\n" +
-	"\x17TOP_TV_SHOWS_SOURCE_HBO\x10\x02\x12%\n" +
+	"\x1bTOP_TV_SHOWS_SOURCE_NETFLIX\x10\x01\x12\x1f\n" +
+	"\x1bTOP_TV_SHOWS_SOURCE_HBO_MAX\x10\x02\x12%\n" +
 	"!TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS\x10\x03\x12#\n" +
 	"\x1fTOP_TV_SHOWS_SOURCE_PRIME_VIDEO\x10\x04\x12#\n" +
 	"\x1fTOP_TV_SHOWS_SOURCE_DISNEY_PLUS\x10\x05*\xc1\x01\n" +

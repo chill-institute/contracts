@@ -629,7 +629,7 @@ definitions:
   v4GetTVShowDetailRequest:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
   v4GetTVShowDetailResponse:
     type: object
@@ -644,7 +644,7 @@ definitions:
   v4GetTVShowEpisodeDownloadRequest:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       seasonNumber:
         type: integer
@@ -662,7 +662,7 @@ definitions:
   v4GetTVShowSeasonDownloadsRequest:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       seasonNumber:
         type: integer
@@ -682,7 +682,7 @@ definitions:
   v4GetTVShowSeasonRequest:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       seasonNumber:
         type: integer
@@ -690,7 +690,7 @@ definitions:
   v4GetTVShowSeasonResponse:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       seasonNumber:
         type: integer
@@ -850,7 +850,7 @@ definitions:
   v4TVShowDetail:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       title:
         type: string
@@ -877,8 +877,6 @@ definitions:
         type: array
         items:
           type: string
-      imdbId:
-        type: string
       genres:
         type: array
         items:
@@ -1018,7 +1016,7 @@ definitions:
   v4TopTVShow:
     type: object
     properties:
-      tmdbId:
+      imdbId:
         type: string
       title:
         type: string
@@ -1045,16 +1043,14 @@ definitions:
         type: array
         items:
           type: string
-      imdbId:
-        type: string
     required:
-      - tmdbId
+      - imdbId
       - posterUrl
   v4TopTVShowsSource:
     type: string
     enum:
       - TOP_TV_SHOWS_SOURCE_NETFLIX
-      - TOP_TV_SHOWS_SOURCE_HBO
+      - TOP_TV_SHOWS_SOURCE_HBO_MAX
       - TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS
       - TOP_TV_SHOWS_SOURCE_PRIME_VIDEO
       - TOP_TV_SHOWS_SOURCE_DISNEY_PLUS
