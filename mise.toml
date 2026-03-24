@@ -14,9 +14,14 @@ run = [
   "go mod tidy"
 ]
 
+[tasks.smoke]
+description = "Run a fast protobuf compile smoke check"
+run = "buf build"
+
 [tasks.verify]
 description = "Verify protobuf contracts and generated artifacts"
 run = [
+  "mise run smoke",
   "buf lint",
   "mise run generate",
   "go test ./..."

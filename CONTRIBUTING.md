@@ -21,6 +21,7 @@ mise run generate
 Run the full repo checks before opening or updating a pull request:
 
 ```bash
+mise run smoke
 mise run verify
 ```
 
