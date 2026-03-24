@@ -38,14 +38,14 @@ paths:
         - CoreService
       security:
         - ApiKeyAuth: []
-  /chill.v4.CoreService/GetTopMoviesBySource:
+  /chill.v4.CoreService/GetMoviesBySource:
     post:
-      operationId: CoreService_GetTopMoviesBySource
+      operationId: CoreService_GetMoviesBySource
       responses:
         "200":
           description: A successful response.
           schema:
-            $ref: '#/definitions/v4GetTopMoviesBySourceResponse'
+            $ref: '#/definitions/v4GetMoviesBySourceResponse'
         default:
           description: An unexpected error response.
           schema:
@@ -55,7 +55,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/v4GetTopMoviesBySourceRequest'
+            $ref: '#/definitions/v4GetMoviesBySourceRequest'
         - name: X-API-Key
           description: Core API key
           in: header
@@ -65,14 +65,14 @@ paths:
         - CoreService
       security:
         - ApiKeyAuth: []
-  /chill.v4.CoreService/GetTopTVShowsBySource:
+  /chill.v4.CoreService/GetTVShowsBySource:
     post:
-      operationId: CoreService_GetTopTVShowsBySource
+      operationId: CoreService_GetTVShowsBySource
       responses:
         "200":
           description: A successful response.
           schema:
-            $ref: '#/definitions/v4GetTopTVShowsBySourceResponse'
+            $ref: '#/definitions/v4GetTVShowsBySourceResponse'
         default:
           description: An unexpected error response.
           schema:
@@ -82,7 +82,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/v4GetTopTVShowsBySourceRequest'
+            $ref: '#/definitions/v4GetTVShowsBySourceRequest'
         - name: X-API-Key
           description: Core API key
           in: header
@@ -254,6 +254,33 @@ paths:
         - UserService
       security:
         - BearerAuth: []
+  /chill.v4.UserService/GetMovies:
+    post:
+      operationId: UserService_GetMovies
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v4GetMoviesResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v4GetMoviesRequest'
+        - name: Authorization
+          description: 'User auth token. Format: Bearer <token>.'
+          in: header
+          required: true
+          type: string
+      tags:
+        - UserService
+      security:
+        - BearerAuth: []
   /chill.v4.UserService/GetTVShowDetail:
     post:
       operationId: UserService_GetTVShowDetail
@@ -362,14 +389,14 @@ paths:
         - UserService
       security:
         - BearerAuth: []
-  /chill.v4.UserService/GetTopMovies:
+  /chill.v4.UserService/GetTVShows:
     post:
-      operationId: UserService_GetTopMovies
+      operationId: UserService_GetTVShows
       responses:
         "200":
           description: A successful response.
           schema:
-            $ref: '#/definitions/v4UserGetTopMoviesResponse'
+            $ref: '#/definitions/v4GetTVShowsResponse'
         default:
           description: An unexpected error response.
           schema:
@@ -379,34 +406,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/v4UserGetTopMoviesRequest'
-        - name: Authorization
-          description: 'User auth token. Format: Bearer <token>.'
-          in: header
-          required: true
-          type: string
-      tags:
-        - UserService
-      security:
-        - BearerAuth: []
-  /chill.v4.UserService/GetTopTVShows:
-    post:
-      operationId: UserService_GetTopTVShows
-      responses:
-        "200":
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/v4UserGetTopTVShowsResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/rpcStatus'
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/v4UserGetTopTVShowsRequest'
+            $ref: '#/definitions/v4GetTVShowsRequest'
         - name: Authorization
           description: 'User auth token. Format: Bearer <token>.'
           in: header
@@ -583,6 +583,11 @@ definitions:
         type: string
       transfer:
         $ref: '#/definitions/v4Transfer'
+  v4CardDisplayType:
+    type: string
+    enum:
+      - CARD_DISPLAY_TYPE_COMPACT
+      - CARD_DISPLAY_TYPE_EXPANDED
   v4CodecFilter:
     type: string
     enum:
@@ -626,6 +631,35 @@ definitions:
         items:
           type: object
           $ref: '#/definitions/v4UserFile'
+  v4GetMoviesBySourceRequest:
+    type: object
+    properties:
+      source:
+        $ref: '#/definitions/v4MoviesSource'
+  v4GetMoviesBySourceResponse:
+    type: object
+    properties:
+      source:
+        $ref: '#/definitions/v4MoviesSource'
+      movies:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4Movie'
+  v4GetMoviesRequest:
+    type: object
+  v4GetMoviesResponse:
+    type: object
+    properties:
+      source:
+        $ref: '#/definitions/v4MoviesSource'
+      movies:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4Movie'
+      rssFeedUrl:
+        type: string
   v4GetTVShowDetailRequest:
     type: object
     properties:
@@ -702,36 +736,33 @@ definitions:
         items:
           type: object
           $ref: '#/definitions/v4TVShowEpisode'
-  v4GetTopMoviesBySourceRequest:
+  v4GetTVShowsBySourceRequest:
     type: object
     properties:
       source:
-        $ref: '#/definitions/v4TopMoviesSource'
-  v4GetTopMoviesBySourceResponse:
+        $ref: '#/definitions/v4TVShowsSource'
+  v4GetTVShowsBySourceResponse:
     type: object
     properties:
       source:
-        $ref: '#/definitions/v4TopMoviesSource'
-      movies:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/v4TopMovie'
-  v4GetTopTVShowsBySourceRequest:
-    type: object
-    properties:
-      source:
-        $ref: '#/definitions/v4TopTVShowsSource'
-  v4GetTopTVShowsBySourceResponse:
-    type: object
-    properties:
-      source:
-        $ref: '#/definitions/v4TopTVShowsSource'
+        $ref: '#/definitions/v4TVShowsSource'
       shows:
         type: array
         items:
           type: object
-          $ref: '#/definitions/v4TopTVShow'
+          $ref: '#/definitions/v4TVShow'
+  v4GetTVShowsRequest:
+    type: object
+  v4GetTVShowsResponse:
+    type: object
+    properties:
+      source:
+        $ref: '#/definitions/v4TVShowsSource'
+      shows:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4TVShow'
   v4GetTransferRequest:
     type: object
     properties:
@@ -773,6 +804,50 @@ definitions:
       - INDEXER_STATUS_HEALTHY
       - INDEXER_STATUS_DEGRADED
       - INDEXER_STATUS_DOWN
+  v4Movie:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+        format: int32
+      source:
+        $ref: '#/definitions/v4MoviesSource'
+      titlePretty:
+        type: string
+      link:
+        type: string
+      peers:
+        type: string
+        format: int64
+      seeders:
+        type: string
+        format: int64
+      size:
+        type: string
+        format: int64
+      uploadedAt:
+        type: string
+      posterUrl:
+        type: string
+      rating:
+        type: number
+        format: double
+      externalUrl:
+        type: string
+    required:
+      - posterUrl
+  v4MoviesSource:
+    type: string
+    enum:
+      - MOVIES_SOURCE_IMDB_MOVIEMETER
+      - MOVIES_SOURCE_IMDB_TOP_250
+      - MOVIES_SOURCE_YTS
+      - MOVIES_SOURCE_ROTTEN_TOMATOES
+      - MOVIES_SOURCE_TRAKT
   v4OtherFilter:
     type: string
     enum:
@@ -847,6 +922,39 @@ definitions:
     enum:
       - SORT_DIRECTION_ASC
       - SORT_DIRECTION_DESC
+  v4TVShow:
+    type: object
+    properties:
+      imdbId:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+        format: int32
+      source:
+        $ref: '#/definitions/v4TVShowsSource'
+      posterUrl:
+        type: string
+      rating:
+        type: number
+        format: double
+      overview:
+        type: string
+      externalUrl:
+        type: string
+      seasonCount:
+        type: integer
+        format: int32
+      status:
+        $ref: '#/definitions/v4TVShowStatus'
+      networks:
+        type: array
+        items:
+          type: string
+    required:
+      - imdbId
+      - posterUrl
   v4TVShowDetail:
     type: object
     properties:
@@ -964,96 +1072,14 @@ definitions:
       - TV_SHOW_STATUS_CANCELED
       - TV_SHOW_STATUS_IN_PRODUCTION
       - TV_SHOW_STATUS_PLANNED
-  v4TopMovie:
-    type: object
-    properties:
-      id:
-        type: string
-      title:
-        type: string
-      year:
-        type: integer
-        format: int32
-      source:
-        $ref: '#/definitions/v4TopMoviesSource'
-      titlePretty:
-        type: string
-      link:
-        type: string
-      peers:
-        type: string
-        format: int64
-      seeders:
-        type: string
-        format: int64
-      size:
-        type: string
-        format: int64
-      uploadedAt:
-        type: string
-      posterUrl:
-        type: string
-      rating:
-        type: number
-        format: double
-      externalUrl:
-        type: string
-    required:
-      - posterUrl
-  v4TopMoviesDisplayType:
+  v4TVShowsSource:
     type: string
     enum:
-      - TOP_MOVIES_DISPLAY_TYPE_COMPACT
-      - TOP_MOVIES_DISPLAY_TYPE_EXPANDED
-  v4TopMoviesSource:
-    type: string
-    enum:
-      - TOP_MOVIES_SOURCE_IMDB_MOVIEMETER
-      - TOP_MOVIES_SOURCE_IMDB_TOP_250
-      - TOP_MOVIES_SOURCE_YTS
-      - TOP_MOVIES_SOURCE_ROTTEN_TOMATOES
-      - TOP_MOVIES_SOURCE_TRAKT
-  v4TopTVShow:
-    type: object
-    properties:
-      imdbId:
-        type: string
-      title:
-        type: string
-      year:
-        type: integer
-        format: int32
-      source:
-        $ref: '#/definitions/v4TopTVShowsSource'
-      posterUrl:
-        type: string
-      rating:
-        type: number
-        format: double
-      overview:
-        type: string
-      externalUrl:
-        type: string
-      seasonCount:
-        type: integer
-        format: int32
-      status:
-        $ref: '#/definitions/v4TVShowStatus'
-      networks:
-        type: array
-        items:
-          type: string
-    required:
-      - imdbId
-      - posterUrl
-  v4TopTVShowsSource:
-    type: string
-    enum:
-      - TOP_TV_SHOWS_SOURCE_NETFLIX
-      - TOP_TV_SHOWS_SOURCE_HBO_MAX
-      - TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS
-      - TOP_TV_SHOWS_SOURCE_PRIME_VIDEO
-      - TOP_TV_SHOWS_SOURCE_DISNEY_PLUS
+      - TV_SHOWS_SOURCE_NETFLIX
+      - TV_SHOWS_SOURCE_HBO_MAX
+      - TV_SHOWS_SOURCE_APPLE_TV_PLUS
+      - TV_SHOWS_SOURCE_PRIME_VIDEO
+      - TV_SHOWS_SOURCE_DISNEY_PLUS
   v4Transfer:
     type: object
     properties:
@@ -1138,32 +1164,6 @@ definitions:
         items:
           type: object
           $ref: '#/definitions/v4UserIndexer'
-  v4UserGetTopMoviesRequest:
-    type: object
-  v4UserGetTopMoviesResponse:
-    type: object
-    properties:
-      source:
-        $ref: '#/definitions/v4TopMoviesSource'
-      movies:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/v4TopMovie'
-      rssFeedUrl:
-        type: string
-  v4UserGetTopTVShowsRequest:
-    type: object
-  v4UserGetTopTVShowsResponse:
-    type: object
-    properties:
-      source:
-        $ref: '#/definitions/v4TopTVShowsSource'
-      shows:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/v4TopTVShow'
   v4UserIndexer:
     type: object
     properties:
@@ -1229,22 +1229,20 @@ definitions:
         $ref: '#/definitions/v4SearchResultDisplayBehavior'
       searchResultTitleBehavior:
         $ref: '#/definitions/v4SearchResultTitleBehavior'
-      showPrettyNamesForTopMovies:
-        type: boolean
-      showTopMovies:
+      showMovies:
         type: boolean
       sortBy:
         $ref: '#/definitions/v4SortBy'
       sortDirection:
         $ref: '#/definitions/v4SortDirection'
-      topMoviesDisplayType:
-        $ref: '#/definitions/v4TopMoviesDisplayType'
-      topMoviesSource:
-        $ref: '#/definitions/v4TopMoviesSource'
-      showTopTvShows:
+      cardDisplayType:
+        $ref: '#/definitions/v4CardDisplayType'
+      moviesSource:
+        $ref: '#/definitions/v4MoviesSource'
+      showTvShows:
         type: boolean
-      topTvShowsSource:
-        $ref: '#/definitions/v4TopTVShowsSource'
+      tvShowsSource:
+        $ref: '#/definitions/v4TVShowsSource'
 securityDefinitions:
   ApiKeyAuth:
     type: apiKey

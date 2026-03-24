@@ -281,25 +281,25 @@ export declare type UserSearchRequest = Message<"chill.v4.UserSearchRequest"> & 
 export declare const UserSearchRequestSchema: GenMessage<UserSearchRequest>;
 
 /**
- * @generated from message chill.v4.GetTopMoviesBySourceRequest
+ * @generated from message chill.v4.GetMoviesBySourceRequest
  */
-export declare type GetTopMoviesBySourceRequest = Message<"chill.v4.GetTopMoviesBySourceRequest"> & {
+export declare type GetMoviesBySourceRequest = Message<"chill.v4.GetMoviesBySourceRequest"> & {
   /**
-   * @generated from field: chill.v4.TopMoviesSource source = 1;
+   * @generated from field: chill.v4.MoviesSource source = 1;
    */
-  source: TopMoviesSource;
+  source: MoviesSource;
 };
 
 /**
- * Describes the message chill.v4.GetTopMoviesBySourceRequest.
- * Use `create(GetTopMoviesBySourceRequestSchema)` to create a new message.
+ * Describes the message chill.v4.GetMoviesBySourceRequest.
+ * Use `create(GetMoviesBySourceRequestSchema)` to create a new message.
  */
-export declare const GetTopMoviesBySourceRequestSchema: GenMessage<GetTopMoviesBySourceRequest>;
+export declare const GetMoviesBySourceRequestSchema: GenMessage<GetMoviesBySourceRequest>;
 
 /**
- * @generated from message chill.v4.TopMovie
+ * @generated from message chill.v4.Movie
  */
-export declare type TopMovie = Message<"chill.v4.TopMovie"> & {
+export declare type Movie = Message<"chill.v4.Movie"> & {
   /**
    * @generated from field: string id = 1;
    */
@@ -316,9 +316,9 @@ export declare type TopMovie = Message<"chill.v4.TopMovie"> & {
   year: number;
 
   /**
-   * @generated from field: chill.v4.TopMoviesSource source = 4;
+   * @generated from field: chill.v4.MoviesSource source = 4;
    */
-  source: TopMoviesSource;
+  source: MoviesSource;
 
   /**
    * @generated from field: string title_pretty = 5;
@@ -367,57 +367,57 @@ export declare type TopMovie = Message<"chill.v4.TopMovie"> & {
 };
 
 /**
- * Describes the message chill.v4.TopMovie.
- * Use `create(TopMovieSchema)` to create a new message.
+ * Describes the message chill.v4.Movie.
+ * Use `create(MovieSchema)` to create a new message.
  */
-export declare const TopMovieSchema: GenMessage<TopMovie>;
+export declare const MovieSchema: GenMessage<Movie>;
 
 /**
- * @generated from message chill.v4.GetTopMoviesBySourceResponse
+ * @generated from message chill.v4.GetMoviesBySourceResponse
  */
-export declare type GetTopMoviesBySourceResponse = Message<"chill.v4.GetTopMoviesBySourceResponse"> & {
+export declare type GetMoviesBySourceResponse = Message<"chill.v4.GetMoviesBySourceResponse"> & {
   /**
-   * @generated from field: chill.v4.TopMoviesSource source = 1;
+   * @generated from field: chill.v4.MoviesSource source = 1;
    */
-  source: TopMoviesSource;
+  source: MoviesSource;
 
   /**
-   * @generated from field: repeated chill.v4.TopMovie movies = 2;
+   * @generated from field: repeated chill.v4.Movie movies = 2;
    */
-  movies: TopMovie[];
+  movies: Movie[];
 };
 
 /**
- * Describes the message chill.v4.GetTopMoviesBySourceResponse.
- * Use `create(GetTopMoviesBySourceResponseSchema)` to create a new message.
+ * Describes the message chill.v4.GetMoviesBySourceResponse.
+ * Use `create(GetMoviesBySourceResponseSchema)` to create a new message.
  */
-export declare const GetTopMoviesBySourceResponseSchema: GenMessage<GetTopMoviesBySourceResponse>;
+export declare const GetMoviesBySourceResponseSchema: GenMessage<GetMoviesBySourceResponse>;
 
 /**
- * @generated from message chill.v4.UserGetTopMoviesRequest
+ * @generated from message chill.v4.GetMoviesRequest
  */
-export declare type UserGetTopMoviesRequest = Message<"chill.v4.UserGetTopMoviesRequest"> & {
+export declare type GetMoviesRequest = Message<"chill.v4.GetMoviesRequest"> & {
 };
 
 /**
- * Describes the message chill.v4.UserGetTopMoviesRequest.
- * Use `create(UserGetTopMoviesRequestSchema)` to create a new message.
+ * Describes the message chill.v4.GetMoviesRequest.
+ * Use `create(GetMoviesRequestSchema)` to create a new message.
  */
-export declare const UserGetTopMoviesRequestSchema: GenMessage<UserGetTopMoviesRequest>;
+export declare const GetMoviesRequestSchema: GenMessage<GetMoviesRequest>;
 
 /**
- * @generated from message chill.v4.UserGetTopMoviesResponse
+ * @generated from message chill.v4.GetMoviesResponse
  */
-export declare type UserGetTopMoviesResponse = Message<"chill.v4.UserGetTopMoviesResponse"> & {
+export declare type GetMoviesResponse = Message<"chill.v4.GetMoviesResponse"> & {
   /**
-   * @generated from field: chill.v4.TopMoviesSource source = 1;
+   * @generated from field: chill.v4.MoviesSource source = 1;
    */
-  source: TopMoviesSource;
+  source: MoviesSource;
 
   /**
-   * @generated from field: repeated chill.v4.TopMovie movies = 2;
+   * @generated from field: repeated chill.v4.Movie movies = 2;
    */
-  movies: TopMovie[];
+  movies: Movie[];
 
   /**
    * @generated from field: string rss_feed_url = 3;
@@ -426,15 +426,15 @@ export declare type UserGetTopMoviesResponse = Message<"chill.v4.UserGetTopMovie
 };
 
 /**
- * Describes the message chill.v4.UserGetTopMoviesResponse.
- * Use `create(UserGetTopMoviesResponseSchema)` to create a new message.
+ * Describes the message chill.v4.GetMoviesResponse.
+ * Use `create(GetMoviesResponseSchema)` to create a new message.
  */
-export declare const UserGetTopMoviesResponseSchema: GenMessage<UserGetTopMoviesResponse>;
+export declare const GetMoviesResponseSchema: GenMessage<GetMoviesResponse>;
 
 /**
- * @generated from message chill.v4.TopTVShow
+ * @generated from message chill.v4.TVShow
  */
-export declare type TopTVShow = Message<"chill.v4.TopTVShow"> & {
+export declare type TVShow = Message<"chill.v4.TVShow"> & {
   /**
    * @generated from field: string imdb_id = 1;
    */
@@ -451,9 +451,9 @@ export declare type TopTVShow = Message<"chill.v4.TopTVShow"> & {
   year: number;
 
   /**
-   * @generated from field: chill.v4.TopTVShowsSource source = 4;
+   * @generated from field: chill.v4.TVShowsSource source = 4;
    */
-  source: TopTVShowsSource;
+  source: TVShowsSource;
 
   /**
    * @generated from field: string poster_url = 5;
@@ -492,80 +492,80 @@ export declare type TopTVShow = Message<"chill.v4.TopTVShow"> & {
 };
 
 /**
- * Describes the message chill.v4.TopTVShow.
- * Use `create(TopTVShowSchema)` to create a new message.
+ * Describes the message chill.v4.TVShow.
+ * Use `create(TVShowSchema)` to create a new message.
  */
-export declare const TopTVShowSchema: GenMessage<TopTVShow>;
+export declare const TVShowSchema: GenMessage<TVShow>;
 
 /**
- * @generated from message chill.v4.GetTopTVShowsBySourceRequest
+ * @generated from message chill.v4.GetTVShowsBySourceRequest
  */
-export declare type GetTopTVShowsBySourceRequest = Message<"chill.v4.GetTopTVShowsBySourceRequest"> & {
+export declare type GetTVShowsBySourceRequest = Message<"chill.v4.GetTVShowsBySourceRequest"> & {
   /**
-   * @generated from field: chill.v4.TopTVShowsSource source = 1;
+   * @generated from field: chill.v4.TVShowsSource source = 1;
    */
-  source: TopTVShowsSource;
+  source: TVShowsSource;
 };
 
 /**
- * Describes the message chill.v4.GetTopTVShowsBySourceRequest.
- * Use `create(GetTopTVShowsBySourceRequestSchema)` to create a new message.
+ * Describes the message chill.v4.GetTVShowsBySourceRequest.
+ * Use `create(GetTVShowsBySourceRequestSchema)` to create a new message.
  */
-export declare const GetTopTVShowsBySourceRequestSchema: GenMessage<GetTopTVShowsBySourceRequest>;
+export declare const GetTVShowsBySourceRequestSchema: GenMessage<GetTVShowsBySourceRequest>;
 
 /**
- * @generated from message chill.v4.GetTopTVShowsBySourceResponse
+ * @generated from message chill.v4.GetTVShowsBySourceResponse
  */
-export declare type GetTopTVShowsBySourceResponse = Message<"chill.v4.GetTopTVShowsBySourceResponse"> & {
+export declare type GetTVShowsBySourceResponse = Message<"chill.v4.GetTVShowsBySourceResponse"> & {
   /**
-   * @generated from field: chill.v4.TopTVShowsSource source = 1;
+   * @generated from field: chill.v4.TVShowsSource source = 1;
    */
-  source: TopTVShowsSource;
+  source: TVShowsSource;
 
   /**
-   * @generated from field: repeated chill.v4.TopTVShow shows = 2;
+   * @generated from field: repeated chill.v4.TVShow shows = 2;
    */
-  shows: TopTVShow[];
+  shows: TVShow[];
 };
 
 /**
- * Describes the message chill.v4.GetTopTVShowsBySourceResponse.
- * Use `create(GetTopTVShowsBySourceResponseSchema)` to create a new message.
+ * Describes the message chill.v4.GetTVShowsBySourceResponse.
+ * Use `create(GetTVShowsBySourceResponseSchema)` to create a new message.
  */
-export declare const GetTopTVShowsBySourceResponseSchema: GenMessage<GetTopTVShowsBySourceResponse>;
+export declare const GetTVShowsBySourceResponseSchema: GenMessage<GetTVShowsBySourceResponse>;
 
 /**
- * @generated from message chill.v4.UserGetTopTVShowsRequest
+ * @generated from message chill.v4.GetTVShowsRequest
  */
-export declare type UserGetTopTVShowsRequest = Message<"chill.v4.UserGetTopTVShowsRequest"> & {
+export declare type GetTVShowsRequest = Message<"chill.v4.GetTVShowsRequest"> & {
 };
 
 /**
- * Describes the message chill.v4.UserGetTopTVShowsRequest.
- * Use `create(UserGetTopTVShowsRequestSchema)` to create a new message.
+ * Describes the message chill.v4.GetTVShowsRequest.
+ * Use `create(GetTVShowsRequestSchema)` to create a new message.
  */
-export declare const UserGetTopTVShowsRequestSchema: GenMessage<UserGetTopTVShowsRequest>;
+export declare const GetTVShowsRequestSchema: GenMessage<GetTVShowsRequest>;
 
 /**
- * @generated from message chill.v4.UserGetTopTVShowsResponse
+ * @generated from message chill.v4.GetTVShowsResponse
  */
-export declare type UserGetTopTVShowsResponse = Message<"chill.v4.UserGetTopTVShowsResponse"> & {
+export declare type GetTVShowsResponse = Message<"chill.v4.GetTVShowsResponse"> & {
   /**
-   * @generated from field: chill.v4.TopTVShowsSource source = 1;
+   * @generated from field: chill.v4.TVShowsSource source = 1;
    */
-  source: TopTVShowsSource;
+  source: TVShowsSource;
 
   /**
-   * @generated from field: repeated chill.v4.TopTVShow shows = 2;
+   * @generated from field: repeated chill.v4.TVShow shows = 2;
    */
-  shows: TopTVShow[];
+  shows: TVShow[];
 };
 
 /**
- * Describes the message chill.v4.UserGetTopTVShowsResponse.
- * Use `create(UserGetTopTVShowsResponseSchema)` to create a new message.
+ * Describes the message chill.v4.GetTVShowsResponse.
+ * Use `create(GetTVShowsResponseSchema)` to create a new message.
  */
-export declare const UserGetTopTVShowsResponseSchema: GenMessage<UserGetTopTVShowsResponse>;
+export declare const GetTVShowsResponseSchema: GenMessage<GetTVShowsResponse>;
 
 /**
  * @generated from message chill.v4.TVShowDetail
@@ -1062,14 +1062,9 @@ export declare type UserSettings = Message<"chill.v4.UserSettings"> & {
   searchResultTitleBehavior: SearchResultTitleBehavior;
 
   /**
-   * @generated from field: bool show_pretty_names_for_top_movies = 11;
+   * @generated from field: bool show_movies = 12;
    */
-  showPrettyNamesForTopMovies: boolean;
-
-  /**
-   * @generated from field: bool show_top_movies = 12;
-   */
-  showTopMovies: boolean;
+  showMovies: boolean;
 
   /**
    * @generated from field: chill.v4.SortBy sort_by = 13;
@@ -1082,24 +1077,24 @@ export declare type UserSettings = Message<"chill.v4.UserSettings"> & {
   sortDirection: SortDirection;
 
   /**
-   * @generated from field: chill.v4.TopMoviesDisplayType top_movies_display_type = 15;
+   * @generated from field: chill.v4.CardDisplayType card_display_type = 15;
    */
-  topMoviesDisplayType: TopMoviesDisplayType;
+  cardDisplayType: CardDisplayType;
 
   /**
-   * @generated from field: chill.v4.TopMoviesSource top_movies_source = 16;
+   * @generated from field: chill.v4.MoviesSource movies_source = 16;
    */
-  topMoviesSource: TopMoviesSource;
+  moviesSource: MoviesSource;
 
   /**
-   * @generated from field: bool show_top_tv_shows = 17;
+   * @generated from field: bool show_tv_shows = 17;
    */
-  showTopTvShows: boolean;
+  showTvShows: boolean;
 
   /**
-   * @generated from field: chill.v4.TopTVShowsSource top_tv_shows_source = 18;
+   * @generated from field: chill.v4.TVShowsSource tv_shows_source = 18;
    */
-  topTvShowsSource: TopTVShowsSource;
+  tvShowsSource: TVShowsSource;
 };
 
 /**
@@ -1489,84 +1484,84 @@ export enum IndexerStatus {
 export declare const IndexerStatusSchema: GenEnum<IndexerStatus>;
 
 /**
- * @generated from enum chill.v4.TopMoviesSource
+ * @generated from enum chill.v4.MoviesSource
  */
-export enum TopMoviesSource {
+export enum MoviesSource {
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_UNSPECIFIED = 0;
+   * @generated from enum value: MOVIES_SOURCE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_IMDB_MOVIEMETER = 1;
+   * @generated from enum value: MOVIES_SOURCE_IMDB_MOVIEMETER = 1;
    */
   IMDB_MOVIEMETER = 1,
 
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_IMDB_TOP_250 = 2;
+   * @generated from enum value: MOVIES_SOURCE_IMDB_TOP_250 = 2;
    */
   IMDB_TOP_250 = 2,
 
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_YTS = 3;
+   * @generated from enum value: MOVIES_SOURCE_YTS = 3;
    */
   YTS = 3,
 
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_ROTTEN_TOMATOES = 4;
+   * @generated from enum value: MOVIES_SOURCE_ROTTEN_TOMATOES = 4;
    */
   ROTTEN_TOMATOES = 4,
 
   /**
-   * @generated from enum value: TOP_MOVIES_SOURCE_TRAKT = 5;
+   * @generated from enum value: MOVIES_SOURCE_TRAKT = 5;
    */
   TRAKT = 5,
 }
 
 /**
- * Describes the enum chill.v4.TopMoviesSource.
+ * Describes the enum chill.v4.MoviesSource.
  */
-export declare const TopMoviesSourceSchema: GenEnum<TopMoviesSource>;
+export declare const MoviesSourceSchema: GenEnum<MoviesSource>;
 
 /**
- * @generated from enum chill.v4.TopTVShowsSource
+ * @generated from enum chill.v4.TVShowsSource
  */
-export enum TopTVShowsSource {
+export enum TVShowsSource {
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_UNSPECIFIED = 0;
+   * @generated from enum value: TV_SHOWS_SOURCE_UNSPECIFIED = 0;
    */
-  TOP_TV_SHOWS_SOURCE_UNSPECIFIED = 0,
+  TV_SHOWS_SOURCE_UNSPECIFIED = 0,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_NETFLIX = 1;
+   * @generated from enum value: TV_SHOWS_SOURCE_NETFLIX = 1;
    */
-  TOP_TV_SHOWS_SOURCE_NETFLIX = 1,
+  TV_SHOWS_SOURCE_NETFLIX = 1,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_HBO_MAX = 2;
+   * @generated from enum value: TV_SHOWS_SOURCE_HBO_MAX = 2;
    */
-  TOP_TV_SHOWS_SOURCE_HBO_MAX = 2,
+  TV_SHOWS_SOURCE_HBO_MAX = 2,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
+   * @generated from enum value: TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
    */
-  TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3,
+  TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
+   * @generated from enum value: TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
    */
-  TOP_TV_SHOWS_SOURCE_PRIME_VIDEO = 4,
+  TV_SHOWS_SOURCE_PRIME_VIDEO = 4,
 
   /**
-   * @generated from enum value: TOP_TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
+   * @generated from enum value: TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
    */
-  TOP_TV_SHOWS_SOURCE_DISNEY_PLUS = 5,
+  TV_SHOWS_SOURCE_DISNEY_PLUS = 5,
 }
 
 /**
- * Describes the enum chill.v4.TopTVShowsSource.
+ * Describes the enum chill.v4.TVShowsSource.
  */
-export declare const TopTVShowsSourceSchema: GenEnum<TopTVShowsSource>;
+export declare const TVShowsSourceSchema: GenEnum<TVShowsSource>;
 
 /**
  * @generated from enum chill.v4.TVShowStatus
@@ -1799,29 +1794,29 @@ export enum SortDirection {
 export declare const SortDirectionSchema: GenEnum<SortDirection>;
 
 /**
- * @generated from enum chill.v4.TopMoviesDisplayType
+ * @generated from enum chill.v4.CardDisplayType
  */
-export enum TopMoviesDisplayType {
+export enum CardDisplayType {
   /**
-   * @generated from enum value: TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED = 0;
+   * @generated from enum value: CARD_DISPLAY_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * @generated from enum value: TOP_MOVIES_DISPLAY_TYPE_COMPACT = 1;
+   * @generated from enum value: CARD_DISPLAY_TYPE_COMPACT = 1;
    */
   COMPACT = 1,
 
   /**
-   * @generated from enum value: TOP_MOVIES_DISPLAY_TYPE_EXPANDED = 2;
+   * @generated from enum value: CARD_DISPLAY_TYPE_EXPANDED = 2;
    */
   EXPANDED = 2,
 }
 
 /**
- * Describes the enum chill.v4.TopMoviesDisplayType.
+ * Describes the enum chill.v4.CardDisplayType.
  */
-export declare const TopMoviesDisplayTypeSchema: GenEnum<TopMoviesDisplayType>;
+export declare const CardDisplayTypeSchema: GenEnum<CardDisplayType>;
 
 /**
  * @generated from service chill.v4.CoreService
@@ -1852,20 +1847,20 @@ export declare const CoreService: GenService<{
     output: typeof SearchResponseSchema;
   },
   /**
-   * @generated from rpc chill.v4.CoreService.GetTopMoviesBySource
+   * @generated from rpc chill.v4.CoreService.GetMoviesBySource
    */
-  getTopMoviesBySource: {
+  getMoviesBySource: {
     methodKind: "unary";
-    input: typeof GetTopMoviesBySourceRequestSchema;
-    output: typeof GetTopMoviesBySourceResponseSchema;
+    input: typeof GetMoviesBySourceRequestSchema;
+    output: typeof GetMoviesBySourceResponseSchema;
   },
   /**
-   * @generated from rpc chill.v4.CoreService.GetTopTVShowsBySource
+   * @generated from rpc chill.v4.CoreService.GetTVShowsBySource
    */
-  getTopTVShowsBySource: {
+  getTVShowsBySource: {
     methodKind: "unary";
-    input: typeof GetTopTVShowsBySourceRequestSchema;
-    output: typeof GetTopTVShowsBySourceResponseSchema;
+    input: typeof GetTVShowsBySourceRequestSchema;
+    output: typeof GetTVShowsBySourceResponseSchema;
   },
 }>;
 
@@ -1890,20 +1885,20 @@ export declare const UserService: GenService<{
     output: typeof SearchResponseSchema;
   },
   /**
-   * @generated from rpc chill.v4.UserService.GetTopMovies
+   * @generated from rpc chill.v4.UserService.GetMovies
    */
-  getTopMovies: {
+  getMovies: {
     methodKind: "unary";
-    input: typeof UserGetTopMoviesRequestSchema;
-    output: typeof UserGetTopMoviesResponseSchema;
+    input: typeof GetMoviesRequestSchema;
+    output: typeof GetMoviesResponseSchema;
   },
   /**
-   * @generated from rpc chill.v4.UserService.GetTopTVShows
+   * @generated from rpc chill.v4.UserService.GetTVShows
    */
-  getTopTVShows: {
+  getTVShows: {
     methodKind: "unary";
-    input: typeof UserGetTopTVShowsRequestSchema;
-    output: typeof UserGetTopTVShowsResponseSchema;
+    input: typeof GetTVShowsRequestSchema;
+    output: typeof GetTVShowsResponseSchema;
   },
   /**
    * @generated from rpc chill.v4.UserService.GetTVShowDetail

@@ -87,7 +87,7 @@ service CoreService {
       };
     };
   }
-  rpc GetTopMoviesBySource(GetTopMoviesBySourceRequest) returns (GetTopMoviesBySourceResponse) {
+  rpc GetMoviesBySource(GetMoviesBySourceRequest) returns (GetMoviesBySourceResponse) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
@@ -105,7 +105,7 @@ service CoreService {
       };
     };
   }
-  rpc GetTopTVShowsBySource(GetTopTVShowsBySourceRequest) returns (GetTopTVShowsBySourceResponse) {
+  rpc GetTVShowsBySource(GetTVShowsBySourceRequest) returns (GetTVShowsBySourceResponse) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
@@ -162,7 +162,7 @@ service UserService {
       };
     };
   }
-  rpc GetTopMovies(UserGetTopMoviesRequest) returns (UserGetTopMoviesResponse) {
+  rpc GetMovies(GetMoviesRequest) returns (GetMoviesResponse) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
@@ -180,7 +180,7 @@ service UserService {
       };
     };
   }
-  rpc GetTopTVShows(UserGetTopTVShowsRequest) returns (UserGetTopTVShowsResponse) {
+  rpc GetTVShows(GetTVShowsRequest) returns (GetTVShowsResponse) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
@@ -469,22 +469,22 @@ message UserSearchRequest {
   optional string indexer_id = 2;
 }
 
-enum TopMoviesSource {
-  TOP_MOVIES_SOURCE_UNSPECIFIED = 0;
-  TOP_MOVIES_SOURCE_IMDB_MOVIEMETER = 1;
-  TOP_MOVIES_SOURCE_IMDB_TOP_250 = 2;
-  TOP_MOVIES_SOURCE_YTS = 3;
-  TOP_MOVIES_SOURCE_ROTTEN_TOMATOES = 4;
-  TOP_MOVIES_SOURCE_TRAKT = 5;
+enum MoviesSource {
+  MOVIES_SOURCE_UNSPECIFIED = 0;
+  MOVIES_SOURCE_IMDB_MOVIEMETER = 1;
+  MOVIES_SOURCE_IMDB_TOP_250 = 2;
+  MOVIES_SOURCE_YTS = 3;
+  MOVIES_SOURCE_ROTTEN_TOMATOES = 4;
+  MOVIES_SOURCE_TRAKT = 5;
 }
 
-enum TopTVShowsSource {
-  TOP_TV_SHOWS_SOURCE_UNSPECIFIED = 0;
-  TOP_TV_SHOWS_SOURCE_NETFLIX = 1;
-  TOP_TV_SHOWS_SOURCE_HBO_MAX = 2;
-  TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
-  TOP_TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
-  TOP_TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
+enum TVShowsSource {
+  TV_SHOWS_SOURCE_UNSPECIFIED = 0;
+  TV_SHOWS_SOURCE_NETFLIX = 1;
+  TV_SHOWS_SOURCE_HBO_MAX = 2;
+  TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
+  TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
+  TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
 }
 
 enum TVShowStatus {
@@ -496,11 +496,11 @@ enum TVShowStatus {
   TV_SHOW_STATUS_PLANNED = 5;
 }
 
-message GetTopMoviesBySourceRequest {
-  TopMoviesSource source = 1;
+message GetMoviesBySourceRequest {
+  MoviesSource source = 1;
 }
 
-message TopMovie {
+message Movie {
   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
     json_schema: {
       required: ["poster_url"]
@@ -510,7 +510,7 @@ message TopMovie {
   string id = 1;
   string title = 2;
   int32 year = 3;
-  TopMoviesSource source = 4;
+  MoviesSource source = 4;
   string title_pretty = 5;
   string link = 6;
   int64 peers = 7;
@@ -522,20 +522,20 @@ message TopMovie {
   string external_url = 13;
 }
 
-message GetTopMoviesBySourceResponse {
-  TopMoviesSource source = 1;
-  repeated TopMovie movies = 2;
+message GetMoviesBySourceResponse {
+  MoviesSource source = 1;
+  repeated Movie movies = 2;
 }
 
-message UserGetTopMoviesRequest {}
+message GetMoviesRequest {}
 
-message UserGetTopMoviesResponse {
-  TopMoviesSource source = 1;
-  repeated TopMovie movies = 2;
+message GetMoviesResponse {
+  MoviesSource source = 1;
+  repeated Movie movies = 2;
   string rss_feed_url = 3;
 }
 
-message TopTVShow {
+message TVShow {
   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
     json_schema: {
       required: ["imdb_id", "poster_url"]
@@ -545,7 +545,7 @@ message TopTVShow {
   string imdb_id = 1;
   string title = 2;
   int32 year = 3;
-  TopTVShowsSource source = 4;
+  TVShowsSource source = 4;
   string poster_url = 5;
   double rating = 6;
   string overview = 7;
@@ -555,20 +555,20 @@ message TopTVShow {
   repeated string networks = 11;
 }
 
-message GetTopTVShowsBySourceRequest {
-  TopTVShowsSource source = 1;
+message GetTVShowsBySourceRequest {
+  TVShowsSource source = 1;
 }
 
-message GetTopTVShowsBySourceResponse {
-  TopTVShowsSource source = 1;
-  repeated TopTVShow shows = 2;
+message GetTVShowsBySourceResponse {
+  TVShowsSource source = 1;
+  repeated TVShow shows = 2;
 }
 
-message UserGetTopTVShowsRequest {}
+message GetTVShowsRequest {}
 
-message UserGetTopTVShowsResponse {
-  TopTVShowsSource source = 1;
-  repeated TopTVShow shows = 2;
+message GetTVShowsResponse {
+  TVShowsSource source = 1;
+  repeated TVShow shows = 2;
 }
 
 message TVShowDetail {
@@ -714,13 +714,14 @@ enum SortDirection {
   SORT_DIRECTION_DESC = 2;
 }
 
-enum TopMoviesDisplayType {
-  TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED = 0;
-  TOP_MOVIES_DISPLAY_TYPE_COMPACT = 1;
-  TOP_MOVIES_DISPLAY_TYPE_EXPANDED = 2;
+enum CardDisplayType {
+  CARD_DISPLAY_TYPE_UNSPECIFIED = 0;
+  CARD_DISPLAY_TYPE_COMPACT = 1;
+  CARD_DISPLAY_TYPE_EXPANDED = 2;
 }
 
 message UserSettings {
+  reserved 11;
   repeated CodecFilter codec_filters = 1;
   repeated string disabled_indexer_ids = 2;
   optional int64 download_folder_id = 3;
@@ -731,14 +732,13 @@ message UserSettings {
   repeated ResolutionFilter resolution_filters = 8;
   SearchResultDisplayBehavior search_result_display_behavior = 9;
   SearchResultTitleBehavior search_result_title_behavior = 10;
-  bool show_pretty_names_for_top_movies = 11;
-  bool show_top_movies = 12;
+  bool show_movies = 12;
   SortBy sort_by = 13;
   SortDirection sort_direction = 14;
-  TopMoviesDisplayType top_movies_display_type = 15;
-  TopMoviesSource top_movies_source = 16;
-  bool show_top_tv_shows = 17;
-  TopTVShowsSource top_tv_shows_source = 18;
+  CardDisplayType card_display_type = 15;
+  MoviesSource movies_source = 16;
+  bool show_tv_shows = 17;
+  TVShowsSource tv_shows_source = 18;
 }
 
 message SaveUserSettingsRequest {

@@ -74,119 +74,119 @@ func (IndexerStatus) EnumDescriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{0}
 }
 
-type TopMoviesSource int32
+type MoviesSource int32
 
 const (
-	TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED     TopMoviesSource = 0
-	TopMoviesSource_TOP_MOVIES_SOURCE_IMDB_MOVIEMETER TopMoviesSource = 1
-	TopMoviesSource_TOP_MOVIES_SOURCE_IMDB_TOP_250    TopMoviesSource = 2
-	TopMoviesSource_TOP_MOVIES_SOURCE_YTS             TopMoviesSource = 3
-	TopMoviesSource_TOP_MOVIES_SOURCE_ROTTEN_TOMATOES TopMoviesSource = 4
-	TopMoviesSource_TOP_MOVIES_SOURCE_TRAKT           TopMoviesSource = 5
+	MoviesSource_MOVIES_SOURCE_UNSPECIFIED     MoviesSource = 0
+	MoviesSource_MOVIES_SOURCE_IMDB_MOVIEMETER MoviesSource = 1
+	MoviesSource_MOVIES_SOURCE_IMDB_TOP_250    MoviesSource = 2
+	MoviesSource_MOVIES_SOURCE_YTS             MoviesSource = 3
+	MoviesSource_MOVIES_SOURCE_ROTTEN_TOMATOES MoviesSource = 4
+	MoviesSource_MOVIES_SOURCE_TRAKT           MoviesSource = 5
 )
 
-// Enum value maps for TopMoviesSource.
+// Enum value maps for MoviesSource.
 var (
-	TopMoviesSource_name = map[int32]string{
-		0: "TOP_MOVIES_SOURCE_UNSPECIFIED",
-		1: "TOP_MOVIES_SOURCE_IMDB_MOVIEMETER",
-		2: "TOP_MOVIES_SOURCE_IMDB_TOP_250",
-		3: "TOP_MOVIES_SOURCE_YTS",
-		4: "TOP_MOVIES_SOURCE_ROTTEN_TOMATOES",
-		5: "TOP_MOVIES_SOURCE_TRAKT",
+	MoviesSource_name = map[int32]string{
+		0: "MOVIES_SOURCE_UNSPECIFIED",
+		1: "MOVIES_SOURCE_IMDB_MOVIEMETER",
+		2: "MOVIES_SOURCE_IMDB_TOP_250",
+		3: "MOVIES_SOURCE_YTS",
+		4: "MOVIES_SOURCE_ROTTEN_TOMATOES",
+		5: "MOVIES_SOURCE_TRAKT",
 	}
-	TopMoviesSource_value = map[string]int32{
-		"TOP_MOVIES_SOURCE_UNSPECIFIED":     0,
-		"TOP_MOVIES_SOURCE_IMDB_MOVIEMETER": 1,
-		"TOP_MOVIES_SOURCE_IMDB_TOP_250":    2,
-		"TOP_MOVIES_SOURCE_YTS":             3,
-		"TOP_MOVIES_SOURCE_ROTTEN_TOMATOES": 4,
-		"TOP_MOVIES_SOURCE_TRAKT":           5,
+	MoviesSource_value = map[string]int32{
+		"MOVIES_SOURCE_UNSPECIFIED":     0,
+		"MOVIES_SOURCE_IMDB_MOVIEMETER": 1,
+		"MOVIES_SOURCE_IMDB_TOP_250":    2,
+		"MOVIES_SOURCE_YTS":             3,
+		"MOVIES_SOURCE_ROTTEN_TOMATOES": 4,
+		"MOVIES_SOURCE_TRAKT":           5,
 	}
 )
 
-func (x TopMoviesSource) Enum() *TopMoviesSource {
-	p := new(TopMoviesSource)
+func (x MoviesSource) Enum() *MoviesSource {
+	p := new(MoviesSource)
 	*p = x
 	return p
 }
 
-func (x TopMoviesSource) String() string {
+func (x MoviesSource) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (TopMoviesSource) Descriptor() protoreflect.EnumDescriptor {
+func (MoviesSource) Descriptor() protoreflect.EnumDescriptor {
 	return file_chill_v4_api_proto_enumTypes[1].Descriptor()
 }
 
-func (TopMoviesSource) Type() protoreflect.EnumType {
+func (MoviesSource) Type() protoreflect.EnumType {
 	return &file_chill_v4_api_proto_enumTypes[1]
 }
 
-func (x TopMoviesSource) Number() protoreflect.EnumNumber {
+func (x MoviesSource) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use TopMoviesSource.Descriptor instead.
-func (TopMoviesSource) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use MoviesSource.Descriptor instead.
+func (MoviesSource) EnumDescriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{1}
 }
 
-type TopTVShowsSource int32
+type TVShowsSource int32
 
 const (
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED   TopTVShowsSource = 0
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_NETFLIX       TopTVShowsSource = 1
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_HBO_MAX       TopTVShowsSource = 2
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS TopTVShowsSource = 3
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_PRIME_VIDEO   TopTVShowsSource = 4
-	TopTVShowsSource_TOP_TV_SHOWS_SOURCE_DISNEY_PLUS   TopTVShowsSource = 5
+	TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED   TVShowsSource = 0
+	TVShowsSource_TV_SHOWS_SOURCE_NETFLIX       TVShowsSource = 1
+	TVShowsSource_TV_SHOWS_SOURCE_HBO_MAX       TVShowsSource = 2
+	TVShowsSource_TV_SHOWS_SOURCE_APPLE_TV_PLUS TVShowsSource = 3
+	TVShowsSource_TV_SHOWS_SOURCE_PRIME_VIDEO   TVShowsSource = 4
+	TVShowsSource_TV_SHOWS_SOURCE_DISNEY_PLUS   TVShowsSource = 5
 )
 
-// Enum value maps for TopTVShowsSource.
+// Enum value maps for TVShowsSource.
 var (
-	TopTVShowsSource_name = map[int32]string{
-		0: "TOP_TV_SHOWS_SOURCE_UNSPECIFIED",
-		1: "TOP_TV_SHOWS_SOURCE_NETFLIX",
-		2: "TOP_TV_SHOWS_SOURCE_HBO_MAX",
-		3: "TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS",
-		4: "TOP_TV_SHOWS_SOURCE_PRIME_VIDEO",
-		5: "TOP_TV_SHOWS_SOURCE_DISNEY_PLUS",
+	TVShowsSource_name = map[int32]string{
+		0: "TV_SHOWS_SOURCE_UNSPECIFIED",
+		1: "TV_SHOWS_SOURCE_NETFLIX",
+		2: "TV_SHOWS_SOURCE_HBO_MAX",
+		3: "TV_SHOWS_SOURCE_APPLE_TV_PLUS",
+		4: "TV_SHOWS_SOURCE_PRIME_VIDEO",
+		5: "TV_SHOWS_SOURCE_DISNEY_PLUS",
 	}
-	TopTVShowsSource_value = map[string]int32{
-		"TOP_TV_SHOWS_SOURCE_UNSPECIFIED":   0,
-		"TOP_TV_SHOWS_SOURCE_NETFLIX":       1,
-		"TOP_TV_SHOWS_SOURCE_HBO_MAX":       2,
-		"TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS": 3,
-		"TOP_TV_SHOWS_SOURCE_PRIME_VIDEO":   4,
-		"TOP_TV_SHOWS_SOURCE_DISNEY_PLUS":   5,
+	TVShowsSource_value = map[string]int32{
+		"TV_SHOWS_SOURCE_UNSPECIFIED":   0,
+		"TV_SHOWS_SOURCE_NETFLIX":       1,
+		"TV_SHOWS_SOURCE_HBO_MAX":       2,
+		"TV_SHOWS_SOURCE_APPLE_TV_PLUS": 3,
+		"TV_SHOWS_SOURCE_PRIME_VIDEO":   4,
+		"TV_SHOWS_SOURCE_DISNEY_PLUS":   5,
 	}
 )
 
-func (x TopTVShowsSource) Enum() *TopTVShowsSource {
-	p := new(TopTVShowsSource)
+func (x TVShowsSource) Enum() *TVShowsSource {
+	p := new(TVShowsSource)
 	*p = x
 	return p
 }
 
-func (x TopTVShowsSource) String() string {
+func (x TVShowsSource) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (TopTVShowsSource) Descriptor() protoreflect.EnumDescriptor {
+func (TVShowsSource) Descriptor() protoreflect.EnumDescriptor {
 	return file_chill_v4_api_proto_enumTypes[2].Descriptor()
 }
 
-func (TopTVShowsSource) Type() protoreflect.EnumType {
+func (TVShowsSource) Type() protoreflect.EnumType {
 	return &file_chill_v4_api_proto_enumTypes[2]
 }
 
-func (x TopTVShowsSource) Number() protoreflect.EnumNumber {
+func (x TVShowsSource) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use TopTVShowsSource.Descriptor instead.
-func (TopTVShowsSource) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use TVShowsSource.Descriptor instead.
+func (TVShowsSource) EnumDescriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{2}
 }
 
@@ -600,52 +600,52 @@ func (SortDirection) EnumDescriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{10}
 }
 
-type TopMoviesDisplayType int32
+type CardDisplayType int32
 
 const (
-	TopMoviesDisplayType_TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED TopMoviesDisplayType = 0
-	TopMoviesDisplayType_TOP_MOVIES_DISPLAY_TYPE_COMPACT     TopMoviesDisplayType = 1
-	TopMoviesDisplayType_TOP_MOVIES_DISPLAY_TYPE_EXPANDED    TopMoviesDisplayType = 2
+	CardDisplayType_CARD_DISPLAY_TYPE_UNSPECIFIED CardDisplayType = 0
+	CardDisplayType_CARD_DISPLAY_TYPE_COMPACT     CardDisplayType = 1
+	CardDisplayType_CARD_DISPLAY_TYPE_EXPANDED    CardDisplayType = 2
 )
 
-// Enum value maps for TopMoviesDisplayType.
+// Enum value maps for CardDisplayType.
 var (
-	TopMoviesDisplayType_name = map[int32]string{
-		0: "TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED",
-		1: "TOP_MOVIES_DISPLAY_TYPE_COMPACT",
-		2: "TOP_MOVIES_DISPLAY_TYPE_EXPANDED",
+	CardDisplayType_name = map[int32]string{
+		0: "CARD_DISPLAY_TYPE_UNSPECIFIED",
+		1: "CARD_DISPLAY_TYPE_COMPACT",
+		2: "CARD_DISPLAY_TYPE_EXPANDED",
 	}
-	TopMoviesDisplayType_value = map[string]int32{
-		"TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED": 0,
-		"TOP_MOVIES_DISPLAY_TYPE_COMPACT":     1,
-		"TOP_MOVIES_DISPLAY_TYPE_EXPANDED":    2,
+	CardDisplayType_value = map[string]int32{
+		"CARD_DISPLAY_TYPE_UNSPECIFIED": 0,
+		"CARD_DISPLAY_TYPE_COMPACT":     1,
+		"CARD_DISPLAY_TYPE_EXPANDED":    2,
 	}
 )
 
-func (x TopMoviesDisplayType) Enum() *TopMoviesDisplayType {
-	p := new(TopMoviesDisplayType)
+func (x CardDisplayType) Enum() *CardDisplayType {
+	p := new(CardDisplayType)
 	*p = x
 	return p
 }
 
-func (x TopMoviesDisplayType) String() string {
+func (x CardDisplayType) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (TopMoviesDisplayType) Descriptor() protoreflect.EnumDescriptor {
+func (CardDisplayType) Descriptor() protoreflect.EnumDescriptor {
 	return file_chill_v4_api_proto_enumTypes[11].Descriptor()
 }
 
-func (TopMoviesDisplayType) Type() protoreflect.EnumType {
+func (CardDisplayType) Type() protoreflect.EnumType {
 	return &file_chill_v4_api_proto_enumTypes[11]
 }
 
-func (x TopMoviesDisplayType) Number() protoreflect.EnumNumber {
+func (x CardDisplayType) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use TopMoviesDisplayType.Descriptor instead.
-func (TopMoviesDisplayType) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use CardDisplayType.Descriptor instead.
+func (CardDisplayType) EnumDescriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{11}
 }
 
@@ -1297,27 +1297,27 @@ func (x *UserSearchRequest) GetIndexerId() string {
 	return ""
 }
 
-type GetTopMoviesBySourceRequest struct {
+type GetMoviesBySourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopMoviesSource        `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopMoviesSource" json:"source,omitempty"`
+	Source        MoviesSource           `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.MoviesSource" json:"source,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetTopMoviesBySourceRequest) Reset() {
-	*x = GetTopMoviesBySourceRequest{}
+func (x *GetMoviesBySourceRequest) Reset() {
+	*x = GetMoviesBySourceRequest{}
 	mi := &file_chill_v4_api_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetTopMoviesBySourceRequest) String() string {
+func (x *GetMoviesBySourceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTopMoviesBySourceRequest) ProtoMessage() {}
+func (*GetMoviesBySourceRequest) ProtoMessage() {}
 
-func (x *GetTopMoviesBySourceRequest) ProtoReflect() protoreflect.Message {
+func (x *GetMoviesBySourceRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1329,24 +1329,24 @@ func (x *GetTopMoviesBySourceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTopMoviesBySourceRequest.ProtoReflect.Descriptor instead.
-func (*GetTopMoviesBySourceRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetMoviesBySourceRequest.ProtoReflect.Descriptor instead.
+func (*GetMoviesBySourceRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *GetTopMoviesBySourceRequest) GetSource() TopMoviesSource {
+func (x *GetMoviesBySourceRequest) GetSource() MoviesSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED
+	return MoviesSource_MOVIES_SOURCE_UNSPECIFIED
 }
 
-type TopMovie struct {
+type Movie struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
-	Source        TopMoviesSource        `protobuf:"varint,4,opt,name=source,proto3,enum=chill.v4.TopMoviesSource" json:"source,omitempty"`
+	Source        MoviesSource           `protobuf:"varint,4,opt,name=source,proto3,enum=chill.v4.MoviesSource" json:"source,omitempty"`
 	TitlePretty   string                 `protobuf:"bytes,5,opt,name=title_pretty,json=titlePretty,proto3" json:"title_pretty,omitempty"`
 	Link          string                 `protobuf:"bytes,6,opt,name=link,proto3" json:"link,omitempty"`
 	Peers         int64                  `protobuf:"varint,7,opt,name=peers,proto3" json:"peers,omitempty"`
@@ -1360,20 +1360,20 @@ type TopMovie struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TopMovie) Reset() {
-	*x = TopMovie{}
+func (x *Movie) Reset() {
+	*x = Movie{}
 	mi := &file_chill_v4_api_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TopMovie) String() string {
+func (x *Movie) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TopMovie) ProtoMessage() {}
+func (*Movie) ProtoMessage() {}
 
-func (x *TopMovie) ProtoReflect() protoreflect.Message {
+func (x *Movie) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1385,124 +1385,124 @@ func (x *TopMovie) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TopMovie.ProtoReflect.Descriptor instead.
-func (*TopMovie) Descriptor() ([]byte, []int) {
+// Deprecated: Use Movie.ProtoReflect.Descriptor instead.
+func (*Movie) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *TopMovie) GetId() string {
+func (x *Movie) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *TopMovie) GetTitle() string {
+func (x *Movie) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
 	return ""
 }
 
-func (x *TopMovie) GetYear() int32 {
+func (x *Movie) GetYear() int32 {
 	if x != nil {
 		return x.Year
 	}
 	return 0
 }
 
-func (x *TopMovie) GetSource() TopMoviesSource {
+func (x *Movie) GetSource() MoviesSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED
+	return MoviesSource_MOVIES_SOURCE_UNSPECIFIED
 }
 
-func (x *TopMovie) GetTitlePretty() string {
+func (x *Movie) GetTitlePretty() string {
 	if x != nil {
 		return x.TitlePretty
 	}
 	return ""
 }
 
-func (x *TopMovie) GetLink() string {
+func (x *Movie) GetLink() string {
 	if x != nil {
 		return x.Link
 	}
 	return ""
 }
 
-func (x *TopMovie) GetPeers() int64 {
+func (x *Movie) GetPeers() int64 {
 	if x != nil {
 		return x.Peers
 	}
 	return 0
 }
 
-func (x *TopMovie) GetSeeders() int64 {
+func (x *Movie) GetSeeders() int64 {
 	if x != nil {
 		return x.Seeders
 	}
 	return 0
 }
 
-func (x *TopMovie) GetSize() int64 {
+func (x *Movie) GetSize() int64 {
 	if x != nil {
 		return x.Size
 	}
 	return 0
 }
 
-func (x *TopMovie) GetUploadedAt() string {
+func (x *Movie) GetUploadedAt() string {
 	if x != nil {
 		return x.UploadedAt
 	}
 	return ""
 }
 
-func (x *TopMovie) GetPosterUrl() string {
+func (x *Movie) GetPosterUrl() string {
 	if x != nil {
 		return x.PosterUrl
 	}
 	return ""
 }
 
-func (x *TopMovie) GetRating() float64 {
+func (x *Movie) GetRating() float64 {
 	if x != nil {
 		return x.Rating
 	}
 	return 0
 }
 
-func (x *TopMovie) GetExternalUrl() string {
+func (x *Movie) GetExternalUrl() string {
 	if x != nil {
 		return x.ExternalUrl
 	}
 	return ""
 }
 
-type GetTopMoviesBySourceResponse struct {
+type GetMoviesBySourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopMoviesSource        `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopMoviesSource" json:"source,omitempty"`
-	Movies        []*TopMovie            `protobuf:"bytes,2,rep,name=movies,proto3" json:"movies,omitempty"`
+	Source        MoviesSource           `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.MoviesSource" json:"source,omitempty"`
+	Movies        []*Movie               `protobuf:"bytes,2,rep,name=movies,proto3" json:"movies,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetTopMoviesBySourceResponse) Reset() {
-	*x = GetTopMoviesBySourceResponse{}
+func (x *GetMoviesBySourceResponse) Reset() {
+	*x = GetMoviesBySourceResponse{}
 	mi := &file_chill_v4_api_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetTopMoviesBySourceResponse) String() string {
+func (x *GetMoviesBySourceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTopMoviesBySourceResponse) ProtoMessage() {}
+func (*GetMoviesBySourceResponse) ProtoMessage() {}
 
-func (x *GetTopMoviesBySourceResponse) ProtoReflect() protoreflect.Message {
+func (x *GetMoviesBySourceResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1514,45 +1514,45 @@ func (x *GetTopMoviesBySourceResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTopMoviesBySourceResponse.ProtoReflect.Descriptor instead.
-func (*GetTopMoviesBySourceResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetMoviesBySourceResponse.ProtoReflect.Descriptor instead.
+func (*GetMoviesBySourceResponse) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *GetTopMoviesBySourceResponse) GetSource() TopMoviesSource {
+func (x *GetMoviesBySourceResponse) GetSource() MoviesSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED
+	return MoviesSource_MOVIES_SOURCE_UNSPECIFIED
 }
 
-func (x *GetTopMoviesBySourceResponse) GetMovies() []*TopMovie {
+func (x *GetMoviesBySourceResponse) GetMovies() []*Movie {
 	if x != nil {
 		return x.Movies
 	}
 	return nil
 }
 
-type UserGetTopMoviesRequest struct {
+type GetMoviesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserGetTopMoviesRequest) Reset() {
-	*x = UserGetTopMoviesRequest{}
+func (x *GetMoviesRequest) Reset() {
+	*x = GetMoviesRequest{}
 	mi := &file_chill_v4_api_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserGetTopMoviesRequest) String() string {
+func (x *GetMoviesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserGetTopMoviesRequest) ProtoMessage() {}
+func (*GetMoviesRequest) ProtoMessage() {}
 
-func (x *UserGetTopMoviesRequest) ProtoReflect() protoreflect.Message {
+func (x *GetMoviesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1564,34 +1564,34 @@ func (x *UserGetTopMoviesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserGetTopMoviesRequest.ProtoReflect.Descriptor instead.
-func (*UserGetTopMoviesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetMoviesRequest.ProtoReflect.Descriptor instead.
+func (*GetMoviesRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{15}
 }
 
-type UserGetTopMoviesResponse struct {
+type GetMoviesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopMoviesSource        `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopMoviesSource" json:"source,omitempty"`
-	Movies        []*TopMovie            `protobuf:"bytes,2,rep,name=movies,proto3" json:"movies,omitempty"`
+	Source        MoviesSource           `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.MoviesSource" json:"source,omitempty"`
+	Movies        []*Movie               `protobuf:"bytes,2,rep,name=movies,proto3" json:"movies,omitempty"`
 	RssFeedUrl    string                 `protobuf:"bytes,3,opt,name=rss_feed_url,json=rssFeedUrl,proto3" json:"rss_feed_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserGetTopMoviesResponse) Reset() {
-	*x = UserGetTopMoviesResponse{}
+func (x *GetMoviesResponse) Reset() {
+	*x = GetMoviesResponse{}
 	mi := &file_chill_v4_api_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserGetTopMoviesResponse) String() string {
+func (x *GetMoviesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserGetTopMoviesResponse) ProtoMessage() {}
+func (*GetMoviesResponse) ProtoMessage() {}
 
-func (x *UserGetTopMoviesResponse) ProtoReflect() protoreflect.Message {
+func (x *GetMoviesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1603,38 +1603,38 @@ func (x *UserGetTopMoviesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserGetTopMoviesResponse.ProtoReflect.Descriptor instead.
-func (*UserGetTopMoviesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetMoviesResponse.ProtoReflect.Descriptor instead.
+func (*GetMoviesResponse) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *UserGetTopMoviesResponse) GetSource() TopMoviesSource {
+func (x *GetMoviesResponse) GetSource() MoviesSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED
+	return MoviesSource_MOVIES_SOURCE_UNSPECIFIED
 }
 
-func (x *UserGetTopMoviesResponse) GetMovies() []*TopMovie {
+func (x *GetMoviesResponse) GetMovies() []*Movie {
 	if x != nil {
 		return x.Movies
 	}
 	return nil
 }
 
-func (x *UserGetTopMoviesResponse) GetRssFeedUrl() string {
+func (x *GetMoviesResponse) GetRssFeedUrl() string {
 	if x != nil {
 		return x.RssFeedUrl
 	}
 	return ""
 }
 
-type TopTVShow struct {
+type TVShow struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ImdbId        string                 `protobuf:"bytes,1,opt,name=imdb_id,json=imdbId,proto3" json:"imdb_id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
-	Source        TopTVShowsSource       `protobuf:"varint,4,opt,name=source,proto3,enum=chill.v4.TopTVShowsSource" json:"source,omitempty"`
+	Source        TVShowsSource          `protobuf:"varint,4,opt,name=source,proto3,enum=chill.v4.TVShowsSource" json:"source,omitempty"`
 	PosterUrl     string                 `protobuf:"bytes,5,opt,name=poster_url,json=posterUrl,proto3" json:"poster_url,omitempty"`
 	Rating        float64                `protobuf:"fixed64,6,opt,name=rating,proto3" json:"rating,omitempty"`
 	Overview      string                 `protobuf:"bytes,7,opt,name=overview,proto3" json:"overview,omitempty"`
@@ -1646,20 +1646,20 @@ type TopTVShow struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TopTVShow) Reset() {
-	*x = TopTVShow{}
+func (x *TVShow) Reset() {
+	*x = TVShow{}
 	mi := &file_chill_v4_api_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TopTVShow) String() string {
+func (x *TVShow) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TopTVShow) ProtoMessage() {}
+func (*TVShow) ProtoMessage() {}
 
-func (x *TopTVShow) ProtoReflect() protoreflect.Message {
+func (x *TVShow) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1671,109 +1671,109 @@ func (x *TopTVShow) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TopTVShow.ProtoReflect.Descriptor instead.
-func (*TopTVShow) Descriptor() ([]byte, []int) {
+// Deprecated: Use TVShow.ProtoReflect.Descriptor instead.
+func (*TVShow) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *TopTVShow) GetImdbId() string {
+func (x *TVShow) GetImdbId() string {
 	if x != nil {
 		return x.ImdbId
 	}
 	return ""
 }
 
-func (x *TopTVShow) GetTitle() string {
+func (x *TVShow) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
 	return ""
 }
 
-func (x *TopTVShow) GetYear() int32 {
+func (x *TVShow) GetYear() int32 {
 	if x != nil {
 		return x.Year
 	}
 	return 0
 }
 
-func (x *TopTVShow) GetSource() TopTVShowsSource {
+func (x *TVShow) GetSource() TVShowsSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED
+	return TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED
 }
 
-func (x *TopTVShow) GetPosterUrl() string {
+func (x *TVShow) GetPosterUrl() string {
 	if x != nil {
 		return x.PosterUrl
 	}
 	return ""
 }
 
-func (x *TopTVShow) GetRating() float64 {
+func (x *TVShow) GetRating() float64 {
 	if x != nil {
 		return x.Rating
 	}
 	return 0
 }
 
-func (x *TopTVShow) GetOverview() string {
+func (x *TVShow) GetOverview() string {
 	if x != nil {
 		return x.Overview
 	}
 	return ""
 }
 
-func (x *TopTVShow) GetExternalUrl() string {
+func (x *TVShow) GetExternalUrl() string {
 	if x != nil {
 		return x.ExternalUrl
 	}
 	return ""
 }
 
-func (x *TopTVShow) GetSeasonCount() int32 {
+func (x *TVShow) GetSeasonCount() int32 {
 	if x != nil {
 		return x.SeasonCount
 	}
 	return 0
 }
 
-func (x *TopTVShow) GetStatus() TVShowStatus {
+func (x *TVShow) GetStatus() TVShowStatus {
 	if x != nil {
 		return x.Status
 	}
 	return TVShowStatus_TV_SHOW_STATUS_UNSPECIFIED
 }
 
-func (x *TopTVShow) GetNetworks() []string {
+func (x *TVShow) GetNetworks() []string {
 	if x != nil {
 		return x.Networks
 	}
 	return nil
 }
 
-type GetTopTVShowsBySourceRequest struct {
+type GetTVShowsBySourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopTVShowsSource       `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopTVShowsSource" json:"source,omitempty"`
+	Source        TVShowsSource          `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TVShowsSource" json:"source,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetTopTVShowsBySourceRequest) Reset() {
-	*x = GetTopTVShowsBySourceRequest{}
+func (x *GetTVShowsBySourceRequest) Reset() {
+	*x = GetTVShowsBySourceRequest{}
 	mi := &file_chill_v4_api_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetTopTVShowsBySourceRequest) String() string {
+func (x *GetTVShowsBySourceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTopTVShowsBySourceRequest) ProtoMessage() {}
+func (*GetTVShowsBySourceRequest) ProtoMessage() {}
 
-func (x *GetTopTVShowsBySourceRequest) ProtoReflect() protoreflect.Message {
+func (x *GetTVShowsBySourceRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1785,40 +1785,40 @@ func (x *GetTopTVShowsBySourceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTopTVShowsBySourceRequest.ProtoReflect.Descriptor instead.
-func (*GetTopTVShowsBySourceRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTVShowsBySourceRequest.ProtoReflect.Descriptor instead.
+func (*GetTVShowsBySourceRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *GetTopTVShowsBySourceRequest) GetSource() TopTVShowsSource {
+func (x *GetTVShowsBySourceRequest) GetSource() TVShowsSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED
+	return TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED
 }
 
-type GetTopTVShowsBySourceResponse struct {
+type GetTVShowsBySourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopTVShowsSource       `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopTVShowsSource" json:"source,omitempty"`
-	Shows         []*TopTVShow           `protobuf:"bytes,2,rep,name=shows,proto3" json:"shows,omitempty"`
+	Source        TVShowsSource          `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TVShowsSource" json:"source,omitempty"`
+	Shows         []*TVShow              `protobuf:"bytes,2,rep,name=shows,proto3" json:"shows,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetTopTVShowsBySourceResponse) Reset() {
-	*x = GetTopTVShowsBySourceResponse{}
+func (x *GetTVShowsBySourceResponse) Reset() {
+	*x = GetTVShowsBySourceResponse{}
 	mi := &file_chill_v4_api_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetTopTVShowsBySourceResponse) String() string {
+func (x *GetTVShowsBySourceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTopTVShowsBySourceResponse) ProtoMessage() {}
+func (*GetTVShowsBySourceResponse) ProtoMessage() {}
 
-func (x *GetTopTVShowsBySourceResponse) ProtoReflect() protoreflect.Message {
+func (x *GetTVShowsBySourceResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1830,45 +1830,45 @@ func (x *GetTopTVShowsBySourceResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTopTVShowsBySourceResponse.ProtoReflect.Descriptor instead.
-func (*GetTopTVShowsBySourceResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTVShowsBySourceResponse.ProtoReflect.Descriptor instead.
+func (*GetTVShowsBySourceResponse) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *GetTopTVShowsBySourceResponse) GetSource() TopTVShowsSource {
+func (x *GetTVShowsBySourceResponse) GetSource() TVShowsSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED
+	return TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED
 }
 
-func (x *GetTopTVShowsBySourceResponse) GetShows() []*TopTVShow {
+func (x *GetTVShowsBySourceResponse) GetShows() []*TVShow {
 	if x != nil {
 		return x.Shows
 	}
 	return nil
 }
 
-type UserGetTopTVShowsRequest struct {
+type GetTVShowsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserGetTopTVShowsRequest) Reset() {
-	*x = UserGetTopTVShowsRequest{}
+func (x *GetTVShowsRequest) Reset() {
+	*x = GetTVShowsRequest{}
 	mi := &file_chill_v4_api_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserGetTopTVShowsRequest) String() string {
+func (x *GetTVShowsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserGetTopTVShowsRequest) ProtoMessage() {}
+func (*GetTVShowsRequest) ProtoMessage() {}
 
-func (x *UserGetTopTVShowsRequest) ProtoReflect() protoreflect.Message {
+func (x *GetTVShowsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1880,33 +1880,33 @@ func (x *UserGetTopTVShowsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserGetTopTVShowsRequest.ProtoReflect.Descriptor instead.
-func (*UserGetTopTVShowsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTVShowsRequest.ProtoReflect.Descriptor instead.
+func (*GetTVShowsRequest) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{20}
 }
 
-type UserGetTopTVShowsResponse struct {
+type GetTVShowsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Source        TopTVShowsSource       `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TopTVShowsSource" json:"source,omitempty"`
-	Shows         []*TopTVShow           `protobuf:"bytes,2,rep,name=shows,proto3" json:"shows,omitempty"`
+	Source        TVShowsSource          `protobuf:"varint,1,opt,name=source,proto3,enum=chill.v4.TVShowsSource" json:"source,omitempty"`
+	Shows         []*TVShow              `protobuf:"bytes,2,rep,name=shows,proto3" json:"shows,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserGetTopTVShowsResponse) Reset() {
-	*x = UserGetTopTVShowsResponse{}
+func (x *GetTVShowsResponse) Reset() {
+	*x = GetTVShowsResponse{}
 	mi := &file_chill_v4_api_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserGetTopTVShowsResponse) String() string {
+func (x *GetTVShowsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserGetTopTVShowsResponse) ProtoMessage() {}
+func (*GetTVShowsResponse) ProtoMessage() {}
 
-func (x *UserGetTopTVShowsResponse) ProtoReflect() protoreflect.Message {
+func (x *GetTVShowsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_chill_v4_api_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1918,19 +1918,19 @@ func (x *UserGetTopTVShowsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserGetTopTVShowsResponse.ProtoReflect.Descriptor instead.
-func (*UserGetTopTVShowsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTVShowsResponse.ProtoReflect.Descriptor instead.
+func (*GetTVShowsResponse) Descriptor() ([]byte, []int) {
 	return file_chill_v4_api_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *UserGetTopTVShowsResponse) GetSource() TopTVShowsSource {
+func (x *GetTVShowsResponse) GetSource() TVShowsSource {
 	if x != nil {
 		return x.Source
 	}
-	return TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED
+	return TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED
 }
 
-func (x *UserGetTopTVShowsResponse) GetShows() []*TopTVShow {
+func (x *GetTVShowsResponse) GetShows() []*TVShow {
 	if x != nil {
 		return x.Shows
 	}
@@ -2909,14 +2909,13 @@ type UserSettings struct {
 	ResolutionFilters           []ResolutionFilter          `protobuf:"varint,8,rep,packed,name=resolution_filters,json=resolutionFilters,proto3,enum=chill.v4.ResolutionFilter" json:"resolution_filters,omitempty"`
 	SearchResultDisplayBehavior SearchResultDisplayBehavior `protobuf:"varint,9,opt,name=search_result_display_behavior,json=searchResultDisplayBehavior,proto3,enum=chill.v4.SearchResultDisplayBehavior" json:"search_result_display_behavior,omitempty"`
 	SearchResultTitleBehavior   SearchResultTitleBehavior   `protobuf:"varint,10,opt,name=search_result_title_behavior,json=searchResultTitleBehavior,proto3,enum=chill.v4.SearchResultTitleBehavior" json:"search_result_title_behavior,omitempty"`
-	ShowPrettyNamesForTopMovies bool                        `protobuf:"varint,11,opt,name=show_pretty_names_for_top_movies,json=showPrettyNamesForTopMovies,proto3" json:"show_pretty_names_for_top_movies,omitempty"`
-	ShowTopMovies               bool                        `protobuf:"varint,12,opt,name=show_top_movies,json=showTopMovies,proto3" json:"show_top_movies,omitempty"`
+	ShowMovies                  bool                        `protobuf:"varint,12,opt,name=show_movies,json=showMovies,proto3" json:"show_movies,omitempty"`
 	SortBy                      SortBy                      `protobuf:"varint,13,opt,name=sort_by,json=sortBy,proto3,enum=chill.v4.SortBy" json:"sort_by,omitempty"`
 	SortDirection               SortDirection               `protobuf:"varint,14,opt,name=sort_direction,json=sortDirection,proto3,enum=chill.v4.SortDirection" json:"sort_direction,omitempty"`
-	TopMoviesDisplayType        TopMoviesDisplayType        `protobuf:"varint,15,opt,name=top_movies_display_type,json=topMoviesDisplayType,proto3,enum=chill.v4.TopMoviesDisplayType" json:"top_movies_display_type,omitempty"`
-	TopMoviesSource             TopMoviesSource             `protobuf:"varint,16,opt,name=top_movies_source,json=topMoviesSource,proto3,enum=chill.v4.TopMoviesSource" json:"top_movies_source,omitempty"`
-	ShowTopTvShows              bool                        `protobuf:"varint,17,opt,name=show_top_tv_shows,json=showTopTvShows,proto3" json:"show_top_tv_shows,omitempty"`
-	TopTvShowsSource            TopTVShowsSource            `protobuf:"varint,18,opt,name=top_tv_shows_source,json=topTvShowsSource,proto3,enum=chill.v4.TopTVShowsSource" json:"top_tv_shows_source,omitempty"`
+	CardDisplayType             CardDisplayType             `protobuf:"varint,15,opt,name=card_display_type,json=cardDisplayType,proto3,enum=chill.v4.CardDisplayType" json:"card_display_type,omitempty"`
+	MoviesSource                MoviesSource                `protobuf:"varint,16,opt,name=movies_source,json=moviesSource,proto3,enum=chill.v4.MoviesSource" json:"movies_source,omitempty"`
+	ShowTvShows                 bool                        `protobuf:"varint,17,opt,name=show_tv_shows,json=showTvShows,proto3" json:"show_tv_shows,omitempty"`
+	TvShowsSource               TVShowsSource               `protobuf:"varint,18,opt,name=tv_shows_source,json=tvShowsSource,proto3,enum=chill.v4.TVShowsSource" json:"tv_shows_source,omitempty"`
 	unknownFields               protoimpl.UnknownFields
 	sizeCache                   protoimpl.SizeCache
 }
@@ -3021,16 +3020,9 @@ func (x *UserSettings) GetSearchResultTitleBehavior() SearchResultTitleBehavior 
 	return SearchResultTitleBehavior_SEARCH_RESULT_TITLE_BEHAVIOR_UNSPECIFIED
 }
 
-func (x *UserSettings) GetShowPrettyNamesForTopMovies() bool {
+func (x *UserSettings) GetShowMovies() bool {
 	if x != nil {
-		return x.ShowPrettyNamesForTopMovies
-	}
-	return false
-}
-
-func (x *UserSettings) GetShowTopMovies() bool {
-	if x != nil {
-		return x.ShowTopMovies
+		return x.ShowMovies
 	}
 	return false
 }
@@ -3049,32 +3041,32 @@ func (x *UserSettings) GetSortDirection() SortDirection {
 	return SortDirection_SORT_DIRECTION_UNSPECIFIED
 }
 
-func (x *UserSettings) GetTopMoviesDisplayType() TopMoviesDisplayType {
+func (x *UserSettings) GetCardDisplayType() CardDisplayType {
 	if x != nil {
-		return x.TopMoviesDisplayType
+		return x.CardDisplayType
 	}
-	return TopMoviesDisplayType_TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED
+	return CardDisplayType_CARD_DISPLAY_TYPE_UNSPECIFIED
 }
 
-func (x *UserSettings) GetTopMoviesSource() TopMoviesSource {
+func (x *UserSettings) GetMoviesSource() MoviesSource {
 	if x != nil {
-		return x.TopMoviesSource
+		return x.MoviesSource
 	}
-	return TopMoviesSource_TOP_MOVIES_SOURCE_UNSPECIFIED
+	return MoviesSource_MOVIES_SOURCE_UNSPECIFIED
 }
 
-func (x *UserSettings) GetShowTopTvShows() bool {
+func (x *UserSettings) GetShowTvShows() bool {
 	if x != nil {
-		return x.ShowTopTvShows
+		return x.ShowTvShows
 	}
 	return false
 }
 
-func (x *UserSettings) GetTopTvShowsSource() TopTVShowsSource {
+func (x *UserSettings) GetTvShowsSource() TVShowsSource {
 	if x != nil {
-		return x.TopTvShowsSource
+		return x.TvShowsSource
 	}
-	return TopTVShowsSource_TOP_TV_SHOWS_SOURCE_UNSPECIFIED
+	return TVShowsSource_TV_SHOWS_SOURCE_UNSPECIFIED
 }
 
 type SaveUserSettingsRequest struct {
@@ -3924,14 +3916,14 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12\"\n" +
 	"\n" +
 	"indexer_id\x18\x02 \x01(\tH\x00R\tindexerId\x88\x01\x01B\r\n" +
-	"\v_indexer_id\"P\n" +
-	"\x1bGetTopMoviesBySourceRequest\x121\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x06source\"\x81\x03\n" +
-	"\bTopMovie\x12\x0e\n" +
+	"\v_indexer_id\"J\n" +
+	"\x18GetMoviesBySourceRequest\x12.\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\"\xfb\x02\n" +
+	"\x05Movie\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
-	"\x04year\x18\x03 \x01(\x05R\x04year\x121\n" +
-	"\x06source\x18\x04 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x06source\x12!\n" +
+	"\x04year\x18\x03 \x01(\x05R\x04year\x12.\n" +
+	"\x06source\x18\x04 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\x12!\n" +
 	"\ftitle_pretty\x18\x05 \x01(\tR\vtitlePretty\x12\x12\n" +
 	"\x04link\x18\x06 \x01(\tR\x04link\x12\x14\n" +
 	"\x05peers\x18\a \x01(\x03R\x05peers\x12\x18\n" +
@@ -3945,21 +3937,21 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x06rating\x18\f \x01(\x01R\x06rating\x12!\n" +
 	"\fexternal_url\x18\r \x01(\tR\vexternalUrl:\x12\x92A\x0f\n" +
 	"\r\xd2\x01\n" +
-	"poster_url\"}\n" +
-	"\x1cGetTopMoviesBySourceResponse\x121\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x06source\x12*\n" +
-	"\x06movies\x18\x02 \x03(\v2\x12.chill.v4.TopMovieR\x06movies\"\x19\n" +
-	"\x17UserGetTopMoviesRequest\"\x9b\x01\n" +
-	"\x18UserGetTopMoviesResponse\x121\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x06source\x12*\n" +
-	"\x06movies\x18\x02 \x03(\v2\x12.chill.v4.TopMovieR\x06movies\x12 \n" +
+	"poster_url\"t\n" +
+	"\x19GetMoviesBySourceResponse\x12.\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\x12'\n" +
+	"\x06movies\x18\x02 \x03(\v2\x0f.chill.v4.MovieR\x06movies\"\x12\n" +
+	"\x10GetMoviesRequest\"\x8e\x01\n" +
+	"\x11GetMoviesResponse\x12.\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\x12'\n" +
+	"\x06movies\x18\x02 \x03(\v2\x0f.chill.v4.MovieR\x06movies\x12 \n" +
 	"\frss_feed_url\x18\x03 \x01(\tR\n" +
-	"rssFeedUrl\"\x85\x03\n" +
-	"\tTopTVShow\x12\x17\n" +
+	"rssFeedUrl\"\xff\x02\n" +
+	"\x06TVShow\x12\x17\n" +
 	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
-	"\x04year\x18\x03 \x01(\x05R\x04year\x122\n" +
-	"\x06source\x18\x04 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\x12\x1d\n" +
+	"\x04year\x18\x03 \x01(\x05R\x04year\x12/\n" +
+	"\x06source\x18\x04 \x01(\x0e2\x17.chill.v4.TVShowsSourceR\x06source\x12\x1d\n" +
 	"\n" +
 	"poster_url\x18\x05 \x01(\tR\tposterUrl\x12\x16\n" +
 	"\x06rating\x18\x06 \x01(\x01R\x06rating\x12\x1a\n" +
@@ -3970,16 +3962,16 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	" \x01(\x0e2\x16.chill.v4.TVShowStatusR\x06status\x12\x1a\n" +
 	"\bnetworks\x18\v \x03(\tR\bnetworks:\x1c\x92A\x19\n" +
 	"\x17\xd2\x01\aimdb_id\xd2\x01\n" +
-	"poster_url\"R\n" +
-	"\x1cGetTopTVShowsBySourceRequest\x122\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\"~\n" +
-	"\x1dGetTopTVShowsBySourceResponse\x122\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\x12)\n" +
-	"\x05shows\x18\x02 \x03(\v2\x13.chill.v4.TopTVShowR\x05shows\"\x1a\n" +
-	"\x18UserGetTopTVShowsRequest\"z\n" +
-	"\x19UserGetTopTVShowsResponse\x122\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x06source\x12)\n" +
-	"\x05shows\x18\x02 \x03(\v2\x13.chill.v4.TopTVShowR\x05shows\"\xf1\x02\n" +
+	"poster_url\"L\n" +
+	"\x19GetTVShowsBySourceRequest\x12/\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x17.chill.v4.TVShowsSourceR\x06source\"u\n" +
+	"\x1aGetTVShowsBySourceResponse\x12/\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x17.chill.v4.TVShowsSourceR\x06source\x12&\n" +
+	"\x05shows\x18\x02 \x03(\v2\x10.chill.v4.TVShowR\x05shows\"\x13\n" +
+	"\x11GetTVShowsRequest\"m\n" +
+	"\x12GetTVShowsResponse\x12/\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x17.chill.v4.TVShowsSourceR\x06source\x12&\n" +
+	"\x05shows\x18\x02 \x03(\v2\x10.chill.v4.TVShowR\x05shows\"\xf1\x02\n" +
 	"\fTVShowDetail\x12\x17\n" +
 	"\aimdb_id\x18\x01 \x01(\tR\x06imdbId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -4061,7 +4053,7 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\bdownload\x18\x02 \x01(\v2\x18.chill.v4.TVShowDownloadH\x00R\bdownload\x88\x01\x01\x12!\n" +
 	"\fsearch_query\x18\x03 \x01(\tR\vsearchQueryB\v\n" +
 	"\t_download\"\x18\n" +
-	"\x16GetUserSettingsRequest\"\xb9\t\n" +
+	"\x16GetUserSettingsRequest\"\xc6\b\n" +
 	"\fUserSettings\x12:\n" +
 	"\rcodec_filters\x18\x01 \x03(\x0e2\x15.chill.v4.CodecFilterR\fcodecFilters\x120\n" +
 	"\x14disabled_indexer_ids\x18\x02 \x03(\tR\x12disabledIndexerIds\x121\n" +
@@ -4073,16 +4065,16 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x12resolution_filters\x18\b \x03(\x0e2\x1a.chill.v4.ResolutionFilterR\x11resolutionFilters\x12j\n" +
 	"\x1esearch_result_display_behavior\x18\t \x01(\x0e2%.chill.v4.SearchResultDisplayBehaviorR\x1bsearchResultDisplayBehavior\x12d\n" +
 	"\x1csearch_result_title_behavior\x18\n" +
-	" \x01(\x0e2#.chill.v4.SearchResultTitleBehaviorR\x19searchResultTitleBehavior\x12E\n" +
-	" show_pretty_names_for_top_movies\x18\v \x01(\bR\x1bshowPrettyNamesForTopMovies\x12&\n" +
-	"\x0fshow_top_movies\x18\f \x01(\bR\rshowTopMovies\x12)\n" +
+	" \x01(\x0e2#.chill.v4.SearchResultTitleBehaviorR\x19searchResultTitleBehavior\x12\x1f\n" +
+	"\vshow_movies\x18\f \x01(\bR\n" +
+	"showMovies\x12)\n" +
 	"\asort_by\x18\r \x01(\x0e2\x10.chill.v4.SortByR\x06sortBy\x12>\n" +
-	"\x0esort_direction\x18\x0e \x01(\x0e2\x17.chill.v4.SortDirectionR\rsortDirection\x12U\n" +
-	"\x17top_movies_display_type\x18\x0f \x01(\x0e2\x1e.chill.v4.TopMoviesDisplayTypeR\x14topMoviesDisplayType\x12E\n" +
-	"\x11top_movies_source\x18\x10 \x01(\x0e2\x19.chill.v4.TopMoviesSourceR\x0ftopMoviesSource\x12)\n" +
-	"\x11show_top_tv_shows\x18\x11 \x01(\bR\x0eshowTopTvShows\x12I\n" +
-	"\x13top_tv_shows_source\x18\x12 \x01(\x0e2\x1a.chill.v4.TopTVShowsSourceR\x10topTvShowsSourceB\x15\n" +
-	"\x13_download_folder_id\"M\n" +
+	"\x0esort_direction\x18\x0e \x01(\x0e2\x17.chill.v4.SortDirectionR\rsortDirection\x12E\n" +
+	"\x11card_display_type\x18\x0f \x01(\x0e2\x19.chill.v4.CardDisplayTypeR\x0fcardDisplayType\x12;\n" +
+	"\rmovies_source\x18\x10 \x01(\x0e2\x16.chill.v4.MoviesSourceR\fmoviesSource\x12\"\n" +
+	"\rshow_tv_shows\x18\x11 \x01(\bR\vshowTvShows\x12?\n" +
+	"\x0ftv_shows_source\x18\x12 \x01(\x0e2\x17.chill.v4.TVShowsSourceR\rtvShowsSourceB\x15\n" +
+	"\x13_download_folder_idJ\x04\b\v\x10\f\"M\n" +
 	"\x17SaveUserSettingsRequest\x122\n" +
 	"\bsettings\x18\x01 \x01(\v2\x16.chill.v4.UserSettingsR\bsettings\"&\n" +
 	"\x12AddTransferRequest\x12\x10\n" +
@@ -4155,21 +4147,21 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x1aINDEXER_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16INDEXER_STATUS_HEALTHY\x10\x01\x12\x1b\n" +
 	"\x17INDEXER_STATUS_DEGRADED\x10\x02\x12\x17\n" +
-	"\x13INDEXER_STATUS_DOWN\x10\x03*\xde\x01\n" +
-	"\x0fTopMoviesSource\x12!\n" +
-	"\x1dTOP_MOVIES_SOURCE_UNSPECIFIED\x10\x00\x12%\n" +
-	"!TOP_MOVIES_SOURCE_IMDB_MOVIEMETER\x10\x01\x12\"\n" +
-	"\x1eTOP_MOVIES_SOURCE_IMDB_TOP_250\x10\x02\x12\x19\n" +
-	"\x15TOP_MOVIES_SOURCE_YTS\x10\x03\x12%\n" +
-	"!TOP_MOVIES_SOURCE_ROTTEN_TOMATOES\x10\x04\x12\x1b\n" +
-	"\x17TOP_MOVIES_SOURCE_TRAKT\x10\x05*\xea\x01\n" +
-	"\x10TopTVShowsSource\x12#\n" +
-	"\x1fTOP_TV_SHOWS_SOURCE_UNSPECIFIED\x10\x00\x12\x1f\n" +
-	"\x1bTOP_TV_SHOWS_SOURCE_NETFLIX\x10\x01\x12\x1f\n" +
-	"\x1bTOP_TV_SHOWS_SOURCE_HBO_MAX\x10\x02\x12%\n" +
-	"!TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS\x10\x03\x12#\n" +
-	"\x1fTOP_TV_SHOWS_SOURCE_PRIME_VIDEO\x10\x04\x12#\n" +
-	"\x1fTOP_TV_SHOWS_SOURCE_DISNEY_PLUS\x10\x05*\xc1\x01\n" +
+	"\x13INDEXER_STATUS_DOWN\x10\x03*\xc3\x01\n" +
+	"\fMoviesSource\x12\x1d\n" +
+	"\x19MOVIES_SOURCE_UNSPECIFIED\x10\x00\x12!\n" +
+	"\x1dMOVIES_SOURCE_IMDB_MOVIEMETER\x10\x01\x12\x1e\n" +
+	"\x1aMOVIES_SOURCE_IMDB_TOP_250\x10\x02\x12\x15\n" +
+	"\x11MOVIES_SOURCE_YTS\x10\x03\x12!\n" +
+	"\x1dMOVIES_SOURCE_ROTTEN_TOMATOES\x10\x04\x12\x17\n" +
+	"\x13MOVIES_SOURCE_TRAKT\x10\x05*\xcf\x01\n" +
+	"\rTVShowsSource\x12\x1f\n" +
+	"\x1bTV_SHOWS_SOURCE_UNSPECIFIED\x10\x00\x12\x1b\n" +
+	"\x17TV_SHOWS_SOURCE_NETFLIX\x10\x01\x12\x1b\n" +
+	"\x17TV_SHOWS_SOURCE_HBO_MAX\x10\x02\x12!\n" +
+	"\x1dTV_SHOWS_SOURCE_APPLE_TV_PLUS\x10\x03\x12\x1f\n" +
+	"\x1bTV_SHOWS_SOURCE_PRIME_VIDEO\x10\x04\x12\x1f\n" +
+	"\x1bTV_SHOWS_SOURCE_DISNEY_PLUS\x10\x05*\xc1\x01\n" +
 	"\fTVShowStatus\x12\x1e\n" +
 	"\x1aTV_SHOW_STATUS_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x18TV_SHOW_STATUS_RETURNING\x10\x01\x12\x18\n" +
@@ -4207,11 +4199,11 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\rSortDirection\x12\x1e\n" +
 	"\x1aSORT_DIRECTION_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12SORT_DIRECTION_ASC\x10\x01\x12\x17\n" +
-	"\x13SORT_DIRECTION_DESC\x10\x02*\x8a\x01\n" +
-	"\x14TopMoviesDisplayType\x12'\n" +
-	"#TOP_MOVIES_DISPLAY_TYPE_UNSPECIFIED\x10\x00\x12#\n" +
-	"\x1fTOP_MOVIES_DISPLAY_TYPE_COMPACT\x10\x01\x12$\n" +
-	" TOP_MOVIES_DISPLAY_TYPE_EXPANDED\x10\x022\xd5\x05\n" +
+	"\x13SORT_DIRECTION_DESC\x10\x02*s\n" +
+	"\x0fCardDisplayType\x12!\n" +
+	"\x1dCARD_DISPLAY_TYPE_UNSPECIFIED\x10\x00\x12\x1d\n" +
+	"\x19CARD_DISPLAY_TYPE_COMPACT\x10\x01\x12\x1e\n" +
+	"\x1aCARD_DISPLAY_TYPE_EXPANDED\x10\x022\xc3\x05\n" +
 	"\vCoreService\x12}\n" +
 	"\vHealthCheck\x12\x1c.chill.v4.HealthCheckRequest\x1a\x18.chill.v4.HealthResponse\"6\x92A3b\x10\n" +
 	"\x0e\n" +
@@ -4230,19 +4222,19 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\n" +
 	"ApiKeyAuth\x12\x00r\x1f\n" +
 	"\x1d\n" +
-	"\tX-API-Key\x12\fCore API key\x18\x01(\x01\x12\x9d\x01\n" +
-	"\x14GetTopMoviesBySource\x12%.chill.v4.GetTopMoviesBySourceRequest\x1a&.chill.v4.GetTopMoviesBySourceResponse\"6\x92A3b\x10\n" +
+	"\tX-API-Key\x12\fCore API key\x18\x01(\x01\x12\x94\x01\n" +
+	"\x11GetMoviesBySource\x12\".chill.v4.GetMoviesBySourceRequest\x1a#.chill.v4.GetMoviesBySourceResponse\"6\x92A3b\x10\n" +
 	"\x0e\n" +
 	"\n" +
 	"ApiKeyAuth\x12\x00r\x1f\n" +
 	"\x1d\n" +
-	"\tX-API-Key\x12\fCore API key\x18\x01(\x01\x12\xa0\x01\n" +
-	"\x15GetTopTVShowsBySource\x12&.chill.v4.GetTopTVShowsBySourceRequest\x1a'.chill.v4.GetTopTVShowsBySourceResponse\"6\x92A3b\x10\n" +
+	"\tX-API-Key\x12\fCore API key\x18\x01(\x01\x12\x97\x01\n" +
+	"\x12GetTVShowsBySource\x12#.chill.v4.GetTVShowsBySourceRequest\x1a$.chill.v4.GetTVShowsBySourceResponse\"6\x92A3b\x10\n" +
 	"\x0e\n" +
 	"\n" +
 	"ApiKeyAuth\x12\x00r\x1f\n" +
 	"\x1d\n" +
-	"\tX-API-Key\x12\fCore API key\x18\x01(\x012\xc2\x14\n" +
+	"\tX-API-Key\x12\fCore API key\x18\x01(\x012\xa0\x14\n" +
 	"\vUserService\x12\xaa\x01\n" +
 	"\vGetIndexers\x12 .chill.v4.UserGetIndexersRequest\x1a!.chill.v4.UserGetIndexersResponse\"V\x92ASb\x10\n" +
 	"\x0e\n" +
@@ -4255,14 +4247,15 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\n" +
 	"BearerAuth\x12\x00r?\n" +
 	"=\n" +
-	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\xad\x01\n" +
-	"\fGetTopMovies\x12!.chill.v4.UserGetTopMoviesRequest\x1a\".chill.v4.UserGetTopMoviesResponse\"V\x92ASb\x10\n" +
+	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\x9c\x01\n" +
+	"\tGetMovies\x12\x1a.chill.v4.GetMoviesRequest\x1a\x1b.chill.v4.GetMoviesResponse\"V\x92ASb\x10\n" +
 	"\x0e\n" +
 	"\n" +
 	"BearerAuth\x12\x00r?\n" +
 	"=\n" +
-	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\xb0\x01\n" +
-	"\rGetTopTVShows\x12\".chill.v4.UserGetTopTVShowsRequest\x1a#.chill.v4.UserGetTopTVShowsResponse\"V\x92ASb\x10\n" +
+	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\x9f\x01\n" +
+	"\n" +
+	"GetTVShows\x12\x1b.chill.v4.GetTVShowsRequest\x1a\x1c.chill.v4.GetTVShowsResponse\"V\x92ASb\x10\n" +
 	"\x0e\n" +
 	"\n" +
 	"BearerAuth\x12\x00r?\n" +
@@ -4359,8 +4352,8 @@ var file_chill_v4_api_proto_enumTypes = make([]protoimpl.EnumInfo, 12)
 var file_chill_v4_api_proto_msgTypes = make([]protoimpl.MessageInfo, 50)
 var file_chill_v4_api_proto_goTypes = []any{
 	(IndexerStatus)(0),                       // 0: chill.v4.IndexerStatus
-	(TopMoviesSource)(0),                     // 1: chill.v4.TopMoviesSource
-	(TopTVShowsSource)(0),                    // 2: chill.v4.TopTVShowsSource
+	(MoviesSource)(0),                        // 1: chill.v4.MoviesSource
+	(TVShowsSource)(0),                       // 2: chill.v4.TVShowsSource
 	(TVShowStatus)(0),                        // 3: chill.v4.TVShowStatus
 	(ResolutionFilter)(0),                    // 4: chill.v4.ResolutionFilter
 	(CodecFilter)(0),                         // 5: chill.v4.CodecFilter
@@ -4369,7 +4362,7 @@ var file_chill_v4_api_proto_goTypes = []any{
 	(SearchResultTitleBehavior)(0),           // 8: chill.v4.SearchResultTitleBehavior
 	(SortBy)(0),                              // 9: chill.v4.SortBy
 	(SortDirection)(0),                       // 10: chill.v4.SortDirection
-	(TopMoviesDisplayType)(0),                // 11: chill.v4.TopMoviesDisplayType
+	(CardDisplayType)(0),                     // 11: chill.v4.CardDisplayType
 	(*HealthCheckRequest)(nil),               // 12: chill.v4.HealthCheckRequest
 	(*HealthResponse)(nil),                   // 13: chill.v4.HealthResponse
 	(*CoreGetIndexersRequest)(nil),           // 14: chill.v4.CoreGetIndexersRequest
@@ -4382,16 +4375,16 @@ var file_chill_v4_api_proto_goTypes = []any{
 	(*SearchResult)(nil),                     // 21: chill.v4.SearchResult
 	(*SearchResponse)(nil),                   // 22: chill.v4.SearchResponse
 	(*UserSearchRequest)(nil),                // 23: chill.v4.UserSearchRequest
-	(*GetTopMoviesBySourceRequest)(nil),      // 24: chill.v4.GetTopMoviesBySourceRequest
-	(*TopMovie)(nil),                         // 25: chill.v4.TopMovie
-	(*GetTopMoviesBySourceResponse)(nil),     // 26: chill.v4.GetTopMoviesBySourceResponse
-	(*UserGetTopMoviesRequest)(nil),          // 27: chill.v4.UserGetTopMoviesRequest
-	(*UserGetTopMoviesResponse)(nil),         // 28: chill.v4.UserGetTopMoviesResponse
-	(*TopTVShow)(nil),                        // 29: chill.v4.TopTVShow
-	(*GetTopTVShowsBySourceRequest)(nil),     // 30: chill.v4.GetTopTVShowsBySourceRequest
-	(*GetTopTVShowsBySourceResponse)(nil),    // 31: chill.v4.GetTopTVShowsBySourceResponse
-	(*UserGetTopTVShowsRequest)(nil),         // 32: chill.v4.UserGetTopTVShowsRequest
-	(*UserGetTopTVShowsResponse)(nil),        // 33: chill.v4.UserGetTopTVShowsResponse
+	(*GetMoviesBySourceRequest)(nil),         // 24: chill.v4.GetMoviesBySourceRequest
+	(*Movie)(nil),                            // 25: chill.v4.Movie
+	(*GetMoviesBySourceResponse)(nil),        // 26: chill.v4.GetMoviesBySourceResponse
+	(*GetMoviesRequest)(nil),                 // 27: chill.v4.GetMoviesRequest
+	(*GetMoviesResponse)(nil),                // 28: chill.v4.GetMoviesResponse
+	(*TVShow)(nil),                           // 29: chill.v4.TVShow
+	(*GetTVShowsBySourceRequest)(nil),        // 30: chill.v4.GetTVShowsBySourceRequest
+	(*GetTVShowsBySourceResponse)(nil),       // 31: chill.v4.GetTVShowsBySourceResponse
+	(*GetTVShowsRequest)(nil),                // 32: chill.v4.GetTVShowsRequest
+	(*GetTVShowsResponse)(nil),               // 33: chill.v4.GetTVShowsResponse
 	(*TVShowDetail)(nil),                     // 34: chill.v4.TVShowDetail
 	(*TVShowSeason)(nil),                     // 35: chill.v4.TVShowSeason
 	(*TVShowEpisode)(nil),                    // 36: chill.v4.TVShowEpisode
@@ -4427,19 +4420,19 @@ var file_chill_v4_api_proto_depIdxs = []int32{
 	19, // 2: chill.v4.UserGetIndexersResponse.indexers:type_name -> chill.v4.UserIndexer
 	0,  // 3: chill.v4.UserIndexer.status:type_name -> chill.v4.IndexerStatus
 	21, // 4: chill.v4.SearchResponse.results:type_name -> chill.v4.SearchResult
-	1,  // 5: chill.v4.GetTopMoviesBySourceRequest.source:type_name -> chill.v4.TopMoviesSource
-	1,  // 6: chill.v4.TopMovie.source:type_name -> chill.v4.TopMoviesSource
-	1,  // 7: chill.v4.GetTopMoviesBySourceResponse.source:type_name -> chill.v4.TopMoviesSource
-	25, // 8: chill.v4.GetTopMoviesBySourceResponse.movies:type_name -> chill.v4.TopMovie
-	1,  // 9: chill.v4.UserGetTopMoviesResponse.source:type_name -> chill.v4.TopMoviesSource
-	25, // 10: chill.v4.UserGetTopMoviesResponse.movies:type_name -> chill.v4.TopMovie
-	2,  // 11: chill.v4.TopTVShow.source:type_name -> chill.v4.TopTVShowsSource
-	3,  // 12: chill.v4.TopTVShow.status:type_name -> chill.v4.TVShowStatus
-	2,  // 13: chill.v4.GetTopTVShowsBySourceRequest.source:type_name -> chill.v4.TopTVShowsSource
-	2,  // 14: chill.v4.GetTopTVShowsBySourceResponse.source:type_name -> chill.v4.TopTVShowsSource
-	29, // 15: chill.v4.GetTopTVShowsBySourceResponse.shows:type_name -> chill.v4.TopTVShow
-	2,  // 16: chill.v4.UserGetTopTVShowsResponse.source:type_name -> chill.v4.TopTVShowsSource
-	29, // 17: chill.v4.UserGetTopTVShowsResponse.shows:type_name -> chill.v4.TopTVShow
+	1,  // 5: chill.v4.GetMoviesBySourceRequest.source:type_name -> chill.v4.MoviesSource
+	1,  // 6: chill.v4.Movie.source:type_name -> chill.v4.MoviesSource
+	1,  // 7: chill.v4.GetMoviesBySourceResponse.source:type_name -> chill.v4.MoviesSource
+	25, // 8: chill.v4.GetMoviesBySourceResponse.movies:type_name -> chill.v4.Movie
+	1,  // 9: chill.v4.GetMoviesResponse.source:type_name -> chill.v4.MoviesSource
+	25, // 10: chill.v4.GetMoviesResponse.movies:type_name -> chill.v4.Movie
+	2,  // 11: chill.v4.TVShow.source:type_name -> chill.v4.TVShowsSource
+	3,  // 12: chill.v4.TVShow.status:type_name -> chill.v4.TVShowStatus
+	2,  // 13: chill.v4.GetTVShowsBySourceRequest.source:type_name -> chill.v4.TVShowsSource
+	2,  // 14: chill.v4.GetTVShowsBySourceResponse.source:type_name -> chill.v4.TVShowsSource
+	29, // 15: chill.v4.GetTVShowsBySourceResponse.shows:type_name -> chill.v4.TVShow
+	2,  // 16: chill.v4.GetTVShowsResponse.source:type_name -> chill.v4.TVShowsSource
+	29, // 17: chill.v4.GetTVShowsResponse.shows:type_name -> chill.v4.TVShow
 	3,  // 18: chill.v4.TVShowDetail.status:type_name -> chill.v4.TVShowStatus
 	34, // 19: chill.v4.GetTVShowDetailResponse.show:type_name -> chill.v4.TVShowDetail
 	35, // 20: chill.v4.GetTVShowDetailResponse.seasons:type_name -> chill.v4.TVShowSeason
@@ -4456,9 +4449,9 @@ var file_chill_v4_api_proto_depIdxs = []int32{
 	8,  // 31: chill.v4.UserSettings.search_result_title_behavior:type_name -> chill.v4.SearchResultTitleBehavior
 	9,  // 32: chill.v4.UserSettings.sort_by:type_name -> chill.v4.SortBy
 	10, // 33: chill.v4.UserSettings.sort_direction:type_name -> chill.v4.SortDirection
-	11, // 34: chill.v4.UserSettings.top_movies_display_type:type_name -> chill.v4.TopMoviesDisplayType
-	1,  // 35: chill.v4.UserSettings.top_movies_source:type_name -> chill.v4.TopMoviesSource
-	2,  // 36: chill.v4.UserSettings.top_tv_shows_source:type_name -> chill.v4.TopTVShowsSource
+	11, // 34: chill.v4.UserSettings.card_display_type:type_name -> chill.v4.CardDisplayType
+	1,  // 35: chill.v4.UserSettings.movies_source:type_name -> chill.v4.MoviesSource
+	2,  // 36: chill.v4.UserSettings.tv_shows_source:type_name -> chill.v4.TVShowsSource
 	48, // 37: chill.v4.SaveUserSettingsRequest.settings:type_name -> chill.v4.UserSettings
 	54, // 38: chill.v4.AddTransferResponse.transfer:type_name -> chill.v4.Transfer
 	54, // 39: chill.v4.GetTransferResponse.transfer:type_name -> chill.v4.Transfer
@@ -4468,12 +4461,12 @@ var file_chill_v4_api_proto_depIdxs = []int32{
 	12, // 43: chill.v4.CoreService.HealthCheck:input_type -> chill.v4.HealthCheckRequest
 	14, // 44: chill.v4.CoreService.GetIndexers:input_type -> chill.v4.CoreGetIndexersRequest
 	20, // 45: chill.v4.CoreService.Search:input_type -> chill.v4.CoreSearchRequest
-	24, // 46: chill.v4.CoreService.GetTopMoviesBySource:input_type -> chill.v4.GetTopMoviesBySourceRequest
-	30, // 47: chill.v4.CoreService.GetTopTVShowsBySource:input_type -> chill.v4.GetTopTVShowsBySourceRequest
+	24, // 46: chill.v4.CoreService.GetMoviesBySource:input_type -> chill.v4.GetMoviesBySourceRequest
+	30, // 47: chill.v4.CoreService.GetTVShowsBySource:input_type -> chill.v4.GetTVShowsBySourceRequest
 	17, // 48: chill.v4.UserService.GetIndexers:input_type -> chill.v4.UserGetIndexersRequest
 	23, // 49: chill.v4.UserService.Search:input_type -> chill.v4.UserSearchRequest
-	27, // 50: chill.v4.UserService.GetTopMovies:input_type -> chill.v4.UserGetTopMoviesRequest
-	32, // 51: chill.v4.UserService.GetTopTVShows:input_type -> chill.v4.UserGetTopTVShowsRequest
+	27, // 50: chill.v4.UserService.GetMovies:input_type -> chill.v4.GetMoviesRequest
+	32, // 51: chill.v4.UserService.GetTVShows:input_type -> chill.v4.GetTVShowsRequest
 	37, // 52: chill.v4.UserService.GetTVShowDetail:input_type -> chill.v4.GetTVShowDetailRequest
 	39, // 53: chill.v4.UserService.GetTVShowSeason:input_type -> chill.v4.GetTVShowSeasonRequest
 	42, // 54: chill.v4.UserService.GetTVShowEpisodeDownload:input_type -> chill.v4.GetTVShowEpisodeDownloadRequest
@@ -4488,12 +4481,12 @@ var file_chill_v4_api_proto_depIdxs = []int32{
 	13, // 63: chill.v4.CoreService.HealthCheck:output_type -> chill.v4.HealthResponse
 	16, // 64: chill.v4.CoreService.GetIndexers:output_type -> chill.v4.CoreGetIndexersResponse
 	22, // 65: chill.v4.CoreService.Search:output_type -> chill.v4.SearchResponse
-	26, // 66: chill.v4.CoreService.GetTopMoviesBySource:output_type -> chill.v4.GetTopMoviesBySourceResponse
-	31, // 67: chill.v4.CoreService.GetTopTVShowsBySource:output_type -> chill.v4.GetTopTVShowsBySourceResponse
+	26, // 66: chill.v4.CoreService.GetMoviesBySource:output_type -> chill.v4.GetMoviesBySourceResponse
+	31, // 67: chill.v4.CoreService.GetTVShowsBySource:output_type -> chill.v4.GetTVShowsBySourceResponse
 	18, // 68: chill.v4.UserService.GetIndexers:output_type -> chill.v4.UserGetIndexersResponse
 	22, // 69: chill.v4.UserService.Search:output_type -> chill.v4.SearchResponse
-	28, // 70: chill.v4.UserService.GetTopMovies:output_type -> chill.v4.UserGetTopMoviesResponse
-	33, // 71: chill.v4.UserService.GetTopTVShows:output_type -> chill.v4.UserGetTopTVShowsResponse
+	28, // 70: chill.v4.UserService.GetMovies:output_type -> chill.v4.GetMoviesResponse
+	33, // 71: chill.v4.UserService.GetTVShows:output_type -> chill.v4.GetTVShowsResponse
 	38, // 72: chill.v4.UserService.GetTVShowDetail:output_type -> chill.v4.GetTVShowDetailResponse
 	40, // 73: chill.v4.UserService.GetTVShowSeason:output_type -> chill.v4.GetTVShowSeasonResponse
 	43, // 74: chill.v4.UserService.GetTVShowEpisodeDownload:output_type -> chill.v4.GetTVShowEpisodeDownloadResponse
