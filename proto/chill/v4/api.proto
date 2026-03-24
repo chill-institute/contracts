@@ -105,6 +105,24 @@ service CoreService {
       };
     };
   }
+  rpc GetTopTVShowsBySource(GetTopTVShowsBySourceRequest) returns (GetTopTVShowsBySourceResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "ApiKeyAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "X-API-Key";
+          description: "Core API key";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
 }
 
 service UserService {
@@ -145,6 +163,24 @@ service UserService {
     };
   }
   rpc GetTopMovies(UserGetTopMoviesRequest) returns (UserGetTopMoviesResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "BearerAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "Authorization";
+          description: "User auth token. Format: Bearer <token>.";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
+  rpc GetTopTVShows(UserGetTopTVShowsRequest) returns (UserGetTopTVShowsResponse) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
@@ -370,6 +406,24 @@ enum TopMoviesSource {
   TOP_MOVIES_SOURCE_TRAKT = 5;
 }
 
+enum TopTVShowsSource {
+  TOP_TV_SHOWS_SOURCE_UNSPECIFIED = 0;
+  TOP_TV_SHOWS_SOURCE_NETFLIX = 1;
+  TOP_TV_SHOWS_SOURCE_HBO = 2;
+  TOP_TV_SHOWS_SOURCE_APPLE_TV_PLUS = 3;
+  TOP_TV_SHOWS_SOURCE_PRIME_VIDEO = 4;
+  TOP_TV_SHOWS_SOURCE_DISNEY_PLUS = 5;
+}
+
+enum TVShowStatus {
+  TV_SHOW_STATUS_UNSPECIFIED = 0;
+  TV_SHOW_STATUS_RETURNING = 1;
+  TV_SHOW_STATUS_ENDED = 2;
+  TV_SHOW_STATUS_CANCELED = 3;
+  TV_SHOW_STATUS_IN_PRODUCTION = 4;
+  TV_SHOW_STATUS_PLANNED = 5;
+}
+
 message GetTopMoviesBySourceRequest {
   TopMoviesSource source = 1;
 }
@@ -407,6 +461,43 @@ message UserGetTopMoviesResponse {
   TopMoviesSource source = 1;
   repeated TopMovie movies = 2;
   string rss_feed_url = 3;
+}
+
+message TopTVShow {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      required: ["tmdb_id", "poster_url"]
+    }
+  };
+
+  string tmdb_id = 1;
+  string title = 2;
+  int32 year = 3;
+  TopTVShowsSource source = 4;
+  string poster_url = 5;
+  double rating = 6;
+  string overview = 7;
+  string external_url = 8;
+  int32 season_count = 9;
+  TVShowStatus status = 10;
+  repeated string networks = 11;
+  string imdb_id = 12;
+}
+
+message GetTopTVShowsBySourceRequest {
+  TopTVShowsSource source = 1;
+}
+
+message GetTopTVShowsBySourceResponse {
+  TopTVShowsSource source = 1;
+  repeated TopTVShow shows = 2;
+}
+
+message UserGetTopTVShowsRequest {}
+
+message UserGetTopTVShowsResponse {
+  TopTVShowsSource source = 1;
+  repeated TopTVShow shows = 2;
 }
 
 message GetUserSettingsRequest {}
@@ -479,6 +570,8 @@ message UserSettings {
   SortDirection sort_direction = 14;
   TopMoviesDisplayType top_movies_display_type = 15;
   TopMoviesSource top_movies_source = 16;
+  bool show_top_tv_shows = 17;
+  TopTVShowsSource top_tv_shows_source = 18;
 }
 
 message SaveUserSettingsRequest {

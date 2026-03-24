@@ -44,6 +44,9 @@ const (
 	// CoreServiceGetTopMoviesBySourceProcedure is the fully-qualified name of the CoreService's
 	// GetTopMoviesBySource RPC.
 	CoreServiceGetTopMoviesBySourceProcedure = "/chill.v4.CoreService/GetTopMoviesBySource"
+	// CoreServiceGetTopTVShowsBySourceProcedure is the fully-qualified name of the CoreService's
+	// GetTopTVShowsBySource RPC.
+	CoreServiceGetTopTVShowsBySourceProcedure = "/chill.v4.CoreService/GetTopTVShowsBySource"
 	// UserServiceGetIndexersProcedure is the fully-qualified name of the UserService's GetIndexers RPC.
 	UserServiceGetIndexersProcedure = "/chill.v4.UserService/GetIndexers"
 	// UserServiceSearchProcedure is the fully-qualified name of the UserService's Search RPC.
@@ -51,6 +54,9 @@ const (
 	// UserServiceGetTopMoviesProcedure is the fully-qualified name of the UserService's GetTopMovies
 	// RPC.
 	UserServiceGetTopMoviesProcedure = "/chill.v4.UserService/GetTopMovies"
+	// UserServiceGetTopTVShowsProcedure is the fully-qualified name of the UserService's GetTopTVShows
+	// RPC.
+	UserServiceGetTopTVShowsProcedure = "/chill.v4.UserService/GetTopTVShows"
 	// UserServiceGetUserSettingsProcedure is the fully-qualified name of the UserService's
 	// GetUserSettings RPC.
 	UserServiceGetUserSettingsProcedure = "/chill.v4.UserService/GetUserSettings"
@@ -77,6 +83,7 @@ type CoreServiceClient interface {
 	GetIndexers(context.Context, *connect.Request[v4.CoreGetIndexersRequest]) (*connect.Response[v4.CoreGetIndexersResponse], error)
 	Search(context.Context, *connect.Request[v4.CoreSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMoviesBySource(context.Context, *connect.Request[v4.GetTopMoviesBySourceRequest]) (*connect.Response[v4.GetTopMoviesBySourceResponse], error)
+	GetTopTVShowsBySource(context.Context, *connect.Request[v4.GetTopTVShowsBySourceRequest]) (*connect.Response[v4.GetTopTVShowsBySourceResponse], error)
 }
 
 // NewCoreServiceClient constructs a client for the chill.v4.CoreService service. By default, it
@@ -114,15 +121,22 @@ func NewCoreServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(coreServiceMethods.ByName("GetTopMoviesBySource")),
 			connect.WithClientOptions(opts...),
 		),
+		getTopTVShowsBySource: connect.NewClient[v4.GetTopTVShowsBySourceRequest, v4.GetTopTVShowsBySourceResponse](
+			httpClient,
+			baseURL+CoreServiceGetTopTVShowsBySourceProcedure,
+			connect.WithSchema(coreServiceMethods.ByName("GetTopTVShowsBySource")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // coreServiceClient implements CoreServiceClient.
 type coreServiceClient struct {
-	healthCheck          *connect.Client[v4.HealthCheckRequest, v4.HealthResponse]
-	getIndexers          *connect.Client[v4.CoreGetIndexersRequest, v4.CoreGetIndexersResponse]
-	search               *connect.Client[v4.CoreSearchRequest, v4.SearchResponse]
-	getTopMoviesBySource *connect.Client[v4.GetTopMoviesBySourceRequest, v4.GetTopMoviesBySourceResponse]
+	healthCheck           *connect.Client[v4.HealthCheckRequest, v4.HealthResponse]
+	getIndexers           *connect.Client[v4.CoreGetIndexersRequest, v4.CoreGetIndexersResponse]
+	search                *connect.Client[v4.CoreSearchRequest, v4.SearchResponse]
+	getTopMoviesBySource  *connect.Client[v4.GetTopMoviesBySourceRequest, v4.GetTopMoviesBySourceResponse]
+	getTopTVShowsBySource *connect.Client[v4.GetTopTVShowsBySourceRequest, v4.GetTopTVShowsBySourceResponse]
 }
 
 // HealthCheck calls chill.v4.CoreService.HealthCheck.
@@ -145,12 +159,18 @@ func (c *coreServiceClient) GetTopMoviesBySource(ctx context.Context, req *conne
 	return c.getTopMoviesBySource.CallUnary(ctx, req)
 }
 
+// GetTopTVShowsBySource calls chill.v4.CoreService.GetTopTVShowsBySource.
+func (c *coreServiceClient) GetTopTVShowsBySource(ctx context.Context, req *connect.Request[v4.GetTopTVShowsBySourceRequest]) (*connect.Response[v4.GetTopTVShowsBySourceResponse], error) {
+	return c.getTopTVShowsBySource.CallUnary(ctx, req)
+}
+
 // CoreServiceHandler is an implementation of the chill.v4.CoreService service.
 type CoreServiceHandler interface {
 	HealthCheck(context.Context, *connect.Request[v4.HealthCheckRequest]) (*connect.Response[v4.HealthResponse], error)
 	GetIndexers(context.Context, *connect.Request[v4.CoreGetIndexersRequest]) (*connect.Response[v4.CoreGetIndexersResponse], error)
 	Search(context.Context, *connect.Request[v4.CoreSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMoviesBySource(context.Context, *connect.Request[v4.GetTopMoviesBySourceRequest]) (*connect.Response[v4.GetTopMoviesBySourceResponse], error)
+	GetTopTVShowsBySource(context.Context, *connect.Request[v4.GetTopTVShowsBySourceRequest]) (*connect.Response[v4.GetTopTVShowsBySourceResponse], error)
 }
 
 // NewCoreServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -184,6 +204,12 @@ func NewCoreServiceHandler(svc CoreServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(coreServiceMethods.ByName("GetTopMoviesBySource")),
 		connect.WithHandlerOptions(opts...),
 	)
+	coreServiceGetTopTVShowsBySourceHandler := connect.NewUnaryHandler(
+		CoreServiceGetTopTVShowsBySourceProcedure,
+		svc.GetTopTVShowsBySource,
+		connect.WithSchema(coreServiceMethods.ByName("GetTopTVShowsBySource")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/chill.v4.CoreService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CoreServiceHealthCheckProcedure:
@@ -194,6 +220,8 @@ func NewCoreServiceHandler(svc CoreServiceHandler, opts ...connect.HandlerOption
 			coreServiceSearchHandler.ServeHTTP(w, r)
 		case CoreServiceGetTopMoviesBySourceProcedure:
 			coreServiceGetTopMoviesBySourceHandler.ServeHTTP(w, r)
+		case CoreServiceGetTopTVShowsBySourceProcedure:
+			coreServiceGetTopTVShowsBySourceHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -219,11 +247,16 @@ func (UnimplementedCoreServiceHandler) GetTopMoviesBySource(context.Context, *co
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.CoreService.GetTopMoviesBySource is not implemented"))
 }
 
+func (UnimplementedCoreServiceHandler) GetTopTVShowsBySource(context.Context, *connect.Request[v4.GetTopTVShowsBySourceRequest]) (*connect.Response[v4.GetTopTVShowsBySourceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.CoreService.GetTopTVShowsBySource is not implemented"))
+}
+
 // UserServiceClient is a client for the chill.v4.UserService service.
 type UserServiceClient interface {
 	GetIndexers(context.Context, *connect.Request[v4.UserGetIndexersRequest]) (*connect.Response[v4.UserGetIndexersResponse], error)
 	Search(context.Context, *connect.Request[v4.UserSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMovies(context.Context, *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error)
+	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -260,6 +293,12 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+UserServiceGetTopMoviesProcedure,
 			connect.WithSchema(userServiceMethods.ByName("GetTopMovies")),
+			connect.WithClientOptions(opts...),
+		),
+		getTopTVShows: connect.NewClient[v4.UserGetTopTVShowsRequest, v4.UserGetTopTVShowsResponse](
+			httpClient,
+			baseURL+UserServiceGetTopTVShowsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetTopTVShows")),
 			connect.WithClientOptions(opts...),
 		),
 		getUserSettings: connect.NewClient[v4.GetUserSettingsRequest, v4.UserSettings](
@@ -312,6 +351,7 @@ type userServiceClient struct {
 	getIndexers       *connect.Client[v4.UserGetIndexersRequest, v4.UserGetIndexersResponse]
 	search            *connect.Client[v4.UserSearchRequest, v4.SearchResponse]
 	getTopMovies      *connect.Client[v4.UserGetTopMoviesRequest, v4.UserGetTopMoviesResponse]
+	getTopTVShows     *connect.Client[v4.UserGetTopTVShowsRequest, v4.UserGetTopTVShowsResponse]
 	getUserSettings   *connect.Client[v4.GetUserSettingsRequest, v4.UserSettings]
 	saveUserSettings  *connect.Client[v4.SaveUserSettingsRequest, v4.UserSettings]
 	addTransfer       *connect.Client[v4.AddTransferRequest, v4.AddTransferResponse]
@@ -334,6 +374,11 @@ func (c *userServiceClient) Search(ctx context.Context, req *connect.Request[v4.
 // GetTopMovies calls chill.v4.UserService.GetTopMovies.
 func (c *userServiceClient) GetTopMovies(ctx context.Context, req *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error) {
 	return c.getTopMovies.CallUnary(ctx, req)
+}
+
+// GetTopTVShows calls chill.v4.UserService.GetTopTVShows.
+func (c *userServiceClient) GetTopTVShows(ctx context.Context, req *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error) {
+	return c.getTopTVShows.CallUnary(ctx, req)
 }
 
 // GetUserSettings calls chill.v4.UserService.GetUserSettings.
@@ -376,6 +421,7 @@ type UserServiceHandler interface {
 	GetIndexers(context.Context, *connect.Request[v4.UserGetIndexersRequest]) (*connect.Response[v4.UserGetIndexersResponse], error)
 	Search(context.Context, *connect.Request[v4.UserSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMovies(context.Context, *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error)
+	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -408,6 +454,12 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceGetTopMoviesProcedure,
 		svc.GetTopMovies,
 		connect.WithSchema(userServiceMethods.ByName("GetTopMovies")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetTopTVShowsHandler := connect.NewUnaryHandler(
+		UserServiceGetTopTVShowsProcedure,
+		svc.GetTopTVShows,
+		connect.WithSchema(userServiceMethods.ByName("GetTopTVShows")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceGetUserSettingsHandler := connect.NewUnaryHandler(
@@ -460,6 +512,8 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceSearchHandler.ServeHTTP(w, r)
 		case UserServiceGetTopMoviesProcedure:
 			userServiceGetTopMoviesHandler.ServeHTTP(w, r)
+		case UserServiceGetTopTVShowsProcedure:
+			userServiceGetTopTVShowsHandler.ServeHTTP(w, r)
 		case UserServiceGetUserSettingsProcedure:
 			userServiceGetUserSettingsHandler.ServeHTTP(w, r)
 		case UserServiceSaveUserSettingsProcedure:
@@ -493,6 +547,10 @@ func (UnimplementedUserServiceHandler) Search(context.Context, *connect.Request[
 
 func (UnimplementedUserServiceHandler) GetTopMovies(context.Context, *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTopMovies is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTopTVShows is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error) {
