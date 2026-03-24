@@ -281,6 +281,33 @@ paths:
         - UserService
       security:
         - BearerAuth: []
+  /chill.v4.UserService/GetTVShowEpisodeDownload:
+    post:
+      operationId: UserService_GetTVShowEpisodeDownload
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v4GetTVShowEpisodeDownloadResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v4GetTVShowEpisodeDownloadRequest'
+        - name: Authorization
+          description: 'User auth token. Format: Bearer <token>.'
+          in: header
+          required: true
+          type: string
+      tags:
+        - UserService
+      security:
+        - BearerAuth: []
   /chill.v4.UserService/GetTVShowSeason:
     post:
       operationId: UserService_GetTVShowSeason
@@ -299,6 +326,33 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/v4GetTVShowSeasonRequest'
+        - name: Authorization
+          description: 'User auth token. Format: Bearer <token>.'
+          in: header
+          required: true
+          type: string
+      tags:
+        - UserService
+      security:
+        - BearerAuth: []
+  /chill.v4.UserService/GetTVShowSeasonDownloads:
+    post:
+      operationId: UserService_GetTVShowSeasonDownloads
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v4GetTVShowSeasonDownloadsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v4GetTVShowSeasonDownloadsRequest'
         - name: Authorization
           description: 'User auth token. Format: Bearer <token>.'
           in: header
@@ -587,6 +641,44 @@ definitions:
         items:
           type: object
           $ref: '#/definitions/v4TVShowSeason'
+  v4GetTVShowEpisodeDownloadRequest:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+      episodeNumber:
+        type: integer
+        format: int32
+  v4GetTVShowEpisodeDownloadResponse:
+    type: object
+    properties:
+      download:
+        $ref: '#/definitions/v4TVShowDownload'
+      searchQuery:
+        type: string
+  v4GetTVShowSeasonDownloadsRequest:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+  v4GetTVShowSeasonDownloadsResponse:
+    type: object
+    properties:
+      seasonPack:
+        $ref: '#/definitions/v4TVShowDownload'
+      episodes:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4TVShowEpisodeDownloadResult'
+      seasonSearchQuery:
+        type: string
   v4GetTVShowSeasonRequest:
     type: object
     properties:
@@ -791,6 +883,33 @@ definitions:
         type: array
         items:
           type: string
+  v4TVShowDownload:
+    type: object
+    properties:
+      title:
+        type: string
+      link:
+        type: string
+      size:
+        type: string
+        format: int64
+      seeders:
+        type: string
+        format: int64
+      resolution:
+        type: string
+      codec:
+        type: string
+      quality:
+        type: string
+      indexer:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+      episodeNumber:
+        type: integer
+        format: int32
   v4TVShowEpisode:
     type: object
     properties:
@@ -814,6 +933,16 @@ definitions:
       rating:
         type: number
         format: double
+  v4TVShowEpisodeDownloadResult:
+    type: object
+    properties:
+      episodeNumber:
+        type: integer
+        format: int32
+      download:
+        $ref: '#/definitions/v4TVShowDownload'
+      searchQuery:
+        type: string
   v4TVShowSeason:
     type: object
     properties:

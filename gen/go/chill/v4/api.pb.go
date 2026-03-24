@@ -2477,6 +2477,406 @@ func (x *GetTVShowSeasonResponse) GetEpisodes() []*TVShowEpisode {
 	return nil
 }
 
+type TVShowDownload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Link          string                 `protobuf:"bytes,2,opt,name=link,proto3" json:"link,omitempty"`
+	Size          int64                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	Seeders       int64                  `protobuf:"varint,4,opt,name=seeders,proto3" json:"seeders,omitempty"`
+	Resolution    string                 `protobuf:"bytes,5,opt,name=resolution,proto3" json:"resolution,omitempty"`
+	Codec         string                 `protobuf:"bytes,6,opt,name=codec,proto3" json:"codec,omitempty"`
+	Quality       string                 `protobuf:"bytes,7,opt,name=quality,proto3" json:"quality,omitempty"`
+	Indexer       string                 `protobuf:"bytes,8,opt,name=indexer,proto3" json:"indexer,omitempty"`
+	SeasonNumber  int32                  `protobuf:"varint,9,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
+	EpisodeNumber *int32                 `protobuf:"varint,10,opt,name=episode_number,json=episodeNumber,proto3,oneof" json:"episode_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TVShowDownload) Reset() {
+	*x = TVShowDownload{}
+	mi := &file_chill_v4_api_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TVShowDownload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TVShowDownload) ProtoMessage() {}
+
+func (x *TVShowDownload) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TVShowDownload.ProtoReflect.Descriptor instead.
+func (*TVShowDownload) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *TVShowDownload) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetLink() string {
+	if x != nil {
+		return x.Link
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetSize() int64 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *TVShowDownload) GetSeeders() int64 {
+	if x != nil {
+		return x.Seeders
+	}
+	return 0
+}
+
+func (x *TVShowDownload) GetResolution() string {
+	if x != nil {
+		return x.Resolution
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetCodec() string {
+	if x != nil {
+		return x.Codec
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetQuality() string {
+	if x != nil {
+		return x.Quality
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetIndexer() string {
+	if x != nil {
+		return x.Indexer
+	}
+	return ""
+}
+
+func (x *TVShowDownload) GetSeasonNumber() int32 {
+	if x != nil {
+		return x.SeasonNumber
+	}
+	return 0
+}
+
+func (x *TVShowDownload) GetEpisodeNumber() int32 {
+	if x != nil && x.EpisodeNumber != nil {
+		return *x.EpisodeNumber
+	}
+	return 0
+}
+
+type GetTVShowEpisodeDownloadRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
+	EpisodeNumber int32                  `protobuf:"varint,3,opt,name=episode_number,json=episodeNumber,proto3" json:"episode_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTVShowEpisodeDownloadRequest) Reset() {
+	*x = GetTVShowEpisodeDownloadRequest{}
+	mi := &file_chill_v4_api_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTVShowEpisodeDownloadRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTVShowEpisodeDownloadRequest) ProtoMessage() {}
+
+func (x *GetTVShowEpisodeDownloadRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTVShowEpisodeDownloadRequest.ProtoReflect.Descriptor instead.
+func (*GetTVShowEpisodeDownloadRequest) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *GetTVShowEpisodeDownloadRequest) GetTmdbId() string {
+	if x != nil {
+		return x.TmdbId
+	}
+	return ""
+}
+
+func (x *GetTVShowEpisodeDownloadRequest) GetSeasonNumber() int32 {
+	if x != nil {
+		return x.SeasonNumber
+	}
+	return 0
+}
+
+func (x *GetTVShowEpisodeDownloadRequest) GetEpisodeNumber() int32 {
+	if x != nil {
+		return x.EpisodeNumber
+	}
+	return 0
+}
+
+type GetTVShowEpisodeDownloadResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Download      *TVShowDownload        `protobuf:"bytes,1,opt,name=download,proto3,oneof" json:"download,omitempty"`
+	SearchQuery   string                 `protobuf:"bytes,2,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTVShowEpisodeDownloadResponse) Reset() {
+	*x = GetTVShowEpisodeDownloadResponse{}
+	mi := &file_chill_v4_api_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTVShowEpisodeDownloadResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTVShowEpisodeDownloadResponse) ProtoMessage() {}
+
+func (x *GetTVShowEpisodeDownloadResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTVShowEpisodeDownloadResponse.ProtoReflect.Descriptor instead.
+func (*GetTVShowEpisodeDownloadResponse) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *GetTVShowEpisodeDownloadResponse) GetDownload() *TVShowDownload {
+	if x != nil {
+		return x.Download
+	}
+	return nil
+}
+
+func (x *GetTVShowEpisodeDownloadResponse) GetSearchQuery() string {
+	if x != nil {
+		return x.SearchQuery
+	}
+	return ""
+}
+
+type GetTVShowSeasonDownloadsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TmdbId        string                 `protobuf:"bytes,1,opt,name=tmdb_id,json=tmdbId,proto3" json:"tmdb_id,omitempty"`
+	SeasonNumber  int32                  `protobuf:"varint,2,opt,name=season_number,json=seasonNumber,proto3" json:"season_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTVShowSeasonDownloadsRequest) Reset() {
+	*x = GetTVShowSeasonDownloadsRequest{}
+	mi := &file_chill_v4_api_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTVShowSeasonDownloadsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTVShowSeasonDownloadsRequest) ProtoMessage() {}
+
+func (x *GetTVShowSeasonDownloadsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTVShowSeasonDownloadsRequest.ProtoReflect.Descriptor instead.
+func (*GetTVShowSeasonDownloadsRequest) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *GetTVShowSeasonDownloadsRequest) GetTmdbId() string {
+	if x != nil {
+		return x.TmdbId
+	}
+	return ""
+}
+
+func (x *GetTVShowSeasonDownloadsRequest) GetSeasonNumber() int32 {
+	if x != nil {
+		return x.SeasonNumber
+	}
+	return 0
+}
+
+type GetTVShowSeasonDownloadsResponse struct {
+	state             protoimpl.MessageState         `protogen:"open.v1"`
+	SeasonPack        *TVShowDownload                `protobuf:"bytes,1,opt,name=season_pack,json=seasonPack,proto3,oneof" json:"season_pack,omitempty"`
+	Episodes          []*TVShowEpisodeDownloadResult `protobuf:"bytes,2,rep,name=episodes,proto3" json:"episodes,omitempty"`
+	SeasonSearchQuery string                         `protobuf:"bytes,3,opt,name=season_search_query,json=seasonSearchQuery,proto3" json:"season_search_query,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *GetTVShowSeasonDownloadsResponse) Reset() {
+	*x = GetTVShowSeasonDownloadsResponse{}
+	mi := &file_chill_v4_api_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTVShowSeasonDownloadsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTVShowSeasonDownloadsResponse) ProtoMessage() {}
+
+func (x *GetTVShowSeasonDownloadsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTVShowSeasonDownloadsResponse.ProtoReflect.Descriptor instead.
+func (*GetTVShowSeasonDownloadsResponse) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *GetTVShowSeasonDownloadsResponse) GetSeasonPack() *TVShowDownload {
+	if x != nil {
+		return x.SeasonPack
+	}
+	return nil
+}
+
+func (x *GetTVShowSeasonDownloadsResponse) GetEpisodes() []*TVShowEpisodeDownloadResult {
+	if x != nil {
+		return x.Episodes
+	}
+	return nil
+}
+
+func (x *GetTVShowSeasonDownloadsResponse) GetSeasonSearchQuery() string {
+	if x != nil {
+		return x.SeasonSearchQuery
+	}
+	return ""
+}
+
+type TVShowEpisodeDownloadResult struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EpisodeNumber int32                  `protobuf:"varint,1,opt,name=episode_number,json=episodeNumber,proto3" json:"episode_number,omitempty"`
+	Download      *TVShowDownload        `protobuf:"bytes,2,opt,name=download,proto3,oneof" json:"download,omitempty"`
+	SearchQuery   string                 `protobuf:"bytes,3,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TVShowEpisodeDownloadResult) Reset() {
+	*x = TVShowEpisodeDownloadResult{}
+	mi := &file_chill_v4_api_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TVShowEpisodeDownloadResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TVShowEpisodeDownloadResult) ProtoMessage() {}
+
+func (x *TVShowEpisodeDownloadResult) ProtoReflect() protoreflect.Message {
+	mi := &file_chill_v4_api_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TVShowEpisodeDownloadResult.ProtoReflect.Descriptor instead.
+func (*TVShowEpisodeDownloadResult) Descriptor() ([]byte, []int) {
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *TVShowEpisodeDownloadResult) GetEpisodeNumber() int32 {
+	if x != nil {
+		return x.EpisodeNumber
+	}
+	return 0
+}
+
+func (x *TVShowEpisodeDownloadResult) GetDownload() *TVShowDownload {
+	if x != nil {
+		return x.Download
+	}
+	return nil
+}
+
+func (x *TVShowEpisodeDownloadResult) GetSearchQuery() string {
+	if x != nil {
+		return x.SearchQuery
+	}
+	return ""
+}
+
 type GetUserSettingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -2485,7 +2885,7 @@ type GetUserSettingsRequest struct {
 
 func (x *GetUserSettingsRequest) Reset() {
 	*x = GetUserSettingsRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[29]
+	mi := &file_chill_v4_api_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2497,7 +2897,7 @@ func (x *GetUserSettingsRequest) String() string {
 func (*GetUserSettingsRequest) ProtoMessage() {}
 
 func (x *GetUserSettingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[29]
+	mi := &file_chill_v4_api_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2510,7 +2910,7 @@ func (x *GetUserSettingsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserSettingsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserSettingsRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{29}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{35}
 }
 
 type UserSettings struct {
@@ -2539,7 +2939,7 @@ type UserSettings struct {
 
 func (x *UserSettings) Reset() {
 	*x = UserSettings{}
-	mi := &file_chill_v4_api_proto_msgTypes[30]
+	mi := &file_chill_v4_api_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2551,7 +2951,7 @@ func (x *UserSettings) String() string {
 func (*UserSettings) ProtoMessage() {}
 
 func (x *UserSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[30]
+	mi := &file_chill_v4_api_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2564,7 +2964,7 @@ func (x *UserSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserSettings.ProtoReflect.Descriptor instead.
 func (*UserSettings) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{30}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *UserSettings) GetCodecFilters() []CodecFilter {
@@ -2702,7 +3102,7 @@ type SaveUserSettingsRequest struct {
 
 func (x *SaveUserSettingsRequest) Reset() {
 	*x = SaveUserSettingsRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[31]
+	mi := &file_chill_v4_api_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2714,7 +3114,7 @@ func (x *SaveUserSettingsRequest) String() string {
 func (*SaveUserSettingsRequest) ProtoMessage() {}
 
 func (x *SaveUserSettingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[31]
+	mi := &file_chill_v4_api_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2727,7 +3127,7 @@ func (x *SaveUserSettingsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveUserSettingsRequest.ProtoReflect.Descriptor instead.
 func (*SaveUserSettingsRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{31}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *SaveUserSettingsRequest) GetSettings() *UserSettings {
@@ -2746,7 +3146,7 @@ type AddTransferRequest struct {
 
 func (x *AddTransferRequest) Reset() {
 	*x = AddTransferRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[32]
+	mi := &file_chill_v4_api_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2758,7 +3158,7 @@ func (x *AddTransferRequest) String() string {
 func (*AddTransferRequest) ProtoMessage() {}
 
 func (x *AddTransferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[32]
+	mi := &file_chill_v4_api_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2771,7 +3171,7 @@ func (x *AddTransferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTransferRequest.ProtoReflect.Descriptor instead.
 func (*AddTransferRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{32}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *AddTransferRequest) GetUrl() string {
@@ -2791,7 +3191,7 @@ type AddTransferResponse struct {
 
 func (x *AddTransferResponse) Reset() {
 	*x = AddTransferResponse{}
-	mi := &file_chill_v4_api_proto_msgTypes[33]
+	mi := &file_chill_v4_api_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2803,7 +3203,7 @@ func (x *AddTransferResponse) String() string {
 func (*AddTransferResponse) ProtoMessage() {}
 
 func (x *AddTransferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[33]
+	mi := &file_chill_v4_api_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2816,7 +3216,7 @@ func (x *AddTransferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTransferResponse.ProtoReflect.Descriptor instead.
 func (*AddTransferResponse) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{33}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *AddTransferResponse) GetStatus() string {
@@ -2842,7 +3242,7 @@ type GetTransferRequest struct {
 
 func (x *GetTransferRequest) Reset() {
 	*x = GetTransferRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[34]
+	mi := &file_chill_v4_api_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2854,7 +3254,7 @@ func (x *GetTransferRequest) String() string {
 func (*GetTransferRequest) ProtoMessage() {}
 
 func (x *GetTransferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[34]
+	mi := &file_chill_v4_api_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2867,7 +3267,7 @@ func (x *GetTransferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTransferRequest.ProtoReflect.Descriptor instead.
 func (*GetTransferRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{34}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetTransferRequest) GetId() int64 {
@@ -2886,7 +3286,7 @@ type GetTransferResponse struct {
 
 func (x *GetTransferResponse) Reset() {
 	*x = GetTransferResponse{}
-	mi := &file_chill_v4_api_proto_msgTypes[35]
+	mi := &file_chill_v4_api_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2898,7 +3298,7 @@ func (x *GetTransferResponse) String() string {
 func (*GetTransferResponse) ProtoMessage() {}
 
 func (x *GetTransferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[35]
+	mi := &file_chill_v4_api_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2911,7 +3311,7 @@ func (x *GetTransferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTransferResponse.ProtoReflect.Descriptor instead.
 func (*GetTransferResponse) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{35}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetTransferResponse) GetTransfer() *Transfer {
@@ -2951,7 +3351,7 @@ type Transfer struct {
 
 func (x *Transfer) Reset() {
 	*x = Transfer{}
-	mi := &file_chill_v4_api_proto_msgTypes[36]
+	mi := &file_chill_v4_api_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2963,7 +3363,7 @@ func (x *Transfer) String() string {
 func (*Transfer) ProtoMessage() {}
 
 func (x *Transfer) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[36]
+	mi := &file_chill_v4_api_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2976,7 +3376,7 @@ func (x *Transfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Transfer.ProtoReflect.Descriptor instead.
 func (*Transfer) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{36}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *Transfer) GetId() int64 {
@@ -3141,7 +3541,7 @@ type GetDownloadFolderRequest struct {
 
 func (x *GetDownloadFolderRequest) Reset() {
 	*x = GetDownloadFolderRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[37]
+	mi := &file_chill_v4_api_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3153,7 +3553,7 @@ func (x *GetDownloadFolderRequest) String() string {
 func (*GetDownloadFolderRequest) ProtoMessage() {}
 
 func (x *GetDownloadFolderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[37]
+	mi := &file_chill_v4_api_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3166,7 +3566,7 @@ func (x *GetDownloadFolderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDownloadFolderRequest.ProtoReflect.Descriptor instead.
 func (*GetDownloadFolderRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{37}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{43}
 }
 
 type GetDownloadFolderResponse struct {
@@ -3178,7 +3578,7 @@ type GetDownloadFolderResponse struct {
 
 func (x *GetDownloadFolderResponse) Reset() {
 	*x = GetDownloadFolderResponse{}
-	mi := &file_chill_v4_api_proto_msgTypes[38]
+	mi := &file_chill_v4_api_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3190,7 +3590,7 @@ func (x *GetDownloadFolderResponse) String() string {
 func (*GetDownloadFolderResponse) ProtoMessage() {}
 
 func (x *GetDownloadFolderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[38]
+	mi := &file_chill_v4_api_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3203,7 +3603,7 @@ func (x *GetDownloadFolderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDownloadFolderResponse.ProtoReflect.Descriptor instead.
 func (*GetDownloadFolderResponse) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{38}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *GetDownloadFolderResponse) GetFolder() *UserFile {
@@ -3222,7 +3622,7 @@ type GetFolderRequest struct {
 
 func (x *GetFolderRequest) Reset() {
 	*x = GetFolderRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[39]
+	mi := &file_chill_v4_api_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3234,7 +3634,7 @@ func (x *GetFolderRequest) String() string {
 func (*GetFolderRequest) ProtoMessage() {}
 
 func (x *GetFolderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[39]
+	mi := &file_chill_v4_api_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3247,7 +3647,7 @@ func (x *GetFolderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFolderRequest.ProtoReflect.Descriptor instead.
 func (*GetFolderRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{39}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *GetFolderRequest) GetId() int64 {
@@ -3270,7 +3670,7 @@ type UserFile struct {
 
 func (x *UserFile) Reset() {
 	*x = UserFile{}
-	mi := &file_chill_v4_api_proto_msgTypes[40]
+	mi := &file_chill_v4_api_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3282,7 +3682,7 @@ func (x *UserFile) String() string {
 func (*UserFile) ProtoMessage() {}
 
 func (x *UserFile) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[40]
+	mi := &file_chill_v4_api_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3295,7 +3695,7 @@ func (x *UserFile) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserFile.ProtoReflect.Descriptor instead.
 func (*UserFile) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{40}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *UserFile) GetId() int64 {
@@ -3343,7 +3743,7 @@ type GetFolderResponse struct {
 
 func (x *GetFolderResponse) Reset() {
 	*x = GetFolderResponse{}
-	mi := &file_chill_v4_api_proto_msgTypes[41]
+	mi := &file_chill_v4_api_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3355,7 +3755,7 @@ func (x *GetFolderResponse) String() string {
 func (*GetFolderResponse) ProtoMessage() {}
 
 func (x *GetFolderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[41]
+	mi := &file_chill_v4_api_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3368,7 +3768,7 @@ func (x *GetFolderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFolderResponse.ProtoReflect.Descriptor instead.
 func (*GetFolderResponse) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{41}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetFolderResponse) GetParent() *UserFile {
@@ -3393,7 +3793,7 @@ type GetUserProfileRequest struct {
 
 func (x *GetUserProfileRequest) Reset() {
 	*x = GetUserProfileRequest{}
-	mi := &file_chill_v4_api_proto_msgTypes[42]
+	mi := &file_chill_v4_api_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3405,7 +3805,7 @@ func (x *GetUserProfileRequest) String() string {
 func (*GetUserProfileRequest) ProtoMessage() {}
 
 func (x *GetUserProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[42]
+	mi := &file_chill_v4_api_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3418,7 +3818,7 @@ func (x *GetUserProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserProfileRequest.ProtoReflect.Descriptor instead.
 func (*GetUserProfileRequest) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{42}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{48}
 }
 
 type UserProfile struct {
@@ -3433,7 +3833,7 @@ type UserProfile struct {
 
 func (x *UserProfile) Reset() {
 	*x = UserProfile{}
-	mi := &file_chill_v4_api_proto_msgTypes[43]
+	mi := &file_chill_v4_api_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3445,7 +3845,7 @@ func (x *UserProfile) String() string {
 func (*UserProfile) ProtoMessage() {}
 
 func (x *UserProfile) ProtoReflect() protoreflect.Message {
-	mi := &file_chill_v4_api_proto_msgTypes[43]
+	mi := &file_chill_v4_api_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3458,7 +3858,7 @@ func (x *UserProfile) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserProfile.ProtoReflect.Descriptor instead.
 func (*UserProfile) Descriptor() ([]byte, []int) {
-	return file_chill_v4_api_proto_rawDescGZIP(), []int{43}
+	return file_chill_v4_api_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *UserProfile) GetUserId() string {
@@ -3641,7 +4041,44 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
 	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\x12.\n" +
 	"\x06season\x18\x03 \x01(\v2\x16.chill.v4.TVShowSeasonR\x06season\x123\n" +
-	"\bepisodes\x18\x04 \x03(\v2\x17.chill.v4.TVShowEpisodeR\bepisodes\"\x18\n" +
+	"\bepisodes\x18\x04 \x03(\v2\x17.chill.v4.TVShowEpisodeR\bepisodes\"\xb6\x02\n" +
+	"\x0eTVShowDownload\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x12\n" +
+	"\x04link\x18\x02 \x01(\tR\x04link\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x18\n" +
+	"\aseeders\x18\x04 \x01(\x03R\aseeders\x12\x1e\n" +
+	"\n" +
+	"resolution\x18\x05 \x01(\tR\n" +
+	"resolution\x12\x14\n" +
+	"\x05codec\x18\x06 \x01(\tR\x05codec\x12\x18\n" +
+	"\aquality\x18\a \x01(\tR\aquality\x12\x18\n" +
+	"\aindexer\x18\b \x01(\tR\aindexer\x12#\n" +
+	"\rseason_number\x18\t \x01(\x05R\fseasonNumber\x12*\n" +
+	"\x0eepisode_number\x18\n" +
+	" \x01(\x05H\x00R\repisodeNumber\x88\x01\x01B\x11\n" +
+	"\x0f_episode_number\"\x86\x01\n" +
+	"\x1fGetTVShowEpisodeDownloadRequest\x12\x17\n" +
+	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\x12%\n" +
+	"\x0eepisode_number\x18\x03 \x01(\x05R\repisodeNumber\"\x8d\x01\n" +
+	" GetTVShowEpisodeDownloadResponse\x129\n" +
+	"\bdownload\x18\x01 \x01(\v2\x18.chill.v4.TVShowDownloadH\x00R\bdownload\x88\x01\x01\x12!\n" +
+	"\fsearch_query\x18\x02 \x01(\tR\vsearchQueryB\v\n" +
+	"\t_download\"_\n" +
+	"\x1fGetTVShowSeasonDownloadsRequest\x12\x17\n" +
+	"\atmdb_id\x18\x01 \x01(\tR\x06tmdbId\x12#\n" +
+	"\rseason_number\x18\x02 \x01(\x05R\fseasonNumber\"\xe5\x01\n" +
+	" GetTVShowSeasonDownloadsResponse\x12>\n" +
+	"\vseason_pack\x18\x01 \x01(\v2\x18.chill.v4.TVShowDownloadH\x00R\n" +
+	"seasonPack\x88\x01\x01\x12A\n" +
+	"\bepisodes\x18\x02 \x03(\v2%.chill.v4.TVShowEpisodeDownloadResultR\bepisodes\x12.\n" +
+	"\x13season_search_query\x18\x03 \x01(\tR\x11seasonSearchQueryB\x0e\n" +
+	"\f_season_pack\"\xaf\x01\n" +
+	"\x1bTVShowEpisodeDownloadResult\x12%\n" +
+	"\x0eepisode_number\x18\x01 \x01(\x05R\repisodeNumber\x129\n" +
+	"\bdownload\x18\x02 \x01(\v2\x18.chill.v4.TVShowDownloadH\x00R\bdownload\x88\x01\x01\x12!\n" +
+	"\fsearch_query\x18\x03 \x01(\tR\vsearchQueryB\v\n" +
+	"\t_download\"\x18\n" +
 	"\x16GetUserSettingsRequest\"\xb9\t\n" +
 	"\fUserSettings\x12:\n" +
 	"\rcodec_filters\x18\x01 \x03(\x0e2\x15.chill.v4.CodecFilterR\fcodecFilters\x120\n" +
@@ -3823,7 +4260,7 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\n" +
 	"ApiKeyAuth\x12\x00r\x1f\n" +
 	"\x1d\n" +
-	"\tX-API-Key\x12\fCore API key\x18\x01(\x012\xaa\x11\n" +
+	"\tX-API-Key\x12\fCore API key\x18\x01(\x012\xc2\x14\n" +
 	"\vUserService\x12\xaa\x01\n" +
 	"\vGetIndexers\x12 .chill.v4.UserGetIndexersRequest\x1a!.chill.v4.UserGetIndexersResponse\"V\x92ASb\x10\n" +
 	"\x0e\n" +
@@ -3856,6 +4293,18 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"=\n" +
 	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\xae\x01\n" +
 	"\x0fGetTVShowSeason\x12 .chill.v4.GetTVShowSeasonRequest\x1a!.chill.v4.GetTVShowSeasonResponse\"V\x92ASb\x10\n" +
+	"\x0e\n" +
+	"\n" +
+	"BearerAuth\x12\x00r?\n" +
+	"=\n" +
+	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\xc9\x01\n" +
+	"\x18GetTVShowEpisodeDownload\x12).chill.v4.GetTVShowEpisodeDownloadRequest\x1a*.chill.v4.GetTVShowEpisodeDownloadResponse\"V\x92ASb\x10\n" +
+	"\x0e\n" +
+	"\n" +
+	"BearerAuth\x12\x00r?\n" +
+	"=\n" +
+	"\rAuthorization\x12(User auth token. Format: Bearer <token>.\x18\x01(\x01\x12\xc9\x01\n" +
+	"\x18GetTVShowSeasonDownloads\x12).chill.v4.GetTVShowSeasonDownloadsRequest\x1a*.chill.v4.GetTVShowSeasonDownloadsResponse\"V\x92ASb\x10\n" +
 	"\x0e\n" +
 	"\n" +
 	"BearerAuth\x12\x00r?\n" +
@@ -3925,64 +4374,70 @@ func file_chill_v4_api_proto_rawDescGZIP() []byte {
 }
 
 var file_chill_v4_api_proto_enumTypes = make([]protoimpl.EnumInfo, 12)
-var file_chill_v4_api_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
+var file_chill_v4_api_proto_msgTypes = make([]protoimpl.MessageInfo, 50)
 var file_chill_v4_api_proto_goTypes = []any{
-	(IndexerStatus)(0),                    // 0: chill.v4.IndexerStatus
-	(TopMoviesSource)(0),                  // 1: chill.v4.TopMoviesSource
-	(TopTVShowsSource)(0),                 // 2: chill.v4.TopTVShowsSource
-	(TVShowStatus)(0),                     // 3: chill.v4.TVShowStatus
-	(ResolutionFilter)(0),                 // 4: chill.v4.ResolutionFilter
-	(CodecFilter)(0),                      // 5: chill.v4.CodecFilter
-	(OtherFilter)(0),                      // 6: chill.v4.OtherFilter
-	(SearchResultDisplayBehavior)(0),      // 7: chill.v4.SearchResultDisplayBehavior
-	(SearchResultTitleBehavior)(0),        // 8: chill.v4.SearchResultTitleBehavior
-	(SortBy)(0),                           // 9: chill.v4.SortBy
-	(SortDirection)(0),                    // 10: chill.v4.SortDirection
-	(TopMoviesDisplayType)(0),             // 11: chill.v4.TopMoviesDisplayType
-	(*HealthCheckRequest)(nil),            // 12: chill.v4.HealthCheckRequest
-	(*HealthResponse)(nil),                // 13: chill.v4.HealthResponse
-	(*CoreGetIndexersRequest)(nil),        // 14: chill.v4.CoreGetIndexersRequest
-	(*Indexer)(nil),                       // 15: chill.v4.Indexer
-	(*CoreGetIndexersResponse)(nil),       // 16: chill.v4.CoreGetIndexersResponse
-	(*UserGetIndexersRequest)(nil),        // 17: chill.v4.UserGetIndexersRequest
-	(*UserGetIndexersResponse)(nil),       // 18: chill.v4.UserGetIndexersResponse
-	(*UserIndexer)(nil),                   // 19: chill.v4.UserIndexer
-	(*CoreSearchRequest)(nil),             // 20: chill.v4.CoreSearchRequest
-	(*SearchResult)(nil),                  // 21: chill.v4.SearchResult
-	(*SearchResponse)(nil),                // 22: chill.v4.SearchResponse
-	(*UserSearchRequest)(nil),             // 23: chill.v4.UserSearchRequest
-	(*GetTopMoviesBySourceRequest)(nil),   // 24: chill.v4.GetTopMoviesBySourceRequest
-	(*TopMovie)(nil),                      // 25: chill.v4.TopMovie
-	(*GetTopMoviesBySourceResponse)(nil),  // 26: chill.v4.GetTopMoviesBySourceResponse
-	(*UserGetTopMoviesRequest)(nil),       // 27: chill.v4.UserGetTopMoviesRequest
-	(*UserGetTopMoviesResponse)(nil),      // 28: chill.v4.UserGetTopMoviesResponse
-	(*TopTVShow)(nil),                     // 29: chill.v4.TopTVShow
-	(*GetTopTVShowsBySourceRequest)(nil),  // 30: chill.v4.GetTopTVShowsBySourceRequest
-	(*GetTopTVShowsBySourceResponse)(nil), // 31: chill.v4.GetTopTVShowsBySourceResponse
-	(*UserGetTopTVShowsRequest)(nil),      // 32: chill.v4.UserGetTopTVShowsRequest
-	(*UserGetTopTVShowsResponse)(nil),     // 33: chill.v4.UserGetTopTVShowsResponse
-	(*TVShowDetail)(nil),                  // 34: chill.v4.TVShowDetail
-	(*TVShowSeason)(nil),                  // 35: chill.v4.TVShowSeason
-	(*TVShowEpisode)(nil),                 // 36: chill.v4.TVShowEpisode
-	(*GetTVShowDetailRequest)(nil),        // 37: chill.v4.GetTVShowDetailRequest
-	(*GetTVShowDetailResponse)(nil),       // 38: chill.v4.GetTVShowDetailResponse
-	(*GetTVShowSeasonRequest)(nil),        // 39: chill.v4.GetTVShowSeasonRequest
-	(*GetTVShowSeasonResponse)(nil),       // 40: chill.v4.GetTVShowSeasonResponse
-	(*GetUserSettingsRequest)(nil),        // 41: chill.v4.GetUserSettingsRequest
-	(*UserSettings)(nil),                  // 42: chill.v4.UserSettings
-	(*SaveUserSettingsRequest)(nil),       // 43: chill.v4.SaveUserSettingsRequest
-	(*AddTransferRequest)(nil),            // 44: chill.v4.AddTransferRequest
-	(*AddTransferResponse)(nil),           // 45: chill.v4.AddTransferResponse
-	(*GetTransferRequest)(nil),            // 46: chill.v4.GetTransferRequest
-	(*GetTransferResponse)(nil),           // 47: chill.v4.GetTransferResponse
-	(*Transfer)(nil),                      // 48: chill.v4.Transfer
-	(*GetDownloadFolderRequest)(nil),      // 49: chill.v4.GetDownloadFolderRequest
-	(*GetDownloadFolderResponse)(nil),     // 50: chill.v4.GetDownloadFolderResponse
-	(*GetFolderRequest)(nil),              // 51: chill.v4.GetFolderRequest
-	(*UserFile)(nil),                      // 52: chill.v4.UserFile
-	(*GetFolderResponse)(nil),             // 53: chill.v4.GetFolderResponse
-	(*GetUserProfileRequest)(nil),         // 54: chill.v4.GetUserProfileRequest
-	(*UserProfile)(nil),                   // 55: chill.v4.UserProfile
+	(IndexerStatus)(0),                       // 0: chill.v4.IndexerStatus
+	(TopMoviesSource)(0),                     // 1: chill.v4.TopMoviesSource
+	(TopTVShowsSource)(0),                    // 2: chill.v4.TopTVShowsSource
+	(TVShowStatus)(0),                        // 3: chill.v4.TVShowStatus
+	(ResolutionFilter)(0),                    // 4: chill.v4.ResolutionFilter
+	(CodecFilter)(0),                         // 5: chill.v4.CodecFilter
+	(OtherFilter)(0),                         // 6: chill.v4.OtherFilter
+	(SearchResultDisplayBehavior)(0),         // 7: chill.v4.SearchResultDisplayBehavior
+	(SearchResultTitleBehavior)(0),           // 8: chill.v4.SearchResultTitleBehavior
+	(SortBy)(0),                              // 9: chill.v4.SortBy
+	(SortDirection)(0),                       // 10: chill.v4.SortDirection
+	(TopMoviesDisplayType)(0),                // 11: chill.v4.TopMoviesDisplayType
+	(*HealthCheckRequest)(nil),               // 12: chill.v4.HealthCheckRequest
+	(*HealthResponse)(nil),                   // 13: chill.v4.HealthResponse
+	(*CoreGetIndexersRequest)(nil),           // 14: chill.v4.CoreGetIndexersRequest
+	(*Indexer)(nil),                          // 15: chill.v4.Indexer
+	(*CoreGetIndexersResponse)(nil),          // 16: chill.v4.CoreGetIndexersResponse
+	(*UserGetIndexersRequest)(nil),           // 17: chill.v4.UserGetIndexersRequest
+	(*UserGetIndexersResponse)(nil),          // 18: chill.v4.UserGetIndexersResponse
+	(*UserIndexer)(nil),                      // 19: chill.v4.UserIndexer
+	(*CoreSearchRequest)(nil),                // 20: chill.v4.CoreSearchRequest
+	(*SearchResult)(nil),                     // 21: chill.v4.SearchResult
+	(*SearchResponse)(nil),                   // 22: chill.v4.SearchResponse
+	(*UserSearchRequest)(nil),                // 23: chill.v4.UserSearchRequest
+	(*GetTopMoviesBySourceRequest)(nil),      // 24: chill.v4.GetTopMoviesBySourceRequest
+	(*TopMovie)(nil),                         // 25: chill.v4.TopMovie
+	(*GetTopMoviesBySourceResponse)(nil),     // 26: chill.v4.GetTopMoviesBySourceResponse
+	(*UserGetTopMoviesRequest)(nil),          // 27: chill.v4.UserGetTopMoviesRequest
+	(*UserGetTopMoviesResponse)(nil),         // 28: chill.v4.UserGetTopMoviesResponse
+	(*TopTVShow)(nil),                        // 29: chill.v4.TopTVShow
+	(*GetTopTVShowsBySourceRequest)(nil),     // 30: chill.v4.GetTopTVShowsBySourceRequest
+	(*GetTopTVShowsBySourceResponse)(nil),    // 31: chill.v4.GetTopTVShowsBySourceResponse
+	(*UserGetTopTVShowsRequest)(nil),         // 32: chill.v4.UserGetTopTVShowsRequest
+	(*UserGetTopTVShowsResponse)(nil),        // 33: chill.v4.UserGetTopTVShowsResponse
+	(*TVShowDetail)(nil),                     // 34: chill.v4.TVShowDetail
+	(*TVShowSeason)(nil),                     // 35: chill.v4.TVShowSeason
+	(*TVShowEpisode)(nil),                    // 36: chill.v4.TVShowEpisode
+	(*GetTVShowDetailRequest)(nil),           // 37: chill.v4.GetTVShowDetailRequest
+	(*GetTVShowDetailResponse)(nil),          // 38: chill.v4.GetTVShowDetailResponse
+	(*GetTVShowSeasonRequest)(nil),           // 39: chill.v4.GetTVShowSeasonRequest
+	(*GetTVShowSeasonResponse)(nil),          // 40: chill.v4.GetTVShowSeasonResponse
+	(*TVShowDownload)(nil),                   // 41: chill.v4.TVShowDownload
+	(*GetTVShowEpisodeDownloadRequest)(nil),  // 42: chill.v4.GetTVShowEpisodeDownloadRequest
+	(*GetTVShowEpisodeDownloadResponse)(nil), // 43: chill.v4.GetTVShowEpisodeDownloadResponse
+	(*GetTVShowSeasonDownloadsRequest)(nil),  // 44: chill.v4.GetTVShowSeasonDownloadsRequest
+	(*GetTVShowSeasonDownloadsResponse)(nil), // 45: chill.v4.GetTVShowSeasonDownloadsResponse
+	(*TVShowEpisodeDownloadResult)(nil),      // 46: chill.v4.TVShowEpisodeDownloadResult
+	(*GetUserSettingsRequest)(nil),           // 47: chill.v4.GetUserSettingsRequest
+	(*UserSettings)(nil),                     // 48: chill.v4.UserSettings
+	(*SaveUserSettingsRequest)(nil),          // 49: chill.v4.SaveUserSettingsRequest
+	(*AddTransferRequest)(nil),               // 50: chill.v4.AddTransferRequest
+	(*AddTransferResponse)(nil),              // 51: chill.v4.AddTransferResponse
+	(*GetTransferRequest)(nil),               // 52: chill.v4.GetTransferRequest
+	(*GetTransferResponse)(nil),              // 53: chill.v4.GetTransferResponse
+	(*Transfer)(nil),                         // 54: chill.v4.Transfer
+	(*GetDownloadFolderRequest)(nil),         // 55: chill.v4.GetDownloadFolderRequest
+	(*GetDownloadFolderResponse)(nil),        // 56: chill.v4.GetDownloadFolderResponse
+	(*GetFolderRequest)(nil),                 // 57: chill.v4.GetFolderRequest
+	(*UserFile)(nil),                         // 58: chill.v4.UserFile
+	(*GetFolderResponse)(nil),                // 59: chill.v4.GetFolderResponse
+	(*GetUserProfileRequest)(nil),            // 60: chill.v4.GetUserProfileRequest
+	(*UserProfile)(nil),                      // 61: chill.v4.UserProfile
 }
 var file_chill_v4_api_proto_depIdxs = []int32{
 	0,  // 0: chill.v4.Indexer.status:type_name -> chill.v4.IndexerStatus
@@ -4008,63 +4463,71 @@ var file_chill_v4_api_proto_depIdxs = []int32{
 	35, // 20: chill.v4.GetTVShowDetailResponse.seasons:type_name -> chill.v4.TVShowSeason
 	35, // 21: chill.v4.GetTVShowSeasonResponse.season:type_name -> chill.v4.TVShowSeason
 	36, // 22: chill.v4.GetTVShowSeasonResponse.episodes:type_name -> chill.v4.TVShowEpisode
-	5,  // 23: chill.v4.UserSettings.codec_filters:type_name -> chill.v4.CodecFilter
-	6,  // 24: chill.v4.UserSettings.other_filters:type_name -> chill.v4.OtherFilter
-	4,  // 25: chill.v4.UserSettings.resolution_filters:type_name -> chill.v4.ResolutionFilter
-	7,  // 26: chill.v4.UserSettings.search_result_display_behavior:type_name -> chill.v4.SearchResultDisplayBehavior
-	8,  // 27: chill.v4.UserSettings.search_result_title_behavior:type_name -> chill.v4.SearchResultTitleBehavior
-	9,  // 28: chill.v4.UserSettings.sort_by:type_name -> chill.v4.SortBy
-	10, // 29: chill.v4.UserSettings.sort_direction:type_name -> chill.v4.SortDirection
-	11, // 30: chill.v4.UserSettings.top_movies_display_type:type_name -> chill.v4.TopMoviesDisplayType
-	1,  // 31: chill.v4.UserSettings.top_movies_source:type_name -> chill.v4.TopMoviesSource
-	2,  // 32: chill.v4.UserSettings.top_tv_shows_source:type_name -> chill.v4.TopTVShowsSource
-	42, // 33: chill.v4.SaveUserSettingsRequest.settings:type_name -> chill.v4.UserSettings
-	48, // 34: chill.v4.AddTransferResponse.transfer:type_name -> chill.v4.Transfer
-	48, // 35: chill.v4.GetTransferResponse.transfer:type_name -> chill.v4.Transfer
-	52, // 36: chill.v4.GetDownloadFolderResponse.folder:type_name -> chill.v4.UserFile
-	52, // 37: chill.v4.GetFolderResponse.parent:type_name -> chill.v4.UserFile
-	52, // 38: chill.v4.GetFolderResponse.files:type_name -> chill.v4.UserFile
-	12, // 39: chill.v4.CoreService.HealthCheck:input_type -> chill.v4.HealthCheckRequest
-	14, // 40: chill.v4.CoreService.GetIndexers:input_type -> chill.v4.CoreGetIndexersRequest
-	20, // 41: chill.v4.CoreService.Search:input_type -> chill.v4.CoreSearchRequest
-	24, // 42: chill.v4.CoreService.GetTopMoviesBySource:input_type -> chill.v4.GetTopMoviesBySourceRequest
-	30, // 43: chill.v4.CoreService.GetTopTVShowsBySource:input_type -> chill.v4.GetTopTVShowsBySourceRequest
-	17, // 44: chill.v4.UserService.GetIndexers:input_type -> chill.v4.UserGetIndexersRequest
-	23, // 45: chill.v4.UserService.Search:input_type -> chill.v4.UserSearchRequest
-	27, // 46: chill.v4.UserService.GetTopMovies:input_type -> chill.v4.UserGetTopMoviesRequest
-	32, // 47: chill.v4.UserService.GetTopTVShows:input_type -> chill.v4.UserGetTopTVShowsRequest
-	37, // 48: chill.v4.UserService.GetTVShowDetail:input_type -> chill.v4.GetTVShowDetailRequest
-	39, // 49: chill.v4.UserService.GetTVShowSeason:input_type -> chill.v4.GetTVShowSeasonRequest
-	41, // 50: chill.v4.UserService.GetUserSettings:input_type -> chill.v4.GetUserSettingsRequest
-	43, // 51: chill.v4.UserService.SaveUserSettings:input_type -> chill.v4.SaveUserSettingsRequest
-	44, // 52: chill.v4.UserService.AddTransfer:input_type -> chill.v4.AddTransferRequest
-	46, // 53: chill.v4.UserService.GetTransfer:input_type -> chill.v4.GetTransferRequest
-	49, // 54: chill.v4.UserService.GetDownloadFolder:input_type -> chill.v4.GetDownloadFolderRequest
-	51, // 55: chill.v4.UserService.GetFolder:input_type -> chill.v4.GetFolderRequest
-	54, // 56: chill.v4.UserService.GetUserProfile:input_type -> chill.v4.GetUserProfileRequest
-	13, // 57: chill.v4.CoreService.HealthCheck:output_type -> chill.v4.HealthResponse
-	16, // 58: chill.v4.CoreService.GetIndexers:output_type -> chill.v4.CoreGetIndexersResponse
-	22, // 59: chill.v4.CoreService.Search:output_type -> chill.v4.SearchResponse
-	26, // 60: chill.v4.CoreService.GetTopMoviesBySource:output_type -> chill.v4.GetTopMoviesBySourceResponse
-	31, // 61: chill.v4.CoreService.GetTopTVShowsBySource:output_type -> chill.v4.GetTopTVShowsBySourceResponse
-	18, // 62: chill.v4.UserService.GetIndexers:output_type -> chill.v4.UserGetIndexersResponse
-	22, // 63: chill.v4.UserService.Search:output_type -> chill.v4.SearchResponse
-	28, // 64: chill.v4.UserService.GetTopMovies:output_type -> chill.v4.UserGetTopMoviesResponse
-	33, // 65: chill.v4.UserService.GetTopTVShows:output_type -> chill.v4.UserGetTopTVShowsResponse
-	38, // 66: chill.v4.UserService.GetTVShowDetail:output_type -> chill.v4.GetTVShowDetailResponse
-	40, // 67: chill.v4.UserService.GetTVShowSeason:output_type -> chill.v4.GetTVShowSeasonResponse
-	42, // 68: chill.v4.UserService.GetUserSettings:output_type -> chill.v4.UserSettings
-	42, // 69: chill.v4.UserService.SaveUserSettings:output_type -> chill.v4.UserSettings
-	45, // 70: chill.v4.UserService.AddTransfer:output_type -> chill.v4.AddTransferResponse
-	47, // 71: chill.v4.UserService.GetTransfer:output_type -> chill.v4.GetTransferResponse
-	50, // 72: chill.v4.UserService.GetDownloadFolder:output_type -> chill.v4.GetDownloadFolderResponse
-	53, // 73: chill.v4.UserService.GetFolder:output_type -> chill.v4.GetFolderResponse
-	55, // 74: chill.v4.UserService.GetUserProfile:output_type -> chill.v4.UserProfile
-	57, // [57:75] is the sub-list for method output_type
-	39, // [39:57] is the sub-list for method input_type
-	39, // [39:39] is the sub-list for extension type_name
-	39, // [39:39] is the sub-list for extension extendee
-	0,  // [0:39] is the sub-list for field type_name
+	41, // 23: chill.v4.GetTVShowEpisodeDownloadResponse.download:type_name -> chill.v4.TVShowDownload
+	41, // 24: chill.v4.GetTVShowSeasonDownloadsResponse.season_pack:type_name -> chill.v4.TVShowDownload
+	46, // 25: chill.v4.GetTVShowSeasonDownloadsResponse.episodes:type_name -> chill.v4.TVShowEpisodeDownloadResult
+	41, // 26: chill.v4.TVShowEpisodeDownloadResult.download:type_name -> chill.v4.TVShowDownload
+	5,  // 27: chill.v4.UserSettings.codec_filters:type_name -> chill.v4.CodecFilter
+	6,  // 28: chill.v4.UserSettings.other_filters:type_name -> chill.v4.OtherFilter
+	4,  // 29: chill.v4.UserSettings.resolution_filters:type_name -> chill.v4.ResolutionFilter
+	7,  // 30: chill.v4.UserSettings.search_result_display_behavior:type_name -> chill.v4.SearchResultDisplayBehavior
+	8,  // 31: chill.v4.UserSettings.search_result_title_behavior:type_name -> chill.v4.SearchResultTitleBehavior
+	9,  // 32: chill.v4.UserSettings.sort_by:type_name -> chill.v4.SortBy
+	10, // 33: chill.v4.UserSettings.sort_direction:type_name -> chill.v4.SortDirection
+	11, // 34: chill.v4.UserSettings.top_movies_display_type:type_name -> chill.v4.TopMoviesDisplayType
+	1,  // 35: chill.v4.UserSettings.top_movies_source:type_name -> chill.v4.TopMoviesSource
+	2,  // 36: chill.v4.UserSettings.top_tv_shows_source:type_name -> chill.v4.TopTVShowsSource
+	48, // 37: chill.v4.SaveUserSettingsRequest.settings:type_name -> chill.v4.UserSettings
+	54, // 38: chill.v4.AddTransferResponse.transfer:type_name -> chill.v4.Transfer
+	54, // 39: chill.v4.GetTransferResponse.transfer:type_name -> chill.v4.Transfer
+	58, // 40: chill.v4.GetDownloadFolderResponse.folder:type_name -> chill.v4.UserFile
+	58, // 41: chill.v4.GetFolderResponse.parent:type_name -> chill.v4.UserFile
+	58, // 42: chill.v4.GetFolderResponse.files:type_name -> chill.v4.UserFile
+	12, // 43: chill.v4.CoreService.HealthCheck:input_type -> chill.v4.HealthCheckRequest
+	14, // 44: chill.v4.CoreService.GetIndexers:input_type -> chill.v4.CoreGetIndexersRequest
+	20, // 45: chill.v4.CoreService.Search:input_type -> chill.v4.CoreSearchRequest
+	24, // 46: chill.v4.CoreService.GetTopMoviesBySource:input_type -> chill.v4.GetTopMoviesBySourceRequest
+	30, // 47: chill.v4.CoreService.GetTopTVShowsBySource:input_type -> chill.v4.GetTopTVShowsBySourceRequest
+	17, // 48: chill.v4.UserService.GetIndexers:input_type -> chill.v4.UserGetIndexersRequest
+	23, // 49: chill.v4.UserService.Search:input_type -> chill.v4.UserSearchRequest
+	27, // 50: chill.v4.UserService.GetTopMovies:input_type -> chill.v4.UserGetTopMoviesRequest
+	32, // 51: chill.v4.UserService.GetTopTVShows:input_type -> chill.v4.UserGetTopTVShowsRequest
+	37, // 52: chill.v4.UserService.GetTVShowDetail:input_type -> chill.v4.GetTVShowDetailRequest
+	39, // 53: chill.v4.UserService.GetTVShowSeason:input_type -> chill.v4.GetTVShowSeasonRequest
+	42, // 54: chill.v4.UserService.GetTVShowEpisodeDownload:input_type -> chill.v4.GetTVShowEpisodeDownloadRequest
+	44, // 55: chill.v4.UserService.GetTVShowSeasonDownloads:input_type -> chill.v4.GetTVShowSeasonDownloadsRequest
+	47, // 56: chill.v4.UserService.GetUserSettings:input_type -> chill.v4.GetUserSettingsRequest
+	49, // 57: chill.v4.UserService.SaveUserSettings:input_type -> chill.v4.SaveUserSettingsRequest
+	50, // 58: chill.v4.UserService.AddTransfer:input_type -> chill.v4.AddTransferRequest
+	52, // 59: chill.v4.UserService.GetTransfer:input_type -> chill.v4.GetTransferRequest
+	55, // 60: chill.v4.UserService.GetDownloadFolder:input_type -> chill.v4.GetDownloadFolderRequest
+	57, // 61: chill.v4.UserService.GetFolder:input_type -> chill.v4.GetFolderRequest
+	60, // 62: chill.v4.UserService.GetUserProfile:input_type -> chill.v4.GetUserProfileRequest
+	13, // 63: chill.v4.CoreService.HealthCheck:output_type -> chill.v4.HealthResponse
+	16, // 64: chill.v4.CoreService.GetIndexers:output_type -> chill.v4.CoreGetIndexersResponse
+	22, // 65: chill.v4.CoreService.Search:output_type -> chill.v4.SearchResponse
+	26, // 66: chill.v4.CoreService.GetTopMoviesBySource:output_type -> chill.v4.GetTopMoviesBySourceResponse
+	31, // 67: chill.v4.CoreService.GetTopTVShowsBySource:output_type -> chill.v4.GetTopTVShowsBySourceResponse
+	18, // 68: chill.v4.UserService.GetIndexers:output_type -> chill.v4.UserGetIndexersResponse
+	22, // 69: chill.v4.UserService.Search:output_type -> chill.v4.SearchResponse
+	28, // 70: chill.v4.UserService.GetTopMovies:output_type -> chill.v4.UserGetTopMoviesResponse
+	33, // 71: chill.v4.UserService.GetTopTVShows:output_type -> chill.v4.UserGetTopTVShowsResponse
+	38, // 72: chill.v4.UserService.GetTVShowDetail:output_type -> chill.v4.GetTVShowDetailResponse
+	40, // 73: chill.v4.UserService.GetTVShowSeason:output_type -> chill.v4.GetTVShowSeasonResponse
+	43, // 74: chill.v4.UserService.GetTVShowEpisodeDownload:output_type -> chill.v4.GetTVShowEpisodeDownloadResponse
+	45, // 75: chill.v4.UserService.GetTVShowSeasonDownloads:output_type -> chill.v4.GetTVShowSeasonDownloadsResponse
+	48, // 76: chill.v4.UserService.GetUserSettings:output_type -> chill.v4.UserSettings
+	48, // 77: chill.v4.UserService.SaveUserSettings:output_type -> chill.v4.UserSettings
+	51, // 78: chill.v4.UserService.AddTransfer:output_type -> chill.v4.AddTransferResponse
+	53, // 79: chill.v4.UserService.GetTransfer:output_type -> chill.v4.GetTransferResponse
+	56, // 80: chill.v4.UserService.GetDownloadFolder:output_type -> chill.v4.GetDownloadFolderResponse
+	59, // 81: chill.v4.UserService.GetFolder:output_type -> chill.v4.GetFolderResponse
+	61, // 82: chill.v4.UserService.GetUserProfile:output_type -> chill.v4.UserProfile
+	63, // [63:83] is the sub-list for method output_type
+	43, // [43:63] is the sub-list for method input_type
+	43, // [43:43] is the sub-list for extension type_name
+	43, // [43:43] is the sub-list for extension extendee
+	0,  // [0:43] is the sub-list for field type_name
 }
 
 func init() { file_chill_v4_api_proto_init() }
@@ -4076,15 +4539,19 @@ func file_chill_v4_api_proto_init() {
 	file_chill_v4_api_proto_msgTypes[7].OneofWrappers = []any{}
 	file_chill_v4_api_proto_msgTypes[9].OneofWrappers = []any{}
 	file_chill_v4_api_proto_msgTypes[11].OneofWrappers = []any{}
-	file_chill_v4_api_proto_msgTypes[30].OneofWrappers = []any{}
+	file_chill_v4_api_proto_msgTypes[29].OneofWrappers = []any{}
+	file_chill_v4_api_proto_msgTypes[31].OneofWrappers = []any{}
+	file_chill_v4_api_proto_msgTypes[33].OneofWrappers = []any{}
+	file_chill_v4_api_proto_msgTypes[34].OneofWrappers = []any{}
 	file_chill_v4_api_proto_msgTypes[36].OneofWrappers = []any{}
+	file_chill_v4_api_proto_msgTypes[42].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_chill_v4_api_proto_rawDesc), len(file_chill_v4_api_proto_rawDesc)),
 			NumEnums:      12,
-			NumMessages:   44,
+			NumMessages:   50,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

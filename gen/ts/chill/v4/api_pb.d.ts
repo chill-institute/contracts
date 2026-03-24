@@ -825,6 +825,187 @@ export declare type GetTVShowSeasonResponse = Message<"chill.v4.GetTVShowSeasonR
 export declare const GetTVShowSeasonResponseSchema: GenMessage<GetTVShowSeasonResponse>;
 
 /**
+ * @generated from message chill.v4.TVShowDownload
+ */
+export declare type TVShowDownload = Message<"chill.v4.TVShowDownload"> & {
+  /**
+   * @generated from field: string title = 1;
+   */
+  title: string;
+
+  /**
+   * @generated from field: string link = 2;
+   */
+  link: string;
+
+  /**
+   * @generated from field: int64 size = 3;
+   */
+  size: bigint;
+
+  /**
+   * @generated from field: int64 seeders = 4;
+   */
+  seeders: bigint;
+
+  /**
+   * @generated from field: string resolution = 5;
+   */
+  resolution: string;
+
+  /**
+   * @generated from field: string codec = 6;
+   */
+  codec: string;
+
+  /**
+   * @generated from field: string quality = 7;
+   */
+  quality: string;
+
+  /**
+   * @generated from field: string indexer = 8;
+   */
+  indexer: string;
+
+  /**
+   * @generated from field: int32 season_number = 9;
+   */
+  seasonNumber: number;
+
+  /**
+   * @generated from field: optional int32 episode_number = 10;
+   */
+  episodeNumber?: number;
+};
+
+/**
+ * Describes the message chill.v4.TVShowDownload.
+ * Use `create(TVShowDownloadSchema)` to create a new message.
+ */
+export declare const TVShowDownloadSchema: GenMessage<TVShowDownload>;
+
+/**
+ * @generated from message chill.v4.GetTVShowEpisodeDownloadRequest
+ */
+export declare type GetTVShowEpisodeDownloadRequest = Message<"chill.v4.GetTVShowEpisodeDownloadRequest"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+
+  /**
+   * @generated from field: int32 season_number = 2;
+   */
+  seasonNumber: number;
+
+  /**
+   * @generated from field: int32 episode_number = 3;
+   */
+  episodeNumber: number;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowEpisodeDownloadRequest.
+ * Use `create(GetTVShowEpisodeDownloadRequestSchema)` to create a new message.
+ */
+export declare const GetTVShowEpisodeDownloadRequestSchema: GenMessage<GetTVShowEpisodeDownloadRequest>;
+
+/**
+ * @generated from message chill.v4.GetTVShowEpisodeDownloadResponse
+ */
+export declare type GetTVShowEpisodeDownloadResponse = Message<"chill.v4.GetTVShowEpisodeDownloadResponse"> & {
+  /**
+   * @generated from field: optional chill.v4.TVShowDownload download = 1;
+   */
+  download?: TVShowDownload;
+
+  /**
+   * @generated from field: string search_query = 2;
+   */
+  searchQuery: string;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowEpisodeDownloadResponse.
+ * Use `create(GetTVShowEpisodeDownloadResponseSchema)` to create a new message.
+ */
+export declare const GetTVShowEpisodeDownloadResponseSchema: GenMessage<GetTVShowEpisodeDownloadResponse>;
+
+/**
+ * @generated from message chill.v4.GetTVShowSeasonDownloadsRequest
+ */
+export declare type GetTVShowSeasonDownloadsRequest = Message<"chill.v4.GetTVShowSeasonDownloadsRequest"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+
+  /**
+   * @generated from field: int32 season_number = 2;
+   */
+  seasonNumber: number;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowSeasonDownloadsRequest.
+ * Use `create(GetTVShowSeasonDownloadsRequestSchema)` to create a new message.
+ */
+export declare const GetTVShowSeasonDownloadsRequestSchema: GenMessage<GetTVShowSeasonDownloadsRequest>;
+
+/**
+ * @generated from message chill.v4.GetTVShowSeasonDownloadsResponse
+ */
+export declare type GetTVShowSeasonDownloadsResponse = Message<"chill.v4.GetTVShowSeasonDownloadsResponse"> & {
+  /**
+   * @generated from field: optional chill.v4.TVShowDownload season_pack = 1;
+   */
+  seasonPack?: TVShowDownload;
+
+  /**
+   * @generated from field: repeated chill.v4.TVShowEpisodeDownloadResult episodes = 2;
+   */
+  episodes: TVShowEpisodeDownloadResult[];
+
+  /**
+   * @generated from field: string season_search_query = 3;
+   */
+  seasonSearchQuery: string;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowSeasonDownloadsResponse.
+ * Use `create(GetTVShowSeasonDownloadsResponseSchema)` to create a new message.
+ */
+export declare const GetTVShowSeasonDownloadsResponseSchema: GenMessage<GetTVShowSeasonDownloadsResponse>;
+
+/**
+ * @generated from message chill.v4.TVShowEpisodeDownloadResult
+ */
+export declare type TVShowEpisodeDownloadResult = Message<"chill.v4.TVShowEpisodeDownloadResult"> & {
+  /**
+   * @generated from field: int32 episode_number = 1;
+   */
+  episodeNumber: number;
+
+  /**
+   * @generated from field: optional chill.v4.TVShowDownload download = 2;
+   */
+  download?: TVShowDownload;
+
+  /**
+   * @generated from field: string search_query = 3;
+   */
+  searchQuery: string;
+};
+
+/**
+ * Describes the message chill.v4.TVShowEpisodeDownloadResult.
+ * Use `create(TVShowEpisodeDownloadResultSchema)` to create a new message.
+ */
+export declare const TVShowEpisodeDownloadResultSchema: GenMessage<TVShowEpisodeDownloadResult>;
+
+/**
  * @generated from message chill.v4.GetUserSettingsRequest
  */
 export declare type GetUserSettingsRequest = Message<"chill.v4.GetUserSettingsRequest"> & {
@@ -1749,6 +1930,22 @@ export declare const UserService: GenService<{
     methodKind: "unary";
     input: typeof GetTVShowSeasonRequestSchema;
     output: typeof GetTVShowSeasonResponseSchema;
+  },
+  /**
+   * @generated from rpc chill.v4.UserService.GetTVShowEpisodeDownload
+   */
+  getTVShowEpisodeDownload: {
+    methodKind: "unary";
+    input: typeof GetTVShowEpisodeDownloadRequestSchema;
+    output: typeof GetTVShowEpisodeDownloadResponseSchema;
+  },
+  /**
+   * @generated from rpc chill.v4.UserService.GetTVShowSeasonDownloads
+   */
+  getTVShowSeasonDownloads: {
+    methodKind: "unary";
+    input: typeof GetTVShowSeasonDownloadsRequestSchema;
+    output: typeof GetTVShowSeasonDownloadsResponseSchema;
   },
   /**
    * @generated from rpc chill.v4.UserService.GetUserSettings

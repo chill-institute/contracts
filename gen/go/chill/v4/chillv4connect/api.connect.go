@@ -63,6 +63,12 @@ const (
 	// UserServiceGetTVShowSeasonProcedure is the fully-qualified name of the UserService's
 	// GetTVShowSeason RPC.
 	UserServiceGetTVShowSeasonProcedure = "/chill.v4.UserService/GetTVShowSeason"
+	// UserServiceGetTVShowEpisodeDownloadProcedure is the fully-qualified name of the UserService's
+	// GetTVShowEpisodeDownload RPC.
+	UserServiceGetTVShowEpisodeDownloadProcedure = "/chill.v4.UserService/GetTVShowEpisodeDownload"
+	// UserServiceGetTVShowSeasonDownloadsProcedure is the fully-qualified name of the UserService's
+	// GetTVShowSeasonDownloads RPC.
+	UserServiceGetTVShowSeasonDownloadsProcedure = "/chill.v4.UserService/GetTVShowSeasonDownloads"
 	// UserServiceGetUserSettingsProcedure is the fully-qualified name of the UserService's
 	// GetUserSettings RPC.
 	UserServiceGetUserSettingsProcedure = "/chill.v4.UserService/GetUserSettings"
@@ -265,6 +271,8 @@ type UserServiceClient interface {
 	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
 	GetTVShowDetail(context.Context, *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error)
 	GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error)
+	GetTVShowEpisodeDownload(context.Context, *connect.Request[v4.GetTVShowEpisodeDownloadRequest]) (*connect.Response[v4.GetTVShowEpisodeDownloadResponse], error)
+	GetTVShowSeasonDownloads(context.Context, *connect.Request[v4.GetTVShowSeasonDownloadsRequest]) (*connect.Response[v4.GetTVShowSeasonDownloadsResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -321,6 +329,18 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("GetTVShowSeason")),
 			connect.WithClientOptions(opts...),
 		),
+		getTVShowEpisodeDownload: connect.NewClient[v4.GetTVShowEpisodeDownloadRequest, v4.GetTVShowEpisodeDownloadResponse](
+			httpClient,
+			baseURL+UserServiceGetTVShowEpisodeDownloadProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetTVShowEpisodeDownload")),
+			connect.WithClientOptions(opts...),
+		),
+		getTVShowSeasonDownloads: connect.NewClient[v4.GetTVShowSeasonDownloadsRequest, v4.GetTVShowSeasonDownloadsResponse](
+			httpClient,
+			baseURL+UserServiceGetTVShowSeasonDownloadsProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetTVShowSeasonDownloads")),
+			connect.WithClientOptions(opts...),
+		),
 		getUserSettings: connect.NewClient[v4.GetUserSettingsRequest, v4.UserSettings](
 			httpClient,
 			baseURL+UserServiceGetUserSettingsProcedure,
@@ -368,19 +388,21 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // userServiceClient implements UserServiceClient.
 type userServiceClient struct {
-	getIndexers       *connect.Client[v4.UserGetIndexersRequest, v4.UserGetIndexersResponse]
-	search            *connect.Client[v4.UserSearchRequest, v4.SearchResponse]
-	getTopMovies      *connect.Client[v4.UserGetTopMoviesRequest, v4.UserGetTopMoviesResponse]
-	getTopTVShows     *connect.Client[v4.UserGetTopTVShowsRequest, v4.UserGetTopTVShowsResponse]
-	getTVShowDetail   *connect.Client[v4.GetTVShowDetailRequest, v4.GetTVShowDetailResponse]
-	getTVShowSeason   *connect.Client[v4.GetTVShowSeasonRequest, v4.GetTVShowSeasonResponse]
-	getUserSettings   *connect.Client[v4.GetUserSettingsRequest, v4.UserSettings]
-	saveUserSettings  *connect.Client[v4.SaveUserSettingsRequest, v4.UserSettings]
-	addTransfer       *connect.Client[v4.AddTransferRequest, v4.AddTransferResponse]
-	getTransfer       *connect.Client[v4.GetTransferRequest, v4.GetTransferResponse]
-	getDownloadFolder *connect.Client[v4.GetDownloadFolderRequest, v4.GetDownloadFolderResponse]
-	getFolder         *connect.Client[v4.GetFolderRequest, v4.GetFolderResponse]
-	getUserProfile    *connect.Client[v4.GetUserProfileRequest, v4.UserProfile]
+	getIndexers              *connect.Client[v4.UserGetIndexersRequest, v4.UserGetIndexersResponse]
+	search                   *connect.Client[v4.UserSearchRequest, v4.SearchResponse]
+	getTopMovies             *connect.Client[v4.UserGetTopMoviesRequest, v4.UserGetTopMoviesResponse]
+	getTopTVShows            *connect.Client[v4.UserGetTopTVShowsRequest, v4.UserGetTopTVShowsResponse]
+	getTVShowDetail          *connect.Client[v4.GetTVShowDetailRequest, v4.GetTVShowDetailResponse]
+	getTVShowSeason          *connect.Client[v4.GetTVShowSeasonRequest, v4.GetTVShowSeasonResponse]
+	getTVShowEpisodeDownload *connect.Client[v4.GetTVShowEpisodeDownloadRequest, v4.GetTVShowEpisodeDownloadResponse]
+	getTVShowSeasonDownloads *connect.Client[v4.GetTVShowSeasonDownloadsRequest, v4.GetTVShowSeasonDownloadsResponse]
+	getUserSettings          *connect.Client[v4.GetUserSettingsRequest, v4.UserSettings]
+	saveUserSettings         *connect.Client[v4.SaveUserSettingsRequest, v4.UserSettings]
+	addTransfer              *connect.Client[v4.AddTransferRequest, v4.AddTransferResponse]
+	getTransfer              *connect.Client[v4.GetTransferRequest, v4.GetTransferResponse]
+	getDownloadFolder        *connect.Client[v4.GetDownloadFolderRequest, v4.GetDownloadFolderResponse]
+	getFolder                *connect.Client[v4.GetFolderRequest, v4.GetFolderResponse]
+	getUserProfile           *connect.Client[v4.GetUserProfileRequest, v4.UserProfile]
 }
 
 // GetIndexers calls chill.v4.UserService.GetIndexers.
@@ -411,6 +433,16 @@ func (c *userServiceClient) GetTVShowDetail(ctx context.Context, req *connect.Re
 // GetTVShowSeason calls chill.v4.UserService.GetTVShowSeason.
 func (c *userServiceClient) GetTVShowSeason(ctx context.Context, req *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error) {
 	return c.getTVShowSeason.CallUnary(ctx, req)
+}
+
+// GetTVShowEpisodeDownload calls chill.v4.UserService.GetTVShowEpisodeDownload.
+func (c *userServiceClient) GetTVShowEpisodeDownload(ctx context.Context, req *connect.Request[v4.GetTVShowEpisodeDownloadRequest]) (*connect.Response[v4.GetTVShowEpisodeDownloadResponse], error) {
+	return c.getTVShowEpisodeDownload.CallUnary(ctx, req)
+}
+
+// GetTVShowSeasonDownloads calls chill.v4.UserService.GetTVShowSeasonDownloads.
+func (c *userServiceClient) GetTVShowSeasonDownloads(ctx context.Context, req *connect.Request[v4.GetTVShowSeasonDownloadsRequest]) (*connect.Response[v4.GetTVShowSeasonDownloadsResponse], error) {
+	return c.getTVShowSeasonDownloads.CallUnary(ctx, req)
 }
 
 // GetUserSettings calls chill.v4.UserService.GetUserSettings.
@@ -456,6 +488,8 @@ type UserServiceHandler interface {
 	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
 	GetTVShowDetail(context.Context, *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error)
 	GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error)
+	GetTVShowEpisodeDownload(context.Context, *connect.Request[v4.GetTVShowEpisodeDownloadRequest]) (*connect.Response[v4.GetTVShowEpisodeDownloadResponse], error)
+	GetTVShowSeasonDownloads(context.Context, *connect.Request[v4.GetTVShowSeasonDownloadsRequest]) (*connect.Response[v4.GetTVShowSeasonDownloadsResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -506,6 +540,18 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceGetTVShowSeasonProcedure,
 		svc.GetTVShowSeason,
 		connect.WithSchema(userServiceMethods.ByName("GetTVShowSeason")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetTVShowEpisodeDownloadHandler := connect.NewUnaryHandler(
+		UserServiceGetTVShowEpisodeDownloadProcedure,
+		svc.GetTVShowEpisodeDownload,
+		connect.WithSchema(userServiceMethods.ByName("GetTVShowEpisodeDownload")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetTVShowSeasonDownloadsHandler := connect.NewUnaryHandler(
+		UserServiceGetTVShowSeasonDownloadsProcedure,
+		svc.GetTVShowSeasonDownloads,
+		connect.WithSchema(userServiceMethods.ByName("GetTVShowSeasonDownloads")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceGetUserSettingsHandler := connect.NewUnaryHandler(
@@ -564,6 +610,10 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceGetTVShowDetailHandler.ServeHTTP(w, r)
 		case UserServiceGetTVShowSeasonProcedure:
 			userServiceGetTVShowSeasonHandler.ServeHTTP(w, r)
+		case UserServiceGetTVShowEpisodeDownloadProcedure:
+			userServiceGetTVShowEpisodeDownloadHandler.ServeHTTP(w, r)
+		case UserServiceGetTVShowSeasonDownloadsProcedure:
+			userServiceGetTVShowSeasonDownloadsHandler.ServeHTTP(w, r)
 		case UserServiceGetUserSettingsProcedure:
 			userServiceGetUserSettingsHandler.ServeHTTP(w, r)
 		case UserServiceSaveUserSettingsProcedure:
@@ -609,6 +659,14 @@ func (UnimplementedUserServiceHandler) GetTVShowDetail(context.Context, *connect
 
 func (UnimplementedUserServiceHandler) GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTVShowSeason is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetTVShowEpisodeDownload(context.Context, *connect.Request[v4.GetTVShowEpisodeDownloadRequest]) (*connect.Response[v4.GetTVShowEpisodeDownloadResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTVShowEpisodeDownload is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetTVShowSeasonDownloads(context.Context, *connect.Request[v4.GetTVShowSeasonDownloadsRequest]) (*connect.Response[v4.GetTVShowSeasonDownloadsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTVShowSeasonDownloads is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error) {

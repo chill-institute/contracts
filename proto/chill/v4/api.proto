@@ -234,6 +234,42 @@ service UserService {
       };
     };
   }
+  rpc GetTVShowEpisodeDownload(GetTVShowEpisodeDownloadRequest) returns (GetTVShowEpisodeDownloadResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "BearerAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "Authorization";
+          description: "User auth token. Format: Bearer <token>.";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
+  rpc GetTVShowSeasonDownloads(GetTVShowSeasonDownloadsRequest) returns (GetTVShowSeasonDownloadsResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "BearerAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "Authorization";
+          description: "User auth token. Format: Bearer <token>.";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
   rpc GetUserSettings(GetUserSettingsRequest) returns (UserSettings) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
@@ -590,6 +626,47 @@ message GetTVShowSeasonResponse {
   int32 season_number = 2;
   TVShowSeason season = 3;
   repeated TVShowEpisode episodes = 4;
+}
+
+message TVShowDownload {
+  string title = 1;
+  string link = 2;
+  int64 size = 3;
+  int64 seeders = 4;
+  string resolution = 5;
+  string codec = 6;
+  string quality = 7;
+  string indexer = 8;
+  int32 season_number = 9;
+  optional int32 episode_number = 10;
+}
+
+message GetTVShowEpisodeDownloadRequest {
+  string tmdb_id = 1;
+  int32 season_number = 2;
+  int32 episode_number = 3;
+}
+
+message GetTVShowEpisodeDownloadResponse {
+  optional TVShowDownload download = 1;
+  string search_query = 2;
+}
+
+message GetTVShowSeasonDownloadsRequest {
+  string tmdb_id = 1;
+  int32 season_number = 2;
+}
+
+message GetTVShowSeasonDownloadsResponse {
+  optional TVShowDownload season_pack = 1;
+  repeated TVShowEpisodeDownloadResult episodes = 2;
+  string season_search_query = 3;
+}
+
+message TVShowEpisodeDownloadResult {
+  int32 episode_number = 1;
+  optional TVShowDownload download = 2;
+  string search_query = 3;
 }
 
 message GetUserSettingsRequest {}
