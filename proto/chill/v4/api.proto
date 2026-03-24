@@ -198,6 +198,42 @@ service UserService {
       };
     };
   }
+  rpc GetTVShowDetail(GetTVShowDetailRequest) returns (GetTVShowDetailResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "BearerAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "Authorization";
+          description: "User auth token. Format: Bearer <token>.";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
+  rpc GetTVShowSeason(GetTVShowSeasonRequest) returns (GetTVShowSeasonResponse) {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "BearerAuth";
+          value: {};
+        };
+      };
+      parameters: {
+        headers: {
+          name: "Authorization";
+          description: "User auth token. Format: Bearer <token>.";
+          type: STRING;
+          required: true;
+        };
+      };
+    };
+  }
   rpc GetUserSettings(GetUserSettingsRequest) returns (UserSettings) {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
@@ -498,6 +534,62 @@ message UserGetTopTVShowsRequest {}
 message UserGetTopTVShowsResponse {
   TopTVShowsSource source = 1;
   repeated TopTVShow shows = 2;
+}
+
+message TVShowDetail {
+  string tmdb_id = 1;
+  string title = 2;
+  int32 year = 3;
+  string poster_url = 4;
+  string backdrop_url = 5;
+  double rating = 6;
+  string overview = 7;
+  string external_url = 8;
+  int32 season_count = 9;
+  TVShowStatus status = 10;
+  repeated string networks = 11;
+  string imdb_id = 12;
+  repeated string genres = 13;
+}
+
+message TVShowSeason {
+  int32 season_number = 1;
+  string name = 2;
+  int32 episode_count = 3;
+  string air_date = 4;
+  string poster_url = 5;
+}
+
+message TVShowEpisode {
+  int32 season_number = 1;
+  int32 episode_number = 2;
+  string name = 3;
+  string overview = 4;
+  string air_date = 5;
+  int32 runtime = 6;
+  string still_url = 7;
+  double rating = 8;
+}
+
+message GetTVShowDetailRequest {
+  string tmdb_id = 1;
+}
+
+message GetTVShowDetailResponse {
+  TVShowDetail show = 1;
+  repeated TVShowSeason seasons = 2;
+}
+
+message GetTVShowSeasonRequest {
+  string tmdb_id = 1;
+  int32 season_number = 2;
+}
+
+message GetTVShowSeasonResponse {
+  string tmdb_id = 1;
+  int32 season_number = 2;
+  TVShowSeason season = 3;
+  repeated TVShowEpisode episodes = 4;
 }
 
 message GetUserSettingsRequest {}

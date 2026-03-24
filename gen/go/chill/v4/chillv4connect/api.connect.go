@@ -57,6 +57,12 @@ const (
 	// UserServiceGetTopTVShowsProcedure is the fully-qualified name of the UserService's GetTopTVShows
 	// RPC.
 	UserServiceGetTopTVShowsProcedure = "/chill.v4.UserService/GetTopTVShows"
+	// UserServiceGetTVShowDetailProcedure is the fully-qualified name of the UserService's
+	// GetTVShowDetail RPC.
+	UserServiceGetTVShowDetailProcedure = "/chill.v4.UserService/GetTVShowDetail"
+	// UserServiceGetTVShowSeasonProcedure is the fully-qualified name of the UserService's
+	// GetTVShowSeason RPC.
+	UserServiceGetTVShowSeasonProcedure = "/chill.v4.UserService/GetTVShowSeason"
 	// UserServiceGetUserSettingsProcedure is the fully-qualified name of the UserService's
 	// GetUserSettings RPC.
 	UserServiceGetUserSettingsProcedure = "/chill.v4.UserService/GetUserSettings"
@@ -257,6 +263,8 @@ type UserServiceClient interface {
 	Search(context.Context, *connect.Request[v4.UserSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMovies(context.Context, *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error)
 	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
+	GetTVShowDetail(context.Context, *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error)
+	GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -299,6 +307,18 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+UserServiceGetTopTVShowsProcedure,
 			connect.WithSchema(userServiceMethods.ByName("GetTopTVShows")),
+			connect.WithClientOptions(opts...),
+		),
+		getTVShowDetail: connect.NewClient[v4.GetTVShowDetailRequest, v4.GetTVShowDetailResponse](
+			httpClient,
+			baseURL+UserServiceGetTVShowDetailProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetTVShowDetail")),
+			connect.WithClientOptions(opts...),
+		),
+		getTVShowSeason: connect.NewClient[v4.GetTVShowSeasonRequest, v4.GetTVShowSeasonResponse](
+			httpClient,
+			baseURL+UserServiceGetTVShowSeasonProcedure,
+			connect.WithSchema(userServiceMethods.ByName("GetTVShowSeason")),
 			connect.WithClientOptions(opts...),
 		),
 		getUserSettings: connect.NewClient[v4.GetUserSettingsRequest, v4.UserSettings](
@@ -352,6 +372,8 @@ type userServiceClient struct {
 	search            *connect.Client[v4.UserSearchRequest, v4.SearchResponse]
 	getTopMovies      *connect.Client[v4.UserGetTopMoviesRequest, v4.UserGetTopMoviesResponse]
 	getTopTVShows     *connect.Client[v4.UserGetTopTVShowsRequest, v4.UserGetTopTVShowsResponse]
+	getTVShowDetail   *connect.Client[v4.GetTVShowDetailRequest, v4.GetTVShowDetailResponse]
+	getTVShowSeason   *connect.Client[v4.GetTVShowSeasonRequest, v4.GetTVShowSeasonResponse]
 	getUserSettings   *connect.Client[v4.GetUserSettingsRequest, v4.UserSettings]
 	saveUserSettings  *connect.Client[v4.SaveUserSettingsRequest, v4.UserSettings]
 	addTransfer       *connect.Client[v4.AddTransferRequest, v4.AddTransferResponse]
@@ -379,6 +401,16 @@ func (c *userServiceClient) GetTopMovies(ctx context.Context, req *connect.Reque
 // GetTopTVShows calls chill.v4.UserService.GetTopTVShows.
 func (c *userServiceClient) GetTopTVShows(ctx context.Context, req *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error) {
 	return c.getTopTVShows.CallUnary(ctx, req)
+}
+
+// GetTVShowDetail calls chill.v4.UserService.GetTVShowDetail.
+func (c *userServiceClient) GetTVShowDetail(ctx context.Context, req *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error) {
+	return c.getTVShowDetail.CallUnary(ctx, req)
+}
+
+// GetTVShowSeason calls chill.v4.UserService.GetTVShowSeason.
+func (c *userServiceClient) GetTVShowSeason(ctx context.Context, req *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error) {
+	return c.getTVShowSeason.CallUnary(ctx, req)
 }
 
 // GetUserSettings calls chill.v4.UserService.GetUserSettings.
@@ -422,6 +454,8 @@ type UserServiceHandler interface {
 	Search(context.Context, *connect.Request[v4.UserSearchRequest]) (*connect.Response[v4.SearchResponse], error)
 	GetTopMovies(context.Context, *connect.Request[v4.UserGetTopMoviesRequest]) (*connect.Response[v4.UserGetTopMoviesResponse], error)
 	GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error)
+	GetTVShowDetail(context.Context, *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error)
+	GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error)
 	GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	SaveUserSettings(context.Context, *connect.Request[v4.SaveUserSettingsRequest]) (*connect.Response[v4.UserSettings], error)
 	AddTransfer(context.Context, *connect.Request[v4.AddTransferRequest]) (*connect.Response[v4.AddTransferResponse], error)
@@ -460,6 +494,18 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceGetTopTVShowsProcedure,
 		svc.GetTopTVShows,
 		connect.WithSchema(userServiceMethods.ByName("GetTopTVShows")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetTVShowDetailHandler := connect.NewUnaryHandler(
+		UserServiceGetTVShowDetailProcedure,
+		svc.GetTVShowDetail,
+		connect.WithSchema(userServiceMethods.ByName("GetTVShowDetail")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceGetTVShowSeasonHandler := connect.NewUnaryHandler(
+		UserServiceGetTVShowSeasonProcedure,
+		svc.GetTVShowSeason,
+		connect.WithSchema(userServiceMethods.ByName("GetTVShowSeason")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceGetUserSettingsHandler := connect.NewUnaryHandler(
@@ -514,6 +560,10 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 			userServiceGetTopMoviesHandler.ServeHTTP(w, r)
 		case UserServiceGetTopTVShowsProcedure:
 			userServiceGetTopTVShowsHandler.ServeHTTP(w, r)
+		case UserServiceGetTVShowDetailProcedure:
+			userServiceGetTVShowDetailHandler.ServeHTTP(w, r)
+		case UserServiceGetTVShowSeasonProcedure:
+			userServiceGetTVShowSeasonHandler.ServeHTTP(w, r)
 		case UserServiceGetUserSettingsProcedure:
 			userServiceGetUserSettingsHandler.ServeHTTP(w, r)
 		case UserServiceSaveUserSettingsProcedure:
@@ -551,6 +601,14 @@ func (UnimplementedUserServiceHandler) GetTopMovies(context.Context, *connect.Re
 
 func (UnimplementedUserServiceHandler) GetTopTVShows(context.Context, *connect.Request[v4.UserGetTopTVShowsRequest]) (*connect.Response[v4.UserGetTopTVShowsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTopTVShows is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetTVShowDetail(context.Context, *connect.Request[v4.GetTVShowDetailRequest]) (*connect.Response[v4.GetTVShowDetailResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTVShowDetail is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) GetTVShowSeason(context.Context, *connect.Request[v4.GetTVShowSeasonRequest]) (*connect.Response[v4.GetTVShowSeasonResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("chill.v4.UserService.GetTVShowSeason is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetUserSettings(context.Context, *connect.Request[v4.GetUserSettingsRequest]) (*connect.Response[v4.UserSettings], error) {

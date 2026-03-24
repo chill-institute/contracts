@@ -573,6 +573,258 @@ export declare type UserGetTopTVShowsResponse = Message<"chill.v4.UserGetTopTVSh
 export declare const UserGetTopTVShowsResponseSchema: GenMessage<UserGetTopTVShowsResponse>;
 
 /**
+ * @generated from message chill.v4.TVShowDetail
+ */
+export declare type TVShowDetail = Message<"chill.v4.TVShowDetail"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+
+  /**
+   * @generated from field: string title = 2;
+   */
+  title: string;
+
+  /**
+   * @generated from field: int32 year = 3;
+   */
+  year: number;
+
+  /**
+   * @generated from field: string poster_url = 4;
+   */
+  posterUrl: string;
+
+  /**
+   * @generated from field: string backdrop_url = 5;
+   */
+  backdropUrl: string;
+
+  /**
+   * @generated from field: double rating = 6;
+   */
+  rating: number;
+
+  /**
+   * @generated from field: string overview = 7;
+   */
+  overview: string;
+
+  /**
+   * @generated from field: string external_url = 8;
+   */
+  externalUrl: string;
+
+  /**
+   * @generated from field: int32 season_count = 9;
+   */
+  seasonCount: number;
+
+  /**
+   * @generated from field: chill.v4.TVShowStatus status = 10;
+   */
+  status: TVShowStatus;
+
+  /**
+   * @generated from field: repeated string networks = 11;
+   */
+  networks: string[];
+
+  /**
+   * @generated from field: string imdb_id = 12;
+   */
+  imdbId: string;
+
+  /**
+   * @generated from field: repeated string genres = 13;
+   */
+  genres: string[];
+};
+
+/**
+ * Describes the message chill.v4.TVShowDetail.
+ * Use `create(TVShowDetailSchema)` to create a new message.
+ */
+export declare const TVShowDetailSchema: GenMessage<TVShowDetail>;
+
+/**
+ * @generated from message chill.v4.TVShowSeason
+ */
+export declare type TVShowSeason = Message<"chill.v4.TVShowSeason"> & {
+  /**
+   * @generated from field: int32 season_number = 1;
+   */
+  seasonNumber: number;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: int32 episode_count = 3;
+   */
+  episodeCount: number;
+
+  /**
+   * @generated from field: string air_date = 4;
+   */
+  airDate: string;
+
+  /**
+   * @generated from field: string poster_url = 5;
+   */
+  posterUrl: string;
+};
+
+/**
+ * Describes the message chill.v4.TVShowSeason.
+ * Use `create(TVShowSeasonSchema)` to create a new message.
+ */
+export declare const TVShowSeasonSchema: GenMessage<TVShowSeason>;
+
+/**
+ * @generated from message chill.v4.TVShowEpisode
+ */
+export declare type TVShowEpisode = Message<"chill.v4.TVShowEpisode"> & {
+  /**
+   * @generated from field: int32 season_number = 1;
+   */
+  seasonNumber: number;
+
+  /**
+   * @generated from field: int32 episode_number = 2;
+   */
+  episodeNumber: number;
+
+  /**
+   * @generated from field: string name = 3;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string overview = 4;
+   */
+  overview: string;
+
+  /**
+   * @generated from field: string air_date = 5;
+   */
+  airDate: string;
+
+  /**
+   * @generated from field: int32 runtime = 6;
+   */
+  runtime: number;
+
+  /**
+   * @generated from field: string still_url = 7;
+   */
+  stillUrl: string;
+
+  /**
+   * @generated from field: double rating = 8;
+   */
+  rating: number;
+};
+
+/**
+ * Describes the message chill.v4.TVShowEpisode.
+ * Use `create(TVShowEpisodeSchema)` to create a new message.
+ */
+export declare const TVShowEpisodeSchema: GenMessage<TVShowEpisode>;
+
+/**
+ * @generated from message chill.v4.GetTVShowDetailRequest
+ */
+export declare type GetTVShowDetailRequest = Message<"chill.v4.GetTVShowDetailRequest"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowDetailRequest.
+ * Use `create(GetTVShowDetailRequestSchema)` to create a new message.
+ */
+export declare const GetTVShowDetailRequestSchema: GenMessage<GetTVShowDetailRequest>;
+
+/**
+ * @generated from message chill.v4.GetTVShowDetailResponse
+ */
+export declare type GetTVShowDetailResponse = Message<"chill.v4.GetTVShowDetailResponse"> & {
+  /**
+   * @generated from field: chill.v4.TVShowDetail show = 1;
+   */
+  show?: TVShowDetail;
+
+  /**
+   * @generated from field: repeated chill.v4.TVShowSeason seasons = 2;
+   */
+  seasons: TVShowSeason[];
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowDetailResponse.
+ * Use `create(GetTVShowDetailResponseSchema)` to create a new message.
+ */
+export declare const GetTVShowDetailResponseSchema: GenMessage<GetTVShowDetailResponse>;
+
+/**
+ * @generated from message chill.v4.GetTVShowSeasonRequest
+ */
+export declare type GetTVShowSeasonRequest = Message<"chill.v4.GetTVShowSeasonRequest"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+
+  /**
+   * @generated from field: int32 season_number = 2;
+   */
+  seasonNumber: number;
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowSeasonRequest.
+ * Use `create(GetTVShowSeasonRequestSchema)` to create a new message.
+ */
+export declare const GetTVShowSeasonRequestSchema: GenMessage<GetTVShowSeasonRequest>;
+
+/**
+ * @generated from message chill.v4.GetTVShowSeasonResponse
+ */
+export declare type GetTVShowSeasonResponse = Message<"chill.v4.GetTVShowSeasonResponse"> & {
+  /**
+   * @generated from field: string tmdb_id = 1;
+   */
+  tmdbId: string;
+
+  /**
+   * @generated from field: int32 season_number = 2;
+   */
+  seasonNumber: number;
+
+  /**
+   * @generated from field: chill.v4.TVShowSeason season = 3;
+   */
+  season?: TVShowSeason;
+
+  /**
+   * @generated from field: repeated chill.v4.TVShowEpisode episodes = 4;
+   */
+  episodes: TVShowEpisode[];
+};
+
+/**
+ * Describes the message chill.v4.GetTVShowSeasonResponse.
+ * Use `create(GetTVShowSeasonResponseSchema)` to create a new message.
+ */
+export declare const GetTVShowSeasonResponseSchema: GenMessage<GetTVShowSeasonResponse>;
+
+/**
  * @generated from message chill.v4.GetUserSettingsRequest
  */
 export declare type GetUserSettingsRequest = Message<"chill.v4.GetUserSettingsRequest"> & {
@@ -1481,6 +1733,22 @@ export declare const UserService: GenService<{
     methodKind: "unary";
     input: typeof UserGetTopTVShowsRequestSchema;
     output: typeof UserGetTopTVShowsResponseSchema;
+  },
+  /**
+   * @generated from rpc chill.v4.UserService.GetTVShowDetail
+   */
+  getTVShowDetail: {
+    methodKind: "unary";
+    input: typeof GetTVShowDetailRequestSchema;
+    output: typeof GetTVShowDetailResponseSchema;
+  },
+  /**
+   * @generated from rpc chill.v4.UserService.GetTVShowSeason
+   */
+  getTVShowSeason: {
+    methodKind: "unary";
+    input: typeof GetTVShowSeasonRequestSchema;
+    output: typeof GetTVShowSeasonResponseSchema;
   },
   /**
    * @generated from rpc chill.v4.UserService.GetUserSettings

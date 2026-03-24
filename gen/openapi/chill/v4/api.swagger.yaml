@@ -254,6 +254,60 @@ paths:
         - UserService
       security:
         - BearerAuth: []
+  /chill.v4.UserService/GetTVShowDetail:
+    post:
+      operationId: UserService_GetTVShowDetail
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v4GetTVShowDetailResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v4GetTVShowDetailRequest'
+        - name: Authorization
+          description: 'User auth token. Format: Bearer <token>.'
+          in: header
+          required: true
+          type: string
+      tags:
+        - UserService
+      security:
+        - BearerAuth: []
+  /chill.v4.UserService/GetTVShowSeason:
+    post:
+      operationId: UserService_GetTVShowSeason
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v4GetTVShowSeasonResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v4GetTVShowSeasonRequest'
+        - name: Authorization
+          description: 'User auth token. Format: Bearer <token>.'
+          in: header
+          required: true
+          type: string
+      tags:
+        - UserService
+      security:
+        - BearerAuth: []
   /chill.v4.UserService/GetTopMovies:
     post:
       operationId: UserService_GetTopMovies
@@ -518,6 +572,44 @@ definitions:
         items:
           type: object
           $ref: '#/definitions/v4UserFile'
+  v4GetTVShowDetailRequest:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+  v4GetTVShowDetailResponse:
+    type: object
+    properties:
+      show:
+        $ref: '#/definitions/v4TVShowDetail'
+      seasons:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4TVShowSeason'
+  v4GetTVShowSeasonRequest:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+  v4GetTVShowSeasonResponse:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+      season:
+        $ref: '#/definitions/v4TVShowSeason'
+      episodes:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v4TVShowEpisode'
   v4GetTopMoviesBySourceRequest:
     type: object
     properties:
@@ -663,6 +755,80 @@ definitions:
     enum:
       - SORT_DIRECTION_ASC
       - SORT_DIRECTION_DESC
+  v4TVShowDetail:
+    type: object
+    properties:
+      tmdbId:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+        format: int32
+      posterUrl:
+        type: string
+      backdropUrl:
+        type: string
+      rating:
+        type: number
+        format: double
+      overview:
+        type: string
+      externalUrl:
+        type: string
+      seasonCount:
+        type: integer
+        format: int32
+      status:
+        $ref: '#/definitions/v4TVShowStatus'
+      networks:
+        type: array
+        items:
+          type: string
+      imdbId:
+        type: string
+      genres:
+        type: array
+        items:
+          type: string
+  v4TVShowEpisode:
+    type: object
+    properties:
+      seasonNumber:
+        type: integer
+        format: int32
+      episodeNumber:
+        type: integer
+        format: int32
+      name:
+        type: string
+      overview:
+        type: string
+      airDate:
+        type: string
+      runtime:
+        type: integer
+        format: int32
+      stillUrl:
+        type: string
+      rating:
+        type: number
+        format: double
+  v4TVShowSeason:
+    type: object
+    properties:
+      seasonNumber:
+        type: integer
+        format: int32
+      name:
+        type: string
+      episodeCount:
+        type: integer
+        format: int32
+      airDate:
+        type: string
+      posterUrl:
+        type: string
   v4TVShowStatus:
     type: string
     enum:
