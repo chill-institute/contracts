@@ -1,6 +1,6 @@
 {
   "name": "@chill-institute/contracts",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Canonical protobuf API contracts and generated client artifacts for Chill",
   "license": "MIT",
   "packageManager": "pnpm@10.15.1",
