@@ -77,14 +77,16 @@ Normal contract change flow:
 3. Review generated output in `gen/go`, `gen/ts`, and `gen/openapi`
 4. Run `mise run verify`
 5. Commit schema and generated output together.
-6. Push `main`
-7. GitHub Actions runs `semantic-release`, bumps the version automatically, tags `vX.Y.Z`, publishes the package to npm, creates the GitHub release, and commits the updated `package.json` back to `main`
+6. Open or update a pull request. GitHub Actions runs `Verify` on pull requests.
+7. Merge to `main`. GitHub Actions runs `Main`, which re-verifies the repo and then runs `semantic-release` to bump the version, tag `vX.Y.Z`, publish the package to npm, create the GitHub release, and commit the updated `package.json` back to `main`
 
 Example:
 
 ```bash
 git push origin main
 ```
+
+A manual `Publish Package` workflow remains available as a fallback when an operator needs to rerun the publish path without a fresh merge.
 
 Versioning notes:
 
