@@ -23,5 +23,8 @@ jobs:
       - name: Check generated artifacts are committed
         run: git diff --exit-code
 
+      - name: Fetch main for breaking-change check
+        run: git fetch --no-tags origin main:main
+
       - name: Check breaking changes against main
         run: buf breaking --against '.git#branch=main'

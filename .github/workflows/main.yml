@@ -6,8 +6,8 @@ on:
       - main
 
 concurrency:
-  group: main-${{ github.ref }}
-  cancel-in-progress: true
+  group: contracts-release-main
+  cancel-in-progress: false
 
 jobs:
   verify:
@@ -52,6 +52,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          extra_plugins: |
-            @semantic-release/git

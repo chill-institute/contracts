@@ -3,6 +3,10 @@ name: Publish Package
 on:
   workflow_dispatch:
 
+concurrency:
+  group: contracts-release-main
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -24,6 +28,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          extra_plugins: |
-            @semantic-release/git
