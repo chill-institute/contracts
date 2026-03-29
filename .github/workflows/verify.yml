@@ -2,13 +2,9 @@ name: Verify
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 jobs:
   verify:
-    if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,6 +23,8 @@ jobs:
       - name: Check generated artifacts are committed
         run: git diff --exit-code
 
+      - name: Fetch main for breaking-change check
+        run: git fetch --no-tags origin main:main
+
       - name: Check breaking changes against main
-        if: github.event_name == 'pull_request'
         run: buf breaking --against '.git#branch=main'

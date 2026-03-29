@@ -45,6 +45,8 @@ graph TD
 ## Release Model
 
 - `main` is the release branch.
-- CI verifies the repo on push.
+- `Verify` runs on pull requests.
+- `Main` runs on pushes to `main`.
 - verification includes tiny downstream consumer checks for Go and TypeScript fixtures under `testdata/consumers/`
-- release automation publishes the npm package and GitHub release from `main`
+- `Main` re-verifies the repo and then publishes the npm package and GitHub release from `main`
+- `Publish Package` remains available as a manual fallback for the publish path
