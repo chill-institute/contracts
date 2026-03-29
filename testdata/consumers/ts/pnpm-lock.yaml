@@ -1,0 +1,29 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@chill-institute/contracts':
+        specifier: file:../../..
+        version: file:../../..
+
+packages:
+
+  '@bufbuild/protobuf@2.11.0':
+    resolution: {integrity: sha512-sBXGT13cpmPR5BMgHE6UEEfEaShh5Ror6rfN3yEK5si7QVrtZg8LEPQb0VVhiLRUslD2yLnXtnRzG035J/mZXQ==}
+
+  '@chill-institute/contracts@file:../../..':
+    resolution: {directory: ../../.., type: directory}
+
+snapshots:
+
+  '@bufbuild/protobuf@2.11.0': {}
+
+  '@chill-institute/contracts@file:../../..':
+    dependencies:
+      '@bufbuild/protobuf': 2.11.0

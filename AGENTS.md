@@ -12,6 +12,7 @@
 
 - `mise install`
 - `mise run generate`
+- `mise run verify-consumers`
 - `mise run verify`
 
 ## Conventions

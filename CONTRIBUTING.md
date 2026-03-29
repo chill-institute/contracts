@@ -22,6 +22,7 @@ Run the full repo checks before opening or updating a pull request:
 
 ```bash
 mise run smoke
+mise run verify-consumers
 mise run verify
 ```
 
@@ -31,6 +32,7 @@ mise run verify
 - Schema changes should be deliberate and consumer-aware.
 - Keep generated artifacts in sync with schema changes.
 - Consumers should depend on releases, not `main`
+- `testdata/consumers/` holds tiny downstream Go and TypeScript fixtures used by `mise run verify-consumers`
 
 This repo owns:
 

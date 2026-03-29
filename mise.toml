@@ -18,11 +18,30 @@ run = [
 description = "Run a fast protobuf compile smoke check"
 run = "buf build"
 
+[tasks.verify-consumers-go]
+description = "Compile generated Go artifacts from a downstream module"
+run = "cd testdata/consumers/go && go test ./..."
+
+[tasks.verify-consumers-ts]
+description = "Import the published TypeScript surface from a downstream package"
+run = [
+  "cd testdata/consumers/ts && pnpm install --frozen-lockfile",
+  "cd testdata/consumers/ts && pnpm run smoke"
+]
+
+[tasks.verify-consumers]
+description = "Run downstream Go and TypeScript consumer checks"
+run = [
+  "mise run verify-consumers-go",
+  "mise run verify-consumers-ts"
+]
+
 [tasks.verify]
 description = "Verify protobuf contracts and generated artifacts"
 run = [
   "mise run smoke",
   "buf lint",
   "mise run generate",
-  "go test ./..."
+  "go test ./...",
+  "mise run verify-consumers"
 ]

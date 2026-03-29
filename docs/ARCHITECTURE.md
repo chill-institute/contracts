@@ -21,6 +21,7 @@ graph LR
 | `gen/go/` | Generated Go contract types | backend consumers |
 | `gen/ts/` | Generated TypeScript contract types | `web`, future JS clients |
 | `gen/openapi/` | Generated OpenAPI output | docs and tooling |
+| `testdata/consumers/` | Tiny downstream fixtures proving Go and TypeScript consumers still compile/import | generated artifacts, `mise` |
 | package metadata | Publish the TypeScript package and release artifacts | npm, GitHub releases |
 
 ## Generation Model
@@ -45,4 +46,5 @@ graph TD
 
 - `main` is the release branch.
 - CI verifies the repo on push.
+- verification includes tiny downstream consumer checks for Go and TypeScript fixtures under `testdata/consumers/`
 - release automation publishes the npm package and GitHub release from `main`

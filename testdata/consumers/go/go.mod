@@ -1,0 +1,13 @@
+module example.com/chill-contracts-consumer-go
+
+go 1.26.1
+
+require github.com/chill-institute/chill-institute-contracts v0.0.0
+
+require (
+	connectrpc.com/connect v1.19.1 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
+	google.golang.org/protobuf v1.36.11 // indirect
+)
+
+replace github.com/chill-institute/chill-institute-contracts => ../../..
