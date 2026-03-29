@@ -21,7 +21,11 @@ jobs:
         run: mise run verify
 
       - name: Check generated artifacts are committed
-        run: git diff --exit-code
+        run: |
+          test -z "$(git status --porcelain --untracked-files=all)" || {
+            git status --porcelain --untracked-files=all
+            exit 1
+          }
 
       - name: Fetch main for breaking-change check
         run: git fetch --no-tags origin main:main
