@@ -838,6 +838,10 @@ definitions:
         format: double
       externalUrl:
         type: string
+      backdropUrl:
+        type: string
+      overview:
+        type: string
     required:
       - posterUrl
   v4MoviesSource:

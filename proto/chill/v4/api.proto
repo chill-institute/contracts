@@ -520,6 +520,8 @@ message Movie {
   string poster_url = 11;
   double rating = 12;
   string external_url = 13;
+  string backdrop_url = 14;
+  string overview = 15;
 }
 
 message GetMoviesBySourceResponse {

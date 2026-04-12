@@ -364,6 +364,16 @@ export declare type Movie = Message<"chill.v4.Movie"> & {
    * @generated from field: string external_url = 13;
    */
   externalUrl: string;
+
+  /**
+   * @generated from field: string backdrop_url = 14;
+   */
+  backdropUrl: string;
+
+  /**
+   * @generated from field: string overview = 15;
+   */
+  overview: string;
 };
 
 /**
