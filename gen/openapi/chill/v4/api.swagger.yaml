@@ -842,6 +842,10 @@ definitions:
         type: string
       overview:
         type: string
+      genres:
+        type: array
+        items:
+          type: string
     required:
       - posterUrl
   v4MoviesSource:

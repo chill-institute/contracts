@@ -374,6 +374,11 @@ export declare type Movie = Message<"chill.v4.Movie"> & {
    * @generated from field: string overview = 15;
    */
   overview: string;
+
+  /**
+   * @generated from field: repeated string genres = 16;
+   */
+  genres: string[];
 };
 
 /**

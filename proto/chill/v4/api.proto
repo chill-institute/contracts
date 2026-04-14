@@ -522,6 +522,7 @@ message Movie {
   string external_url = 13;
   string backdrop_url = 14;
   string overview = 15;
+  repeated string genres = 16;
 }
 
 message GetMoviesBySourceResponse {

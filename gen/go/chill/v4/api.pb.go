@@ -1358,6 +1358,7 @@ type Movie struct {
 	ExternalUrl   string                 `protobuf:"bytes,13,opt,name=external_url,json=externalUrl,proto3" json:"external_url,omitempty"`
 	BackdropUrl   string                 `protobuf:"bytes,14,opt,name=backdrop_url,json=backdropUrl,proto3" json:"backdrop_url,omitempty"`
 	Overview      string                 `protobuf:"bytes,15,opt,name=overview,proto3" json:"overview,omitempty"`
+	Genres        []string               `protobuf:"bytes,16,rep,name=genres,proto3" json:"genres,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1495,6 +1496,13 @@ func (x *Movie) GetOverview() string {
 		return x.Overview
 	}
 	return ""
+}
+
+func (x *Movie) GetGenres() []string {
+	if x != nil {
+		return x.Genres
+	}
+	return nil
 }
 
 type GetMoviesBySourceResponse struct {
@@ -3934,7 +3942,7 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"indexer_id\x18\x02 \x01(\tH\x00R\tindexerId\x88\x01\x01B\r\n" +
 	"\v_indexer_id\"J\n" +
 	"\x18GetMoviesBySourceRequest\x12.\n" +
-	"\x06source\x18\x01 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\"\xba\x03\n" +
+	"\x06source\x18\x01 \x01(\x0e2\x16.chill.v4.MoviesSourceR\x06source\"\xd2\x03\n" +
 	"\x05Movie\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -3953,7 +3961,8 @@ const file_chill_v4_api_proto_rawDesc = "" +
 	"\x06rating\x18\f \x01(\x01R\x06rating\x12!\n" +
 	"\fexternal_url\x18\r \x01(\tR\vexternalUrl\x12!\n" +
 	"\fbackdrop_url\x18\x0e \x01(\tR\vbackdropUrl\x12\x1a\n" +
-	"\boverview\x18\x0f \x01(\tR\boverview:\x12\x92A\x0f\n" +
+	"\boverview\x18\x0f \x01(\tR\boverview\x12\x16\n" +
+	"\x06genres\x18\x10 \x03(\tR\x06genres:\x12\x92A\x0f\n" +
 	"\r\xd2\x01\n" +
 	"poster_url\"t\n" +
 	"\x19GetMoviesBySourceResponse\x12.\n" +
