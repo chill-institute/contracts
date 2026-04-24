@@ -1,6 +1,6 @@
 # Security
 
-If you believe you have found a security issue in the `chill-institute-contracts` package, please report it privately.
+If you believe you have found a security issue in the `chill-contracts` package, please report it privately.
 
 ## Contact
 

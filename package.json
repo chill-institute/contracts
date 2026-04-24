@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chill-institute/chill-institute-contracts.git"
+    "url": "https://github.com/chill-institute/chill-contracts.git"
   },
   "publishConfig": {
     "access": "public"

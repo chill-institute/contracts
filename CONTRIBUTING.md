@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to `chill-institute-contracts`
+Thanks for contributing to `chill-contracts`
 
 ## Setup
 
@@ -52,8 +52,8 @@ This repo does not own:
 Go consumers import generated artifacts directly:
 
 ```go
-import chillv4 "github.com/chill-institute/chill-institute-contracts/gen/go/chill/v4"
-import chillv4connect "github.com/chill-institute/chill-institute-contracts/gen/go/chill/v4/chillv4connect"
+import chillv4 "github.com/chill-institute/chill-contracts/gen/go/chill/v4"
+import chillv4connect "github.com/chill-institute/chill-contracts/gen/go/chill/v4/chillv4connect"
 ```
 
 TypeScript consumers install `@chill-institute/contracts`:

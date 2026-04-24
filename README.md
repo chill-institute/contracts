@@ -1,4 +1,4 @@
-# chill-institute-contracts
+# chill-contracts
 
 ![chill.institute contracts](https://chill.institute/banner.png)
 
