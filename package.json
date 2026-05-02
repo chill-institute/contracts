@@ -3,7 +3,7 @@
   "version": "1.2.1",
   "description": "Canonical protobuf API contracts and generated client artifacts for Chill",
   "license": "MIT",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@11.0.3",
   "type": "module",
   "sideEffects": false,
   "files": [
@@ -26,6 +26,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^2.11.0"
+    "@bufbuild/protobuf": "^2.12.0"
   }
 }

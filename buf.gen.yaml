@@ -22,7 +22,7 @@ plugins:
       - output_format=yaml
       - generate_unbound_methods=true
       - omit_enum_default_value=true
-  - remote: buf.build/bufbuild/es:v2.11.0
+  - remote: buf.build/bufbuild/es:v2.12.0
     out: gen/ts
     include_imports: true
     opt:

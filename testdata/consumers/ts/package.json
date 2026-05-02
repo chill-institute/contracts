@@ -2,7 +2,7 @@
   "name": "contracts-consumer-ts",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@11.0.3",
   "scripts": {
     "smoke": "node ./smoke.mjs"
   },
